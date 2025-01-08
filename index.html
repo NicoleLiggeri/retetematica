@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Globe Visualization</title>
+  <style>
+    body { margin: 0; display: flex; flex-direction: column; align-items: center; } 
+    #search-container { margin: 10px; }
+    input, button { padding: 10px; font-size: 16px; }
+  </style>
+  <script src="//unpkg.com/globe.gl"></script>
+</head>
+<body>
+  <div id="search-container">
+    <input id="search-input" type="text" placeholder="Enter keyword..." />
+    <button id="search-button">Search</button>
+  </div>
+  <div id="globeViz" style="width: 100%; height: 90%;"></div>
+
+  <script>
+    let world;
+    let countriesData;
+    let data = [];
+
+    // Load preprocessed data (converted from your CSV to JSON format)
+    fetch('C:/Users/Mosca/Desktop/Risultati wikidata/lavaolaspacca/project/data.json') // Replace 'data.json' with the path to your JSON file
+      .then(res => res.json())
+      .then(json => {
+        data = json;
+      });
+
+    // Load globe and countries data
+    fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+      .then(res => res.json())
+      .then(countries => {
+        countriesData = countries.features;
+        world = new Globe(document.getElementById('globeViz'))
+          .backgroundColor("#e4f2f7")
+          .globeImageUrl('https://upload.wikimedia.org/wikipedia/commons/a/ac/World_location_map.svg')
+          .polygonsData(countriesData)
+          .polygonCapColor(() => '#aaaaaa') // Default color
+          .polygonSideColor(() => 'rgba(80, 100, 0, 0.15)')
+          .polygonStrokeColor(() => '#111');
+      });
+
+    // Utility to clean text (remove punctuation, normalize spaces, make lowercase)
+    const cleanText = (text) => text.toLowerCase().replace(/[^\w\s]/g, '').trim();
+
+    // Handle search button click
+    document.getElementById('search-button').addEventListener('click', () => {
+      const keyword = document.getElementById('search-input').value.trim();
+      if (!keyword) return alert('Please enter a keyword.');
+
+      const cleanedKeyword = cleanText(keyword);
+
+      // Perform client-side matching
+      const matches = data.filter(item => 
+        cleanText(item["Temi"]).includes(cleanedKeyword)
+      );
+
+      const countryOccurrences = matches.reduce((acc, item) => {
+        const country = item["Citizenship Label"];
+        acc[country] = (acc[country] || 0) + 1;
+        return acc;
+      }, {});
+
+      // Update globe colors based on matches
+      world.polygonCapColor(({ properties: d }) => {
+        const count = countryOccurrences[d.ADMIN] || 0; // Use country name from GeoJSON
+        return count > 0 ? `rgba(255, 0, 0, ${Math.min(count / 10, 1)})` : '#aaaaaa';
+      });
+    });
+  </script>
+
+
+<!--  http://localhost:8000/ -->
+<!-- python -m http.server
+https://github.com/vasturiano/globe.gl/tree/master -->
+
+</body>
+</html>
+
+
