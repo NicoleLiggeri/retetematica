@@ -1,0 +1,5486 @@
+{
+    "name": "Root",
+    "children": [
+        {
+            "name": "Agenti",
+            "children": [
+                {
+                    "name": "Organismi",
+                    "children": [
+                        {
+                            "name": "Alberi"
+                        },
+                        {
+                            "name": "Alghe"
+                        },
+                        {
+                            "name": "Ali"
+                        },
+                        {
+                            "name": "Alloro"
+                        },
+                        {
+                            "name": "Animali"
+                        },
+                        {
+                            "name": "Animali marini"
+                        },
+                        {
+                            "name": "Ano"
+                        },
+                        {
+                            "name": "Api"
+                        },
+                        {
+                            "name": "Atlante"
+                        },
+                        {
+                            "name": "Barba"
+                        },
+                        {
+                            "name": "Basilico"
+                        },
+                        {
+                            "name": "Batteri"
+                        },
+                        {
+                            "name": "Becco"
+                        },
+                        {
+                            "name": "Bestiame"
+                        },
+                        {
+                            "name": "Capelli"
+                        },
+                        {
+                            "name": "Capezzoli"
+                        },
+                        {
+                            "name": "Cavallette"
+                        },
+                        {
+                            "name": "Cervello"
+                        },
+                        {
+                            "name": "Coda"
+                        },
+                        {
+                            "name": "Collo"
+                        },
+                        {
+                            "name": "Corna"
+                        },
+                        {
+                            "name": "Cotone"
+                        },
+                        {
+                            "name": "Cranio"
+                        },
+                        {
+                            "name": "Cuccioli"
+                        },
+                        {
+                            "name": "Cuore"
+                        },
+                        {
+                            "name": "Faccia"
+                        },
+                        {
+                            "name": "Fauna"
+                        },
+                        {
+                            "name": "Fegato"
+                        },
+                        {
+                            "name": "Fiori"
+                        },
+                        {
+                            "name": "Foche"
+                        },
+                        {
+                            "name": "Foglie"
+                        },
+                        {
+                            "name": "Fossili"
+                        },
+                        {
+                            "name": "Gambe"
+                        },
+                        {
+                            "name": "Gamberi"
+                        },
+                        {
+                            "name": "Gola"
+                        },
+                        {
+                            "name": "Grano"
+                        },
+                        {
+                            "name": "Gru"
+                        },
+                        {
+                            "name": "Insetti"
+                        },
+                        {
+                            "name": "Intestino"
+                        },
+                        {
+                            "name": "Iride"
+                        },
+                        {
+                            "name": "Legno"
+                        },
+                        {
+                            "name": "Lino"
+                        },
+                        {
+                            "name": "Lombrichi"
+                        },
+                        {
+                            "name": "Mandarini"
+                        },
+                        {
+                            "name": "Mani"
+                        },
+                        {
+                            "name": "Molluschi"
+                        },
+                        {
+                            "name": "Muscoli"
+                        },
+                        {
+                            "name": "Naso"
+                        },
+                        {
+                            "name": "Occhi"
+                        },
+                        {
+                            "name": "Ombelico"
+                        },
+                        {
+                            "name": "Organi di senso"
+                        },
+                        {
+                            "name": "Orzo"
+                        },
+                        {
+                            "name": "Ossa"
+                        },
+                        {
+                            "name": "Pampini"
+                        },
+                        {
+                            "name": "Papiro"
+                        },
+                        {
+                            "name": "Pelle"
+                        },
+                        {
+                            "name": "Penne"
+                        },
+                        {
+                            "name": "Perle"
+                        },
+                        {
+                            "name": "Pesci"
+                        },
+                        {
+                            "name": "Piante"
+                        },
+                        {
+                            "name": "Piante carnivore"
+                        },
+                        {
+                            "name": "Pidocchi"
+                        },
+                        {
+                            "name": "Piume"
+                        },
+                        {
+                            "name": "Placenta"
+                        },
+                        {
+                            "name": "Prole"
+                        },
+                        {
+                            "name": "Pupilla"
+                        },
+                        {
+                            "name": "Rabarbaro"
+                        },
+                        {
+                            "name": "Radici"
+                        },
+                        {
+                            "name": "Rami"
+                        },
+                        {
+                            "name": "Rane"
+                        },
+                        {
+                            "name": "Rettili"
+                        },
+                        {
+                            "name": "Riso"
+                        },
+                        {
+                            "name": "Rosmarino"
+                        },
+                        {
+                            "name": "Rovi"
+                        },
+                        {
+                            "name": "Sangue"
+                        },
+                        {
+                            "name": "Salvia"
+                        },
+                        {
+                            "name": "Scheletro"
+                        },
+                        {
+                            "name": "Selvaggina"
+                        },
+                        {
+                            "name": "Senna"
+                        },
+                        {
+                            "name": "Sperma"
+                        },
+                        {
+                            "name": "Spinaci"
+                        },
+                        {
+                            "name": "Spine"
+                        },
+                        {
+                            "name": "Stomaco"
+                        },
+                        {
+                            "name": "Talamo"
+                        },
+                        {
+                            "name": "Testa"
+                        },
+                        {
+                            "name": "Tibie"
+                        },
+                        {
+                            "name": "Tigri"
+                        },
+                        {
+                            "name": "Tritoni"
+                        },
+                        {
+                            "name": "Uccelli"
+                        },
+                        {
+                            "name": "Uomo"
+                        },
+                        {
+                            "name": "Utero"
+                        },
+                        {
+                            "name": "Varietà"
+                        },
+                        {
+                            "name": "Vegetazione"
+                        },
+                        {
+                            "name": "Vene"
+                        }
+                    ]
+                },
+                {
+                    "name": "Organizzazioni",
+                    "children": [
+                        {
+                            "name": "Aviazione"
+                        },
+                        {
+                            "name": "Bar"
+                        },
+                        {
+                            "name": "Café chantant"
+                        },
+                        {
+                            "name": "Cavalleria"
+                        },
+                        {
+                            "name": "Chiesa"
+                        },
+                        {
+                            "name": "Circoli"
+                        },
+                        {
+                            "name": "Corporazioni"
+                        },
+                        {
+                            "name": "Criminalità organizzata"
+                        },
+                        {
+                            "name": "Diocesi"
+                        },
+                        {
+                            "name": "Esposizioni universali"
+                        },
+                        {
+                            "name": "Fiere"
+                        },
+                        {
+                            "name": "Governo"
+                        },
+                        {
+                            "name": "Mafia"
+                        },
+                        {
+                            "name": "Marina militare"
+                        },
+                        {
+                            "name": "Ordini religiosi"
+                        },
+                        {
+                            "name": "Polis"
+                        },
+                        {
+                            "name": "Scoutismo"
+                        },
+                        {
+                            "name": "Servizi segreti"
+                        },
+                        {
+                            "name": "Società segrete"
+                        },
+                        {
+                            "name": "Truppe"
+                        },
+                        {
+                            "name": "Università"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Azioni",
+            "children": [
+                {
+                    "name": "Attività",
+                    "children": [
+                        {
+                            "name": "Abbandono"
+                        },
+                        {
+                            "name": "Abbraccio"
+                        },
+                        {
+                            "name": "Accidia"
+                        },
+                        {
+                            "name": "Accoglienza"
+                        },
+                        {
+                            "name": "Accoppiamento"
+                        },
+                        {
+                            "name": "Accordatura"
+                        },
+                        {
+                            "name": "Accusa"
+                        },
+                        {
+                            "name": "Acquerello"
+                        },
+                        {
+                            "name": "Adulazione"
+                        },
+                        {
+                            "name": "Adulterio"
+                        },
+                        {
+                            "name": "Affari"
+                        },
+                        {
+                            "name": "Affresco"
+                        },
+                        {
+                            "name": "Aggressione"
+                        },
+                        {
+                            "name": "Agricoltura"
+                        },
+                        {
+                            "name": "Alchimia"
+                        },
+                        {
+                            "name": "Alfabetizzazione"
+                        },
+                        {
+                            "name": "Alimentazione"
+                        },
+                        {
+                            "name": "Allattamento"
+                        },
+                        {
+                            "name": "Allevamento"
+                        },
+                        {
+                            "name": "Alpinismo"
+                        },
+                        {
+                            "name": "Alto tradimento"
+                        },
+                        {
+                            "name": "Altruismo"
+                        },
+                        {
+                            "name": "Amministrazione"
+                        },
+                        {
+                            "name": "Amputazione"
+                        },
+                        {
+                            "name": "Anestesia"
+                        },
+                        {
+                            "name": "Antiquariato"
+                        },
+                        {
+                            "name": "Antropofagia"
+                        },
+                        {
+                            "name": "Apartheid"
+                        },
+                        {
+                            "name": "Apostolato"
+                        },
+                        {
+                            "name": "Aratura"
+                        },
+                        {
+                            "name": "Architettura"
+                        },
+                        {
+                            "name": "Arredamento"
+                        },
+                        {
+                            "name": "Arte"
+                        },
+                        {
+                            "name": "Ascolto"
+                        },
+                        {
+                            "name": "Assalto"
+                        },
+                        {
+                            "name": "Astinenza"
+                        },
+                        {
+                            "name": "Astrologia"
+                        },
+                        {
+                            "name": "Astuzia"
+                        },
+                        {
+                            "name": "Atletica"
+                        },
+                        {
+                            "name": "Atrocità"
+                        },
+                        {
+                            "name": "Autoanalisi"
+                        },
+                        {
+                            "name": "Autocontrollo"
+                        },
+                        {
+                            "name": "Autoeducazione"
+                        },
+                        {
+                            "name": "Automobilismo"
+                        },
+                        {
+                            "name": "Autopsia"
+                        },
+                        {
+                            "name": "Autoritarismo"
+                        },
+                        {
+                            "name": "Azione"
+                        },
+                        {
+                            "name": "Bacio"
+                        },
+                        {
+                            "name": "Bancarotta"
+                        },
+                        {
+                            "name": "Bancomat"
+                        },
+                        {
+                            "name": "Baratto"
+                        },
+                        {
+                            "name": "Baseball"
+                        },
+                        {
+                            "name": "Benedizione"
+                        },
+                        {
+                            "name": "Beneficenza"
+                        },
+                        {
+                            "name": "Benevolenza"
+                        },
+                        {
+                            "name": "Bonifica"
+                        },
+                        {
+                            "name": "Brigantaggio"
+                        },
+                        {
+                            "name": "Bullismo"
+                        },
+                        {
+                            "name": "Buona fede"
+                        },
+                        {
+                            "name": "Cabotaggio"
+                        },
+                        {
+                            "name": "Caccia"
+                        },
+                        {
+                            "name": "Calligrafia"
+                        },
+                        {
+                            "name": "Calunnia"
+                        },
+                        {
+                            "name": "Campagna elettorale"
+                        },
+                        {
+                            "name": "Cancan"
+                        },
+                        {
+                            "name": "Canoa"
+                        },
+                        {
+                            "name": "Canto"
+                        },
+                        {
+                            "name": "Canto gregoriano"
+                        },
+                        {
+                            "name": "Carnevale"
+                        },
+                        {
+                            "name": "Cartomanzia"
+                        },
+                        {
+                            "name": "Castigo"
+                        },
+                        {
+                            "name": "Castità"
+                        },
+                        {
+                            "name": "Castrazione"
+                        },
+                        {
+                            "name": "Cattura"
+                        },
+                        {
+                            "name": "Censura"
+                        },
+                        {
+                            "name": "Chemioterapia"
+                        },
+                        {
+                            "name": "Chiaroveggenza"
+                        },
+                        {
+                            "name": "Chiromanzia"
+                        },
+                        {
+                            "name": "Chirurgia"
+                        },
+                        {
+                            "name": "Chirurgia plastica"
+                        },
+                        {
+                            "name": "Ciclismo"
+                        },
+                        {
+                            "name": "Cinema"
+                        },
+                        {
+                            "name": "Circoncisione"
+                        },
+                        {
+                            "name": "Clientelismo"
+                        },
+                        {
+                            "name": "Codardia"
+                        },
+                        {
+                            "name": "Collisione"
+                        },
+                        {
+                            "name": "Colonizzazione"
+                        },
+                        {
+                            "name": "Colpa"
+                        },
+                        {
+                            "name": "Coltivazione"
+                        },
+                        {
+                            "name": "Combattimento"
+                        },
+                        {
+                            "name": "Commercio"
+                        },
+                        {
+                            "name": "Comunicazione"
+                        },
+                        {
+                            "name": "Conformismo"
+                        },
+                        {
+                            "name": "Consacrazione"
+                        },
+                        {
+                            "name": "Contemplazione"
+                        },
+                        {
+                            "name": "Contestazione"
+                        },
+                        {
+                            "name": "Controspionaggio"
+                        },
+                        {
+                            "name": "Conversazione"
+                        },
+                        {
+                            "name": "Coprofagia"
+                        },
+                        {
+                            "name": "Coraggio"
+                        },
+                        {
+                            "name": "Corruzione"
+                        },
+                        {
+                            "name": "Corsa"
+                        },
+                        {
+                            "name": "Corteggiamento"
+                        },
+                        {
+                            "name": "Cortesia"
+                        },
+                        {
+                            "name": "Cosmesi"
+                        },
+                        {
+                            "name": "Costituzione"
+                        },
+                        {
+                            "name": "Cottura"
+                        },
+                        {
+                            "name": "Creazione"
+                        },
+                        {
+                            "name": "Credito"
+                        },
+                        {
+                            "name": "Cremazione"
+                        },
+                        {
+                            "name": "Crociate"
+                        },
+                        {
+                            "name": "Crocifissione"
+                        },
+                        {
+                            "name": "Cucito"
+                        },
+                        {
+                            "name": "Culto"
+                        },
+                        {
+                            "name": "Culturismo"
+                        },
+                        {
+                            "name": "Danza"
+                        },
+                        {
+                            "name": "Danza del ventre"
+                        },
+                        {
+                            "name": "Decapitazione"
+                        },
+                        {
+                            "name": "Decisione"
+                        },
+                        {
+                            "name": "Decolonizzazione"
+                        },
+                        {
+                            "name": "Deduzione"
+                        },
+                        {
+                            "name": "Delazione"
+                        },
+                        {
+                            "name": "Delinquenza"
+                        },
+                        {
+                            "name": "Denuncia"
+                        },
+                        {
+                            "name": "Derisione"
+                        },
+                        {
+                            "name": "Devozione"
+                        },
+                        {
+                            "name": "Diagnosi"
+                        },
+                        {
+                            "name": "Dialogo"
+                        },
+                        {
+                            "name": "Difesa"
+                        },
+                        {
+                            "name": "Digiuno"
+                        },
+                        {
+                            "name": "Diplomazia"
+                        },
+                        {
+                            "name": "Disciplina"
+                        },
+                        {
+                            "name": "Discrezione"
+                        },
+                        {
+                            "name": "Discriminazione"
+                        },
+                        {
+                            "name": "Discriminazione sessuale"
+                        },
+                        {
+                            "name": "Discussione"
+                        },
+                        {
+                            "name": "Disegno"
+                        },
+                        {
+                            "name": "Diserzione"
+                        },
+                        {
+                            "name": "Distruzione"
+                        },
+                        {
+                            "name": "Divieto"
+                        },
+                        {
+                            "name": "Divinazione"
+                        },
+                        {
+                            "name": "Dono"
+                        },
+                        {
+                            "name": "Duello"
+                        },
+                        {
+                            "name": "Economia"
+                        },
+                        {
+                            "name": "Edilizia"
+                        },
+                        {
+                            "name": "Editoria"
+                        },
+                        {
+                            "name": "Educazione"
+                        },
+                        {
+                            "name": "Egoismo"
+                        },
+                        {
+                            "name": "Emancipazione"
+                        },
+                        {
+                            "name": "Emigrazione"
+                        },
+                        {
+                            "name": "Enigmistica"
+                        },
+                        {
+                            "name": "Epifania"
+                        },
+                        {
+                            "name": "Equitazione"
+                        },
+                        {
+                            "name": "Erboristeria"
+                        },
+                        {
+                            "name": "Erotismo"
+                        },
+                        {
+                            "name": "Errore"
+                        },
+                        {
+                            "name": "Esame"
+                        },
+                        {
+                            "name": "Esilio"
+                        },
+                        {
+                            "name": "Esorcismo"
+                        },
+                        {
+                            "name": "Esoterismo"
+                        },
+                        {
+                            "name": "Espatrio"
+                        },
+                        {
+                            "name": "Espiazione"
+                        },
+                        {
+                            "name": "Esplosione"
+                        },
+                        {
+                            "name": "Estorsione"
+                        },
+                        {
+                            "name": "Eutanasia"
+                        },
+                        {
+                            "name": "Evangelizzazione"
+                        },
+                        {
+                            "name": "Evasione"
+                        },
+                        {
+                            "name": "Falconeria"
+                        },
+                        {
+                            "name": "Fallimento"
+                        },
+                        {
+                            "name": "Fedeltà"
+                        },
+                        {
+                            "name": "Feticismo"
+                        },
+                        {
+                            "name": "Filatura"
+                        },
+                        {
+                            "name": "Finanza"
+                        },
+                        {
+                            "name": "Finzione"
+                        },
+                        {
+                            "name": "Fisiognomica"
+                        },
+                        {
+                            "name": "Flamenco"
+                        },
+                        {
+                            "name": "Folclore"
+                        },
+                        {
+                            "name": "Fotografia"
+                        },
+                        {
+                            "name": "Fratricidio"
+                        },
+                        {
+                            "name": "Frode"
+                        },
+                        {
+                            "name": "Fuga"
+                        },
+                        {
+                            "name": "Fumo"
+                        },
+                        {
+                            "name": "Genocidio"
+                        },
+                        {
+                            "name": "Ginnastica"
+                        },
+                        {
+                            "name": "Giornalismo"
+                        },
+                        {
+                            "name": "Giudizio"
+                        },
+                        {
+                            "name": "Giustizia"
+                        },
+                        {
+                            "name": "Grafia"
+                        },
+                        {
+                            "name": "Guida"
+                        },
+                        {
+                            "name": "Ibridazione"
+                        },
+                        {
+                            "name": "Identificazione"
+                        },
+                        {
+                            "name": "Idolatria"
+                        },
+                        {
+                            "name": "Ikebana"
+                        },
+                        {
+                            "name": "Illuminazione"
+                        },
+                        {
+                            "name": "Illustrazione"
+                        },
+                        {
+                            "name": "Imbalsamazione"
+                        },
+                        {
+                            "name": "Imitazione"
+                        },
+                        {
+                            "name": "Immersione"
+                        },
+                        {
+                            "name": "Impiccagione"
+                        },
+                        {
+                            "name": "Improvvisazione"
+                        },
+                        {
+                            "name": "Incoronazione"
+                        },
+                        {
+                            "name": "Indifferenza"
+                        },
+                        {
+                            "name": "Induzione"
+                        },
+                        {
+                            "name": "Infanticidio"
+                        },
+                        {
+                            "name": "Informazione"
+                        },
+                        {
+                            "name": "Inganno"
+                        },
+                        {
+                            "name": "Ingordigia"
+                        },
+                        {
+                            "name": "Iniziazione"
+                        },
+                        {
+                            "name": "Inquisizione"
+                        },
+                        {
+                            "name": "Insegnamento"
+                        },
+                        {
+                            "name": "Interpretazione"
+                        },
+                        {
+                            "name": "Introspezione"
+                        },
+                        {
+                            "name": "Introversione"
+                        },
+                        {
+                            "name": "Invasioni barbariche"
+                        },
+                        {
+                            "name": "Invenzione"
+                        },
+                        {
+                            "name": "Ippica"
+                        },
+                        {
+                            "name": "Iscrizione"
+                        },
+                        {
+                            "name": "Isolamento"
+                        },
+                        {
+                            "name": "Istinto"
+                        },
+                        {
+                            "name": "Istruzione"
+                        },
+                        {
+                            "name": "Lamento"
+                        },
+                        {
+                            "name": "Lancio del peso"
+                        },
+                        {
+                            "name": "Lavaggio del cervello"
+                        },
+                        {
+                            "name": "Lavanda dei piedi"
+                        },
+                        {
+                            "name": "Lavoro"
+                        },
+                        {
+                            "name": "Lealtà"
+                        },
+                        {
+                            "name": "Letteratura"
+                        },
+                        {
+                            "name": "Lettura"
+                        },
+                        {
+                            "name": "Licenziamento"
+                        },
+                        {
+                            "name": "Linciaggio"
+                        },
+                        {
+                            "name": "Liturgia"
+                        },
+                        {
+                            "name": "Liturgia delle ore"
+                        },
+                        {
+                            "name": "Loquacità"
+                        },
+                        {
+                            "name": "Lotta"
+                        },
+                        {
+                            "name": "Lotto"
+                        },
+                        {
+                            "name": "Lussuria"
+                        },
+                        {
+                            "name": "Macchinismo"
+                        },
+                        {
+                            "name": "Magia"
+                        },
+                        {
+                            "name": "Malafede"
+                        },
+                        {
+                            "name": "Maltrattamenti"
+                        },
+                        {
+                            "name": "Manipolazione"
+                        },
+                        {
+                            "name": "Maratona"
+                        },
+                        {
+                            "name": "Marcia"
+                        },
+                        {
+                            "name": "Marina mercantile"
+                        },
+                        {
+                            "name": "Massaggio"
+                        },
+                        {
+                            "name": "Masturbazione"
+                        },
+                        {
+                            "name": "Matricidio"
+                        },
+                        {
+                            "name": "Mecenatismo"
+                        },
+                        {
+                            "name": "Meditazione"
+                        },
+                        {
+                            "name": "Mendicità"
+                        },
+                        {
+                            "name": "Menzogna"
+                        },
+                        {
+                            "name": "Messa"
+                        },
+                        {
+                            "name": "Mestieri"
+                        },
+                        {
+                            "name": "Metallurgia"
+                        },
+                        {
+                            "name": "Mietitura"
+                        },
+                        {
+                            "name": "Migrazioni"
+                        },
+                        {
+                            "name": "Mimica"
+                        },
+                        {
+                            "name": "Miniatura"
+                        },
+                        {
+                            "name": "Mobbing"
+                        },
+                        {
+                            "name": "Monacazione"
+                        },
+                        {
+                            "name": "Mondanità"
+                        },
+                        {
+                            "name": "Montaggio"
+                        },
+                        {
+                            "name": "Moralità"
+                        },
+                        {
+                            "name": "Musica"
+                        },
+                        {
+                            "name": "Mutilazione"
+                        },
+                        {
+                            "name": "Natale"
+                        },
+                        {
+                            "name": "Navigazione"
+                        },
+                        {
+                            "name": "Navigazione fluviale"
+                        },
+                        {
+                            "name": "Negazione"
+                        },
+                        {
+                            "name": "Nepotismo"
+                        },
+                        {
+                            "name": "Non violenza"
+                        },
+                        {
+                            "name": "Nozze"
+                        },
+                        {
+                            "name": "Nudismo"
+                        },
+                        {
+                            "name": "Nudità"
+                        },
+                        {
+                            "name": "Numerologia"
+                        },
+                        {
+                            "name": "Nuoto"
+                        },
+                        {
+                            "name": "Obbedienza"
+                        },
+                        {
+                            "name": "Obiezione di coscienza"
+                        },
+                        {
+                            "name": "Occultismo"
+                        },
+                        {
+                            "name": "Olimpiadi"
+                        },
+                        {
+                            "name": "Omicidio"
+                        },
+                        {
+                            "name": "Onestà"
+                        },
+                        {
+                            "name": "Opportunismo"
+                        },
+                        {
+                            "name": "Ospitalità"
+                        },
+                        {
+                            "name": "Pallacorda"
+                        },
+                        {
+                            "name": "Pallamano"
+                        },
+                        {
+                            "name": "Pantomima"
+                        },
+                        {
+                            "name": "Parsimonia"
+                        },
+                        {
+                            "name": "Pasqua"
+                        },
+                        {
+                            "name": "Passeggiata"
+                        },
+                        {
+                            "name": "Passione"
+                        },
+                        {
+                            "name": "Pasti"
+                        },
+                        {
+                            "name": "Pastorizia"
+                        },
+                        {
+                            "name": "Paternalismo"
+                        },
+                        {
+                            "name": "Pazienza"
+                        },
+                        {
+                            "name": "Penitenza"
+                        },
+                        {
+                            "name": "Pensiero"
+                        },
+                        {
+                            "name": "Perdono"
+                        },
+                        {
+                            "name": "Persecuzione"
+                        },
+                        {
+                            "name": "Perseveranza"
+                        },
+                        {
+                            "name": "Persuasione"
+                        },
+                        {
+                            "name": "Pesca"
+                        },
+                        {
+                            "name": "Pesca subacquea"
+                        },
+                        {
+                            "name": "Pettegolezzo"
+                        },
+                        {
+                            "name": "Pianto"
+                        },
+                        {
+                            "name": "Piercing"
+                        },
+                        {
+                            "name": "Pietà"
+                        },
+                        {
+                            "name": "Pignoramento"
+                        },
+                        {
+                            "name": "Pigrizia"
+                        },
+                        {
+                            "name": "Pirateria"
+                        },
+                        {
+                            "name": "Pittura"
+                        },
+                        {
+                            "name": "Plagio"
+                        },
+                        {
+                            "name": "Poker"
+                        },
+                        {
+                            "name": "Politica"
+                        },
+                        {
+                            "name": "Polizia"
+                        },
+                        {
+                            "name": "Pornografia"
+                        },
+                        {
+                            "name": "Posta elettronica"
+                        },
+                        {
+                            "name": "Predicazione"
+                        },
+                        {
+                            "name": "Preghiera"
+                        },
+                        {
+                            "name": "Processo"
+                        },
+                        {
+                            "name": "Promessa"
+                        },
+                        {
+                            "name": "Propaganda"
+                        },
+                        {
+                            "name": "Proselitismo"
+                        },
+                        {
+                            "name": "Prospettiva"
+                        },
+                        {
+                            "name": "Prostituzione"
+                        },
+                        {
+                            "name": "Protesi"
+                        },
+                        {
+                            "name": "Protezione"
+                        },
+                        {
+                            "name": "Prudenza"
+                        },
+                        {
+                            "name": "Pubblicazione"
+                        },
+                        {
+                            "name": "Pubblicità"
+                        },
+                        {
+                            "name": "Pugilato"
+                        },
+                        {
+                            "name": "Purificazione"
+                        },
+                        {
+                            "name": "Querelle des anciens et des modernes"
+                        },
+                        {
+                            "name": "Questua"
+                        },
+                        {
+                            "name": "Ragionamento"
+                        },
+                        {
+                            "name": "Rapimento"
+                        },
+                        {
+                            "name": "Rapina"
+                        },
+                        {
+                            "name": "Ravvedimento"
+                        },
+                        {
+                            "name": "Recitazione"
+                        },
+                        {
+                            "name": "Regia"
+                        },
+                        {
+                            "name": "Regicidio"
+                        },
+                        {
+                            "name": "Repressione"
+                        },
+                        {
+                            "name": "Riabilitazione"
+                        },
+                        {
+                            "name": "Rianimazione"
+                        },
+                        {
+                            "name": "Ribellione"
+                        },
+                        {
+                            "name": "Ricerca"
+                        },
+                        {
+                            "name": "Riciclaggio"
+                        },
+                        {
+                            "name": "Riconoscimento"
+                        },
+                        {
+                            "name": "Rieducazione"
+                        },
+                        {
+                            "name": "Rifiuto"
+                        },
+                        {
+                            "name": "Riforme"
+                        },
+                        {
+                            "name": "Ripetizione"
+                        },
+                        {
+                            "name": "Riposo"
+                        },
+                        {
+                            "name": "Riscatto"
+                        },
+                        {
+                            "name": "Riti funebri"
+                        },
+                        {
+                            "name": "Ritorno"
+                        },
+                        {
+                            "name": "Roulette"
+                        },
+                        {
+                            "name": "Ruolo"
+                        },
+                        {
+                            "name": "Sabotaggio"
+                        },
+                        {
+                            "name": "Safari"
+                        },
+                        {
+                            "name": "Salasso"
+                        },
+                        {
+                            "name": "Salto"
+                        },
+                        {
+                            "name": "Scavi archeologici"
+                        },
+                        {
+                            "name": "Sceneggiatura"
+                        },
+                        {
+                            "name": "Scherma"
+                        },
+                        {
+                            "name": "Sci"
+                        },
+                        {
+                            "name": "Scopa"
+                        },
+                        {
+                            "name": "Scoperta"
+                        },
+                        {
+                            "name": "Scoperte geografiche"
+                        },
+                        {
+                            "name": "Scrittura"
+                        },
+                        {
+                            "name": "Scultura"
+                        },
+                        {
+                            "name": "Seduzione"
+                        },
+                        {
+                            "name": "Semina"
+                        },
+                        {
+                            "name": "Servizio militare"
+                        },
+                        {
+                            "name": "Sesso"
+                        },
+                        {
+                            "name": "Sepoltura"
+                        },
+                        {
+                            "name": "Sguardo"
+                        },
+                        {
+                            "name": "Simonia"
+                        },
+                        {
+                            "name": "Simulazione"
+                        },
+                        {
+                            "name": "Snobismo"
+                        },
+                        {
+                            "name": "Solidarietà"
+                        },
+                        {
+                            "name": "Sorriso"
+                        },
+                        {
+                            "name": "Sostituzione di persona"
+                        },
+                        {
+                            "name": "Spedizione"
+                        },
+                        {
+                            "name": "Spionaggio"
+                        },
+                        {
+                            "name": "Sport"
+                        },
+                        {
+                            "name": "Spreco"
+                        },
+                        {
+                            "name": "Sterminio"
+                        },
+                        {
+                            "name": "Strategia"
+                        },
+                        {
+                            "name": "Studio"
+                        },
+                        {
+                            "name": "Successione"
+                        },
+                        {
+                            "name": "Suicidio"
+                        },
+                        {
+                            "name": "Surf"
+                        },
+                        {
+                            "name": "Taglio"
+                        },
+                        {
+                            "name": "Tattica"
+                        },
+                        {
+                            "name": "Teatro"
+                        },
+                        {
+                            "name": "Teletrasporto"
+                        },
+                        {
+                            "name": "Tennis"
+                        },
+                        {
+                            "name": "Terapia"
+                        },
+                        {
+                            "name": "Terrorismo"
+                        },
+                        {
+                            "name": "Tessitura"
+                        },
+                        {
+                            "name": "Testimonianza"
+                        },
+                        {
+                            "name": "Timidezza"
+                        },
+                        {
+                            "name": "Tirannicidio"
+                        },
+                        {
+                            "name": "Tolleranza"
+                        },
+                        {
+                            "name": "Tradimento"
+                        },
+                        {
+                            "name": "Tradizione"
+                        },
+                        {
+                            "name": "Traduzione"
+                        },
+                        {
+                            "name": "Transumanza"
+                        },
+                        {
+                            "name": "Trapianto"
+                        },
+                        {
+                            "name": "Trascrizione"
+                        },
+                        {
+                            "name": "Trasformazione"
+                        },
+                        {
+                            "name": "Trasformismo"
+                        },
+                        {
+                            "name": "Trasgressione"
+                        },
+                        {
+                            "name": "Tratta degli schiavi"
+                        },
+                        {
+                            "name": "Travestitismo"
+                        },
+                        {
+                            "name": "Trebbiatura"
+                        },
+                        {
+                            "name": "Tregua"
+                        },
+                        {
+                            "name": "Truffa"
+                        },
+                        {
+                            "name": "Turismo"
+                        },
+                        {
+                            "name": "Turpiloquio"
+                        },
+                        {
+                            "name": "Uccellagione"
+                        },
+                        {
+                            "name": "Uccisione"
+                        },
+                        {
+                            "name": "Ultima cena"
+                        },
+                        {
+                            "name": "Umiltà"
+                        },
+                        {
+                            "name": "Valzer"
+                        },
+                        {
+                            "name": "Vela"
+                        },
+                        {
+                            "name": "Vendemmia"
+                        },
+                        {
+                            "name": "Vendetta"
+                        }
+                    ]
+                },
+                {
+                    "name": "Processi",
+                    "children": [
+                        {
+                            "name": "Abitudine"
+                        },
+                        {
+                            "name": "Afasia"
+                        },
+                        {
+                            "name": "Affettività"
+                        },
+                        {
+                            "name": "Affetto"
+                        },
+                        {
+                            "name": "Afonia"
+                        },
+                        {
+                            "name": "Aggressività"
+                        },
+                        {
+                            "name": "Agilità"
+                        },
+                        {
+                            "name": "Agorafobia"
+                        },
+                        {
+                            "name": "Alcolismo"
+                        },
+                        {
+                            "name": "Alienazione"
+                        },
+                        {
+                            "name": "Alitosi"
+                        },
+                        {
+                            "name": "Allegria"
+                        },
+                        {
+                            "name": "Amicizia"
+                        },
+                        {
+                            "name": "Gioia"
+                        },
+                        {
+                            "name": "Amnesia"
+                        },
+                        {
+                            "name": "Amore"
+                        },
+                        {
+                            "name": "Analfabetismo"
+                        },
+                        {
+                            "name": "Anamorfosi"
+                        },
+                        {
+                            "name": "Anarchia"
+                        },
+                        {
+                            "name": "Angoscia"
+                        },
+                        {
+                            "name": "Animismo"
+                        },
+                        {
+                            "name": "Annegamento"
+                        },
+                        {
+                            "name": "Anoressia"
+                        },
+                        {
+                            "name": "Antifascismo"
+                        },
+                        {
+                            "name": "Antimilitarismo"
+                        },
+                        {
+                            "name": "Apatia"
+                        },
+                        {
+                            "name": "Apostasia"
+                        },
+                        {
+                            "name": "Appetito"
+                        },
+                        {
+                            "name": "Apprendimento"
+                        },
+                        {
+                            "name": "Asfissia"
+                        },
+                        {
+                            "name": "Associazione"
+                        },
+                        {
+                            "name": "Astrazione"
+                        },
+                        {
+                            "name": "Attesa"
+                        },
+                        {
+                            "name": "Aurora"
+                        },
+                        {
+                            "name": "Autarchia"
+                        },
+                        {
+                            "name": "Autocoscienza"
+                        },
+                        {
+                            "name": "Barocco"
+                        },
+                        {
+                            "name": "Beatitudine"
+                        },
+                        {
+                            "name": "Bisessualità"
+                        },
+                        {
+                            "name": "Body art"
+                        },
+                        {
+                            "name": "Bohème"
+                        },
+                        {
+                            "name": "Bontà"
+                        },
+                        {
+                            "name": "Bovarismo"
+                        },
+                        {
+                            "name": "Buddismo"
+                        },
+                        {
+                            "name": "Calore"
+                        },
+                        {
+                            "name": "Calvinismo"
+                        },
+                        {
+                            "name": "Calvizie"
+                        },
+                        {
+                            "name": "Cancro"
+                        },
+                        {
+                            "name": "Carità"
+                        },
+                        {
+                            "name": "Cartismo"
+                        },
+                        {
+                            "name": "Caso"
+                        },
+                        {
+                            "name": "Catatonia"
+                        },
+                        {
+                            "name": "Cattività"
+                        },
+                        {
+                            "name": "Cattolicesimo"
+                        },
+                        {
+                            "name": "Cecità"
+                        },
+                        {
+                            "name": "Ciclo mestruale"
+                        },
+                        {
+                            "name": "Civiltà"
+                        },
+                        {
+                            "name": "Classicismo"
+                        },
+                        {
+                            "name": "Claustrofobia"
+                        },
+                        {
+                            "name": "Clima"
+                        },
+                        {
+                            "name": "Clonazione"
+                        },
+                        {
+                            "name": "Coazione a ripetere"
+                        },
+                        {
+                            "name": "Coerenza"
+                        },
+                        {
+                            "name": "Colera"
+                        },
+                        {
+                            "name": "Collera"
+                        },
+                        {
+                            "name": "Colonialismo"
+                        },
+                        {
+                            "name": "Coma"
+                        },
+                        {
+                            "name": "Compassione"
+                        },
+                        {
+                            "name": "Complesso di Edipo"
+                        },
+                        {
+                            "name": "Comunismo"
+                        },
+                        {
+                            "name": "Conflitto sociale"
+                        },
+                        {
+                            "name": "Confucianesimo"
+                        },
+                        {
+                            "name": "Conoscenza"
+                        },
+                        {
+                            "name": "Conquista"
+                        },
+                        {
+                            "name": "Conservatorismo"
+                        },
+                        {
+                            "name": "Consolazione"
+                        },
+                        {
+                            "name": "Contagio"
+                        },
+                        {
+                            "name": "Contaminazione"
+                        },
+                        {
+                            "name": "Controriforma"
+                        },
+                        {
+                            "name": "Convalescenza"
+                        },
+                        {
+                            "name": "Convulsioni"
+                        },
+                        {
+                            "name": "Coscienza"
+                        },
+                        {
+                            "name": "Creatività"
+                        },
+                        {
+                            "name": "Credenze popolari"
+                        },
+                        {
+                            "name": "Crepuscolarismo"
+                        },
+                        {
+                            "name": "Crepuscolo"
+                        },
+                        {
+                            "name": "Cristianesimo"
+                        },
+                        {
+                            "name": "Cultura"
+                        },
+                        {
+                            "name": "Cultura di massa"
+                        },
+                        {
+                            "name": "Decadentismo"
+                        },
+                        {
+                            "name": "Decomposizione"
+                        },
+                        {
+                            "name": "Defecazione"
+                        },
+                        {
+                            "name": "Deformità"
+                        },
+                        {
+                            "name": "Degradazione"
+                        },
+                        {
+                            "name": "Déjà vu"
+                        },
+                        {
+                            "name": "Delirio"
+                        },
+                        {
+                            "name": "Demenza"
+                        },
+                        {
+                            "name": "Denutrizione"
+                        },
+                        {
+                            "name": "Depressione"
+                        },
+                        {
+                            "name": "Desiderio"
+                        },
+                        {
+                            "name": "Desiderio sessuale"
+                        },
+                        {
+                            "name": "Destino"
+                        },
+                        {
+                            "name": "Digestione"
+                        },
+                        {
+                            "name": "Disgusto"
+                        },
+                        {
+                            "name": "Disperazione"
+                        },
+                        {
+                            "name": "Disprezzo"
+                        },
+                        {
+                            "name": "Distacco"
+                        },
+                        {
+                            "name": "Disturbi alimentari"
+                        },
+                        {
+                            "name": "Divenire"
+                        },
+                        {
+                            "name": "Dolore"
+                        },
+                        {
+                            "name": "Dominazione"
+                        },
+                        {
+                            "name": "Ebraismo"
+                        },
+                        {
+                            "name": "Eclissi"
+                        },
+                        {
+                            "name": "Eco"
+                        },
+                        {
+                            "name": "Ecumenismo"
+                        },
+                        {
+                            "name": "Elettricità"
+                        },
+                        {
+                            "name": "Ellenismo"
+                        },
+                        {
+                            "name": "Emozioni"
+                        },
+                        {
+                            "name": "Empatia"
+                        },
+                        {
+                            "name": "Enciclopedismo"
+                        },
+                        {
+                            "name": "Energia nucleare"
+                        },
+                        {
+                            "name": "Epilessia"
+                        },
+                        {
+                            "name": "Equilibrio"
+                        },
+                        {
+                            "name": "Erotomania"
+                        },
+                        {
+                            "name": "Eruzioni vulcaniche"
+                        },
+                        {
+                            "name": "Esperienza"
+                        },
+                        {
+                            "name": "Espressionismo"
+                        },
+                        {
+                            "name": "Estasi"
+                        },
+                        {
+                            "name": "Evoluzione"
+                        },
+                        {
+                            "name": "Fame"
+                        },
+                        {
+                            "name": "Fanatismo"
+                        },
+                        {
+                            "name": "Fantasia"
+                        },
+                        {
+                            "name": "Fato"
+                        },
+                        {
+                            "name": "Febbre"
+                        },
+                        {
+                            "name": "Fecondazione"
+                        },
+                        {
+                            "name": "Fecondità"
+                        },
+                        {
+                            "name": "Fede"
+                        },
+                        {
+                            "name": "Felicità"
+                        },
+                        {
+                            "name": "Femminilità"
+                        },
+                        {
+                            "name": "Femminismo"
+                        },
+                        {
+                            "name": "Formazione"
+                        },
+                        {
+                            "name": "Fortuna"
+                        },
+                        {
+                            "name": "Fragilità"
+                        },
+                        {
+                            "name": "Franchismo"
+                        },
+                        {
+                            "name": "Fraternità"
+                        },
+                        {
+                            "name": "Freddo"
+                        },
+                        {
+                            "name": "Frustrazione"
+                        },
+                        {
+                            "name": "Fulmini"
+                        },
+                        {
+                            "name": "Fuoco"
+                        },
+                        {
+                            "name": "Furore"
+                        },
+                        {
+                            "name": "Futurismo"
+                        },
+                        {
+                            "name": "Gelosia"
+                        },
+                        {
+                            "name": "Genio"
+                        },
+                        {
+                            "name": "Gentilezza"
+                        },
+                        {
+                            "name": "Gestazione"
+                        },
+                        {
+                            "name": "Giansenismo"
+                        },
+                        {
+                            "name": "Gigantismo"
+                        },
+                        {
+                            "name": "Glaucoma"
+                        },
+                        {
+                            "name": "Globalizzazione"
+                        },
+                        {
+                            "name": "Gnosticismo"
+                        },
+                        {
+                            "name": "Gotta"
+                        },
+                        {
+                            "name": "Grandine"
+                        },
+                        {
+                            "name": "Gratitudine"
+                        },
+                        {
+                            "name": "Gravidanza"
+                        },
+                        {
+                            "name": "Gravità"
+                        },
+                        {
+                            "name": "Guarigione"
+                        },
+                        {
+                            "name": "Guerra fredda"
+                        },
+                        {
+                            "name": "Gusto"
+                        },
+                        {
+                            "name": "Identità sessuale"
+                        },
+                        {
+                            "name": "Iettatura"
+                        },
+                        {
+                            "name": "Illusioni ottiche"
+                        },
+                        {
+                            "name": "Immaginazione"
+                        },
+                        {
+                            "name": "Imperialismo"
+                        },
+                        {
+                            "name": "Impulsività"
+                        },
+                        {
+                            "name": "Inappetenza"
+                        },
+                        {
+                            "name": "Inconscio"
+                        },
+                        {
+                            "name": "Incredulità"
+                        },
+                        {
+                            "name": "Individualismo"
+                        },
+                        {
+                            "name": "Induismo"
+                        },
+                        {
+                            "name": "Industrializzazione"
+                        },
+                        {
+                            "name": "Inettitudine"
+                        },
+                        {
+                            "name": "Inflazione"
+                        },
+                        {
+                            "name": "Ingratitudine"
+                        },
+                        {
+                            "name": "Inquinamento"
+                        },
+                        {
+                            "name": "Insonnia"
+                        },
+                        {
+                            "name": "Interventismo"
+                        },
+                        {
+                            "name": "Intuizione"
+                        },
+                        {
+                            "name": "Invecchiamento"
+                        },
+                        {
+                            "name": "Invidia"
+                        },
+                        {
+                            "name": "Ipnosi"
+                        },
+                        {
+                            "name": "Ipocondria"
+                        },
+                        {
+                            "name": "Ipocrisia"
+                        },
+                        {
+                            "name": "Ironia"
+                        },
+                        {
+                            "name": "Irredentismo"
+                        },
+                        {
+                            "name": "Jihad"
+                        },
+                        {
+                            "name": "Laicità"
+                        },
+                        {
+                            "name": "Lapsus"
+                        },
+                        {
+                            "name": "Lebbra"
+                        },
+                        {
+                            "name": "Letargo"
+                        },
+                        {
+                            "name": "Leucemia"
+                        },
+                        {
+                            "name": "Liberalismo"
+                        },
+                        {
+                            "name": "Libertinismo"
+                        },
+                        {
+                            "name": "Liberty"
+                        },
+                        {
+                            "name": "Libido"
+                        },
+                        {
+                            "name": "Longevità"
+                        },
+                        {
+                            "name": "Lotta di classe"
+                        },
+                        {
+                            "name": "Luce"
+                        },
+                        {
+                            "name": "Luddismo"
+                        },
+                        {
+                            "name": "Lusso"
+                        },
+                        {
+                            "name": "Lutto"
+                        },
+                        {
+                            "name": "Maestrale"
+                        },
+                        {
+                            "name": "Magnetismo"
+                        },
+                        {
+                            "name": "Magrezza"
+                        },
+                        {
+                            "name": "Malaria"
+                        },
+                        {
+                            "name": "Malinconia"
+                        },
+                        {
+                            "name": "Mania"
+                        },
+                        {
+                            "name": "Manicheismo"
+                        },
+                        {
+                            "name": "Maoismo"
+                        },
+                        {
+                            "name": "Marxismo"
+                        },
+                        {
+                            "name": "Masochismo"
+                        },
+                        {
+                            "name": "Maternità"
+                        },
+                        {
+                            "name": "Maturazione"
+                        },
+                        {
+                            "name": "Medievalismo"
+                        },
+                        {
+                            "name": "Memoria"
+                        },
+                        {
+                            "name": "Menopausa"
+                        },
+                        {
+                            "name": "Mente"
+                        },
+                        {
+                            "name": "Meraviglia"
+                        },
+                        {
+                            "name": "Metodismo"
+                        },
+                        {
+                            "name": "Militarismo"
+                        },
+                        {
+                            "name": "Mimetismo"
+                        },
+                        {
+                            "name": "Miopia"
+                        },
+                        {
+                            "name": "Misantropia"
+                        },
+                        {
+                            "name": "Misoginia"
+                        },
+                        {
+                            "name": "Misteri eleusini"
+                        },
+                        {
+                            "name": "Mistica"
+                        },
+                        {
+                            "name": "Mobilità sociale"
+                        },
+                        {
+                            "name": "Moda"
+                        },
+                        {
+                            "name": "Modernità"
+                        },
+                        {
+                            "name": "Monachesimo"
+                        },
+                        {
+                            "name": "Monsoni"
+                        },
+                        {
+                            "name": "Multiculturalismo"
+                        },
+                        {
+                            "name": "Muta"
+                        },
+                        {
+                            "name": "Mutamento"
+                        },
+                        {
+                            "name": "Nanismo"
+                        },
+                        {
+                            "name": "Narcisismo"
+                        },
+                        {
+                            "name": "Nascita"
+                        },
+                        {
+                            "name": "Nausea"
+                        },
+                        {
+                            "name": "Nazionalismo"
+                        },
+                        {
+                            "name": "Nebbia"
+                        },
+                        {
+                            "name": "Neoclassicismo"
+                        },
+                        {
+                            "name": "Neorealismo"
+                        },
+                        {
+                            "name": "Nevrosi"
+                        },
+                        {
+                            "name": "Ninfomania"
+                        },
+                        {
+                            "name": "Nirvana"
+                        },
+                        {
+                            "name": "Noia"
+                        },
+                        {
+                            "name": "Nomadismo"
+                        },
+                        {
+                            "name": "Nostalgia"
+                        },
+                        {
+                            "name": "Odio"
+                        },
+                        {
+                            "name": "Olfatto"
+                        },
+                        {
+                            "name": "Omosessualità"
+                        },
+                        {
+                            "name": "Opinione pubblica"
+                        },
+                        {
+                            "name": "Orfismo"
+                        },
+                        {
+                            "name": "Orgasmo"
+                        },
+                        {
+                            "name": "Ostilità"
+                        },
+                        {
+                            "name": "Ottimismo"
+                        },
+                        {
+                            "name": "Pace"
+                        },
+                        {
+                            "name": "Pacifismo"
+                        },
+                        {
+                            "name": "Paganesimo"
+                        },
+                        {
+                            "name": "Pallore"
+                        },
+                        {
+                            "name": "Panico"
+                        },
+                        {
+                            "name": "Paralisi"
+                        },
+                        {
+                            "name": "Paranoia"
+                        },
+                        {
+                            "name": "Parentela"
+                        },
+                        {
+                            "name": "Parusia"
+                        },
+                        {
+                            "name": "Passioni"
+                        },
+                        {
+                            "name": "Paternità"
+                        },
+                        {
+                            "name": "Patriottismo"
+                        },
+                        {
+                            "name": "Paura"
+                        },
+                        {
+                            "name": "Pazzia"
+                        },
+                        {
+                            "name": "Pedofilia"
+                        },
+                        {
+                            "name": "Pellagra"
+                        },
+                        {
+                            "name": "Pentimento"
+                        },
+                        {
+                            "name": "Percezione"
+                        },
+                        {
+                            "name": "Perfezione"
+                        },
+                        {
+                            "name": "Pessimismo"
+                        },
+                        {
+                            "name": "Peste"
+                        },
+                        {
+                            "name": "Petrarchismo"
+                        },
+                        {
+                            "name": "Piacere"
+                        },
+                        {
+                            "name": "Pietismo"
+                        },
+                        {
+                            "name": "Pigmentazione"
+                        },
+                        {
+                            "name": "Pioggia"
+                        },
+                        {
+                            "name": "Polmonite"
+                        },
+                        {
+                            "name": "Pop art"
+                        },
+                        {
+                            "name": "Populismo"
+                        },
+                        {
+                            "name": "Potere"
+                        },
+                        {
+                            "name": "Potere temporale"
+                        },
+                        {
+                            "name": "Povertà"
+                        },
+                        {
+                            "name": "Preraffaellismo"
+                        },
+                        {
+                            "name": "Primitivismo"
+                        },
+                        {
+                            "name": "Profetismo"
+                        },
+                        {
+                            "name": "Progresso"
+                        },
+                        {
+                            "name": "Protestantesimo"
+                        },
+                        {
+                            "name": "Psicosi"
+                        },
+                        {
+                            "name": "Psittacosi"
+                        },
+                        {
+                            "name": "Pudore"
+                        },
+                        {
+                            "name": "Puritanesimo"
+                        },
+                        {
+                            "name": "Putrefazione"
+                        },
+                        {
+                            "name": "Questione della lingua"
+                        },
+                        {
+                            "name": "Questione meridionale"
+                        },
+                        {
+                            "name": "Rabbia"
+                        },
+                        {
+                            "name": "Ragione"
+                        },
+                        {
+                            "name": "Raggi X"
+                        },
+                        {
+                            "name": "Rappresentazione"
+                        },
+                        {
+                            "name": "Razzismo"
+                        },
+                        {
+                            "name": "Realtà"
+                        },
+                        {
+                            "name": "Regionalismo"
+                        },
+                        {
+                            "name": "Regressione"
+                        },
+                        {
+                            "name": "Reincarnazione"
+                        },
+                        {
+                            "name": "Resistenza"
+                        },
+                        {
+                            "name": "Restaurazione"
+                        },
+                        {
+                            "name": "Ricchezza"
+                        },
+                        {
+                            "name": "Ricezione"
+                        },
+                        {
+                            "name": "Riflessione"
+                        },
+                        {
+                            "name": "Rigenerazione"
+                        },
+                        {
+                            "name": "Rimpianto"
+                        },
+                        {
+                            "name": "Rinascimento"
+                        },
+                        {
+                            "name": "Risentimento"
+                        },
+                        {
+                            "name": "Rivalità"
+                        },
+                        {
+                            "name": "Rivoluzione"
+                        },
+                        {
+                            "name": "Rivoluzione americana"
+                        },
+                        {
+                            "name": "Rivoluzione francese"
+                        },
+                        {
+                            "name": "Rivoluzione industriale"
+                        },
+                        {
+                            "name": "Romanticismo"
+                        },
+                        {
+                            "name": "Rumore"
+                        },
+                        {
+                            "name": "Saggezza"
+                        },
+                        {
+                            "name": "Salute"
+                        },
+                        {
+                            "name": "Santità"
+                        },
+                        {
+                            "name": "Sapienza"
+                        },
+                        {
+                            "name": "Satanismo"
+                        },
+                        {
+                            "name": "Scabbia"
+                        },
+                        {
+                            "name": "Scapigliatura"
+                        },
+                        {
+                            "name": "Schiavitù"
+                        },
+                        {
+                            "name": "Schizofrenia"
+                        },
+                        {
+                            "name": "Scirocco"
+                        },
+                        {
+                            "name": "Scorbuto"
+                        },
+                        {
+                            "name": "Secessione"
+                        },
+                        {
+                            "name": "Sensazioni"
+                        },
+                        {
+                            "name": "Sensi"
+                        },
+                        {
+                            "name": "Sensibilità"
+                        },
+                        {
+                            "name": "Senso di colpa"
+                        },
+                        {
+                            "name": "Separazione"
+                        },
+                        {
+                            "name": "Sete"
+                        },
+                        {
+                            "name": "Shock"
+                        },
+                        {
+                            "name": "Siccità"
+                        },
+                        {
+                            "name": "Sifilide"
+                        },
+                        {
+                            "name": "Silenzio"
+                        },
+                        {
+                            "name": "Simpatia"
+                        },
+                        {
+                            "name": "Sionismo"
+                        },
+                        {
+                            "name": "Socialismo"
+                        },
+                        {
+                            "name": "Solitudine"
+                        },
+                        {
+                            "name": "Sonnambulismo"
+                        },
+                        {
+                            "name": "Sonno"
+                        },
+                        {
+                            "name": "Sopravvivenza"
+                        },
+                        {
+                            "name": "Sordità"
+                        },
+                        {
+                            "name": "Spartachismo"
+                        },
+                        {
+                            "name": "Spiritualità"
+                        },
+                        {
+                            "name": "Squadrismo"
+                        },
+                        {
+                            "name": "Stalinismo"
+                        },
+                        {
+                            "name": "Sterilità"
+                        },
+                        {
+                            "name": "Stigmate"
+                        },
+                        {
+                            "name": "Stupidità"
+                        },
+                        {
+                            "name": "Sturm und Drang"
+                        },
+                        {
+                            "name": "Sublimazione"
+                        },
+                        {
+                            "name": "Successo"
+                        },
+                        {
+                            "name": "Suggestione"
+                        },
+                        {
+                            "name": "Superbia"
+                        },
+                        {
+                            "name": "Surrealismo"
+                        },
+                        {
+                            "name": "Sviluppo"
+                        },
+                        {
+                            "name": "Tabagismo"
+                        },
+                        {
+                            "name": "Taoismo"
+                        },
+                        {
+                            "name": "Tatto"
+                        },
+                        {
+                            "name": "Tosse"
+                        },
+                        {
+                            "name": "Tossicodipendenza"
+                        },
+                        {
+                            "name": "Tramonto"
+                        },
+                        {
+                            "name": "Trance"
+                        },
+                        {
+                            "name": "Tremore"
+                        },
+                        {
+                            "name": "Tristezza"
+                        },
+                        {
+                            "name": "Tubercolosi"
+                        },
+                        {
+                            "name": "Tuoni"
+                        },
+                        {
+                            "name": "Ubriachezza"
+                        },
+                        {
+                            "name": "Udito"
+                        },
+                        {
+                            "name": "Umanesimo"
+                        },
+                        {
+                            "name": "Umiliazione"
+                        },
+                        {
+                            "name": "Umorismo"
+                        },
+                        {
+                            "name": "Urbanesimo"
+                        },
+                        {
+                            "name": "Urbanizzazione"
+                        },
+                        {
+                            "name": "Vagabondaggio"
+                        },
+                        {
+                            "name": "Vaiolo"
+                        },
+                        {
+                            "name": "Vanità"
+                        }
+                    ]
+                },
+                {
+                    "name": "Discipline",
+                    "children": [
+                        {
+                            "name": "Agiografia"
+                        },
+                        {
+                            "name": "Anatomia"
+                        },
+                        {
+                            "name": "Antropologia"
+                        },
+                        {
+                            "name": "Antropologia criminale"
+                        },
+                        {
+                            "name": "Araldica"
+                        },
+                        {
+                            "name": "Archeologia"
+                        },
+                        {
+                            "name": "Aritmetica"
+                        },
+                        {
+                            "name": "Astronomia"
+                        },
+                        {
+                            "name": "Biologia"
+                        },
+                        {
+                            "name": "Botanica"
+                        },
+                        {
+                            "name": "Chimica"
+                        },
+                        {
+                            "name": "Cibernetica"
+                        },
+                        {
+                            "name": "Clinica"
+                        },
+                        {
+                            "name": "Dialettica"
+                        },
+                        {
+                            "name": "Didattica"
+                        },
+                        {
+                            "name": "Diritto"
+                        },
+                        {
+                            "name": "Diritto canonico"
+                        },
+                        {
+                            "name": "Ecologia"
+                        },
+                        {
+                            "name": "Entomologia"
+                        },
+                        {
+                            "name": "Epistemologia"
+                        },
+                        {
+                            "name": "Escatologia"
+                        },
+                        {
+                            "name": "Estetica"
+                        },
+                        {
+                            "name": "Etica"
+                        },
+                        {
+                            "name": "Eziologia"
+                        },
+                        {
+                            "name": "Farmacia"
+                        },
+                        {
+                            "name": "Filologia"
+                        },
+                        {
+                            "name": "Filosofia"
+                        },
+                        {
+                            "name": "Filosofia della storia"
+                        },
+                        {
+                            "name": "Fisica"
+                        },
+                        {
+                            "name": "Fisica nucleare"
+                        },
+                        {
+                            "name": "Fisiologia"
+                        },
+                        {
+                            "name": "Fonetica"
+                        },
+                        {
+                            "name": "Gastronomia"
+                        },
+                        {
+                            "name": "Genealogia"
+                        },
+                        {
+                            "name": "Genetica"
+                        },
+                        {
+                            "name": "Geografia"
+                        },
+                        {
+                            "name": "Geologia"
+                        },
+                        {
+                            "name": "Geometria"
+                        },
+                        {
+                            "name": "Grafologia"
+                        },
+                        {
+                            "name": "Idraulica"
+                        },
+                        {
+                            "name": "Igiene"
+                        },
+                        {
+                            "name": "Informatica"
+                        },
+                        {
+                            "name": "Intelligenza artificiale"
+                        },
+                        {
+                            "name": "Linguistica"
+                        },
+                        {
+                            "name": "Logica"
+                        },
+                        {
+                            "name": "Matematica"
+                        },
+                        {
+                            "name": "Meccanica"
+                        },
+                        {
+                            "name": "Medicina"
+                        },
+                        {
+                            "name": "Metafisica"
+                        },
+                        {
+                            "name": "Meteorologia"
+                        },
+                        {
+                            "name": "Neurologia"
+                        },
+                        {
+                            "name": "Neuropsichiatria"
+                        },
+                        {
+                            "name": "Oceanografia"
+                        },
+                        {
+                            "name": "Onomastica"
+                        },
+                        {
+                            "name": "Ornitologia"
+                        },
+                        {
+                            "name": "Ottica"
+                        },
+                        {
+                            "name": "Pedagogia"
+                        },
+                        {
+                            "name": "Planimetria"
+                        },
+                        {
+                            "name": "Poetica"
+                        },
+                        {
+                            "name": "Psicologia"
+                        },
+                        {
+                            "name": "Psicopatologia"
+                        },
+                        {
+                            "name": "Retorica"
+                        },
+                        {
+                            "name": "Robotica"
+                        },
+                        {
+                            "name": "Semantica"
+                        },
+                        {
+                            "name": "Semiotica"
+                        },
+                        {
+                            "name": "Sociologia"
+                        },
+                        {
+                            "name": "Soteriologia"
+                        },
+                        {
+                            "name": "Statistica"
+                        },
+                        {
+                            "name": "Storia"
+                        },
+                        {
+                            "name": "Storiografia"
+                        },
+                        {
+                            "name": "Teodicea"
+                        },
+                        {
+                            "name": "Teologia"
+                        },
+                        {
+                            "name": "Teratologia"
+                        },
+                        {
+                            "name": "Topografia"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Cose",
+            "children": [
+                {
+                    "name": "Oggetti",
+                    "children": [
+                        {
+                            "name": "Abbigliamento"
+                        },
+                        {
+                            "name": "Armi"
+                        },
+                        {
+                            "name": "Armi chimiche"
+                        },
+                        {
+                            "name": "Armi da fuoco"
+                        },
+                        {
+                            "name": "Armi nucleari"
+                        },
+                        {
+                            "name": "Burattini"
+                        },
+                        {
+                            "name": "Campane"
+                        },
+                        {
+                            "name": "Ceramiche"
+                        },
+                        {
+                            "name": "Chiodi"
+                        },
+                        {
+                            "name": "Dadi"
+                        },
+                        {
+                            "name": "Frecce"
+                        },
+                        {
+                            "name": "Fumetti"
+                        },
+                        {
+                            "name": "Ghigliottina"
+                        },
+                        {
+                            "name": "Giocattoli"
+                        },
+                        {
+                            "name": "Gioielli"
+                        },
+                        {
+                            "name": "Guanti"
+                        },
+                        {
+                            "name": "Idoli"
+                        },
+                        {
+                            "name": "Ingranaggi"
+                        },
+                        {
+                            "name": "Lavori manuali"
+                        },
+                        {
+                            "name": "Maioliche"
+                        },
+                        {
+                            "name": "Mitra"
+                        },
+                        {
+                            "name": "Mobili"
+                        },
+                        {
+                            "name": "Occhiali"
+                        },
+                        {
+                            "name": "Piatti"
+                        },
+                        {
+                            "name": "Porcellane"
+                        },
+                        {
+                            "name": "Pupi"
+                        },
+                        {
+                            "name": "Roulotte"
+                        },
+                        {
+                            "name": "Sarcofagi"
+                        },
+                        {
+                            "name": "Scacchi"
+                        },
+                        {
+                            "name": "Scarpe"
+                        },
+                        {
+                            "name": "Stoffe"
+                        },
+                        {
+                            "name": "Stracci"
+                        },
+                        {
+                            "name": "Strumenti musicali"
+                        },
+                        {
+                            "name": "Tarocchi"
+                        },
+                        {
+                            "name": "Taxi"
+                        },
+                        {
+                            "name": "Tela"
+                        },
+                        {
+                            "name": "Turbine"
+                        },
+                        {
+                            "name": "Valigie"
+                        }
+                    ]
+                },
+                {
+                    "name": "Materia",
+                    "children": [
+                        {
+                            "name": "Acqua"
+                        },
+                        {
+                            "name": "Afrodisiaci"
+                        },
+                        {
+                            "name": "Argento"
+                        },
+                        {
+                            "name": "Aria"
+                        },
+                        {
+                            "name": "Aromi"
+                        },
+                        {
+                            "name": "Arsenico"
+                        },
+                        {
+                            "name": "Avorio"
+                        },
+                        {
+                            "name": "Bianco"
+                        },
+                        {
+                            "name": "Bile"
+                        },
+                        {
+                            "name": "Birra"
+                        },
+                        {
+                            "name": "Caffè"
+                        },
+                        {
+                            "name": "Calcio"
+                        },
+                        {
+                            "name": "Carne"
+                        },
+                        {
+                            "name": "Carta"
+                        },
+                        {
+                            "name": "Cartapesta"
+                        },
+                        {
+                            "name": "Cereali"
+                        },
+                        {
+                            "name": "Cioccolata"
+                        },
+                        {
+                            "name": "Cocaina"
+                        },
+                        {
+                            "name": "Colle"
+                        },
+                        {
+                            "name": "Colori"
+                        },
+                        {
+                            "name": "Diamanti"
+                        },
+                        {
+                            "name": "Eroina"
+                        },
+                        {
+                            "name": "Escrementi"
+                        },
+                        {
+                            "name": "Ferro"
+                        },
+                        {
+                            "name": "Frutta"
+                        },
+                        {
+                            "name": "Gas"
+                        },
+                        {
+                            "name": "Ghiaccio"
+                        },
+                        {
+                            "name": "Giallo"
+                        },
+                        {
+                            "name": "Giunco"
+                        },
+                        {
+                            "name": "Grigio"
+                        },
+                        {
+                            "name": "Guado"
+                        },
+                        {
+                            "name": "Hascisc"
+                        },
+                        {
+                            "name": "Iceberg"
+                        },
+                        {
+                            "name": "Incenso"
+                        },
+                        {
+                            "name": "Lacrime"
+                        },
+                        {
+                            "name": "Lana"
+                        },
+                        {
+                            "name": "Lava"
+                        },
+                        {
+                            "name": "Legumi"
+                        },
+                        {
+                            "name": "Magma"
+                        },
+                        {
+                            "name": "Manna"
+                        },
+                        {
+                            "name": "Marmo"
+                        },
+                        {
+                            "name": "Miele"
+                        },
+                        {
+                            "name": "Mirra"
+                        },
+                        {
+                            "name": "Nero"
+                        },
+                        {
+                            "name": "Olive"
+                        },
+                        {
+                            "name": "Oppio"
+                        },
+                        {
+                            "name": "Ortaggi"
+                        },
+                        {
+                            "name": "Pane"
+                        },
+                        {
+                            "name": "Pergamena"
+                        },
+                        {
+                            "name": "Petrolio"
+                        },
+                        {
+                            "name": "Pizza"
+                        },
+                        {
+                            "name": "Porpora"
+                        },
+                        {
+                            "name": "Radioattività"
+                        },
+                        {
+                            "name": "Rame"
+                        },
+                        {
+                            "name": "Rancio"
+                        },
+                        {
+                            "name": "Rifiuti"
+                        },
+                        {
+                            "name": "Rosso"
+                        },
+                        {
+                            "name": "Ruggine"
+                        },
+                        {
+                            "name": "Sabbia"
+                        },
+                        {
+                            "name": "Sale"
+                        },
+                        {
+                            "name": "Sedativi"
+                        },
+                        {
+                            "name": "Seta"
+                        },
+                        {
+                            "name": "Sidro"
+                        },
+                        {
+                            "name": "Smog"
+                        },
+                        {
+                            "name": "Snack"
+                        },
+                        {
+                            "name": "Sottosuolo"
+                        },
+                        {
+                            "name": "Spezie"
+                        },
+                        {
+                            "name": "Stagno"
+                        },
+                        {
+                            "name": "Stupefacenti"
+                        },
+                        {
+                            "name": "Sudore"
+                        },
+                        {
+                            "name": "Tabacco"
+                        },
+                        {
+                            "name": "Tè"
+                        },
+                        {
+                            "name": "Uranio"
+                        },
+                        {
+                            "name": "Uva"
+                        },
+                        {
+                            "name": "Vapore acqueo"
+                        }
+                    ]
+                },
+                {
+                    "name": "Forme",
+                    "children": [
+                        {
+                            "name": "Ade"
+                        },
+                        {
+                            "name": "Amazzoni"
+                        },
+                        {
+                            "name": "Aneddoti"
+                        },
+                        {
+                            "name": "Animali parlanti"
+                        },
+                        {
+                            "name": "Anticristo"
+                        },
+                        {
+                            "name": "Antropomorfismo"
+                        },
+                        {
+                            "name": "Arcadia"
+                        },
+                        {
+                            "name": "Atlantide"
+                        },
+                        {
+                            "name": "Basilisco"
+                        },
+                        {
+                            "name": "Blues"
+                        },
+                        {
+                            "name": "Buon selvaggio"
+                        },
+                        {
+                            "name": "Cabaret"
+                        },
+                        {
+                            "name": "Canone"
+                        },
+                        {
+                            "name": "Canti popolari"
+                        },
+                        {
+                            "name": "Capro espiatorio"
+                        },
+                        {
+                            "name": "Chimera"
+                        },
+                        {
+                            "name": "Comico"
+                        },
+                        {
+                            "name": "Concettismo"
+                        },
+                        {
+                            "name": "Consolatio"
+                        },
+                        {
+                            "name": "Consonanti"
+                        },
+                        {
+                            "name": "Croce"
+                        },
+                        {
+                            "name": "Cuccagna"
+                        },
+                        {
+                            "name": "Curiosità"
+                        },
+                        {
+                            "name": "Cyberpunk"
+                        },
+                        {
+                            "name": "Danza macabra"
+                        },
+                        {
+                            "name": "Deissi"
+                        },
+                        {
+                            "name": "Demonio"
+                        },
+                        {
+                            "name": "Diluvio universale"
+                        },
+                        {
+                            "name": "Doppio"
+                        },
+                        {
+                            "name": "Drago"
+                        },
+                        {
+                            "name": "Ecfrasi"
+                        },
+                        {
+                            "name": "Eldorado"
+                        },
+                        {
+                            "name": "Elfi"
+                        },
+                        {
+                            "name": "Esotismo"
+                        },
+                        {
+                            "name": "Esperanto"
+                        },
+                        {
+                            "name": "Exempla"
+                        },
+                        {
+                            "name": "Fantascienza"
+                        },
+                        {
+                            "name": "Fantasy"
+                        },
+                        {
+                            "name": "Fenice"
+                        },
+                        {
+                            "name": "Figure retoriche"
+                        },
+                        {
+                            "name": "Film"
+                        },
+                        {
+                            "name": "Folletti"
+                        },
+                        {
+                            "name": "Generi letterari"
+                        },
+                        {
+                            "name": "Gergo"
+                        },
+                        {
+                            "name": "Grottesco"
+                        },
+                        {
+                            "name": "Haiku"
+                        },
+                        {
+                            "name": "Impronte digitali"
+                        },
+                        {
+                            "name": "Incipit"
+                        },
+                        {
+                            "name": "Incunaboli"
+                        },
+                        {
+                            "name": "Inferno"
+                        },
+                        {
+                            "name": "Iperborei"
+                        },
+                        {
+                            "name": "Ippogrifo"
+                        },
+                        {
+                            "name": "Jazz"
+                        },
+                        {
+                            "name": "Kitsch"
+                        },
+                        {
+                            "name": "Labirinto"
+                        },
+                        {
+                            "name": "Leggende"
+                        },
+                        {
+                            "name": "Letteratura per ragazzi"
+                        },
+                        {
+                            "name": "Libri sacri"
+                        },
+                        {
+                            "name": "Licantropia"
+                        },
+                        {
+                            "name": "Lingue classiche"
+                        },
+                        {
+                            "name": "Lingue volgari"
+                        },
+                        {
+                            "name": "Litanie"
+                        },
+                        {
+                            "name": "Lode"
+                        },
+                        {
+                            "name": "Mandala"
+                        },
+                        {
+                            "name": "Menù"
+                        },
+                        {
+                            "name": "Messe"
+                        },
+                        {
+                            "name": "Mimo"
+                        },
+                        {
+                            "name": "Mitologia"
+                        },
+                        {
+                            "name": "Motti"
+                        },
+                        {
+                            "name": "Musica sacra"
+                        },
+                        {
+                            "name": "Narrativa"
+                        },
+                        {
+                            "name": "Natura morta"
+                        },
+                        {
+                            "name": "Oltretomba"
+                        },
+                        {
+                            "name": "Pamphlet"
+                        },
+                        {
+                            "name": "Paradiso"
+                        },
+                        {
+                            "name": "Paradiso terrestre"
+                        },
+                        {
+                            "name": "Parodia"
+                        },
+                        {
+                            "name": "Performance"
+                        },
+                        {
+                            "name": "Periodici"
+                        },
+                        {
+                            "name": "Poesia"
+                        },
+                        {
+                            "name": "Pronuncia"
+                        },
+                        {
+                            "name": "Prosa"
+                        },
+                        {
+                            "name": "Purgatorio"
+                        },
+                        {
+                            "name": "Quadraturismo"
+                        },
+                        {
+                            "name": "Regola"
+                        },
+                        {
+                            "name": "Ritmo"
+                        },
+                        {
+                            "name": "Rune"
+                        },
+                        {
+                            "name": "Sacre rappresentazioni"
+                        },
+                        {
+                            "name": "Satira"
+                        },
+                        {
+                            "name": "Seno"
+                        },
+                        {
+                            "name": "Sfinge"
+                        },
+                        {
+                            "name": "Simbolismo"
+                        },
+                        {
+                            "name": "Slang"
+                        },
+                        {
+                            "name": "Smorfia"
+                        },
+                        {
+                            "name": "Spogliarello"
+                        },
+                        {
+                            "name": "Stampa"
+                        },
+                        {
+                            "name": "Stile"
+                        },
+                        {
+                            "name": "Teogonia"
+                        },
+                        {
+                            "name": "Terza pagina"
+                        },
+                        {
+                            "name": "Totem"
+                        },
+                        {
+                            "name": "Vedutismo"
+                        }
+                    ]
+                },
+                {
+                    "name": "Strumenti",
+                    "children": [
+                        {
+                            "name": "Adozione"
+                        },
+                        {
+                            "name": "Affinità"
+                        },
+                        {
+                            "name": "Agnosticismo"
+                        },
+                        {
+                            "name": "Alterità"
+                        },
+                        {
+                            "name": "Ambiguità"
+                        },
+                        {
+                            "name": "Amnistia"
+                        },
+                        {
+                            "name": "Amore divino"
+                        },
+                        {
+                            "name": "Analogia"
+                        },
+                        {
+                            "name": "Anima"
+                        },
+                        {
+                            "name": "Anonimato"
+                        },
+                        {
+                            "name": "Anticlericalismo"
+                        },
+                        {
+                            "name": "Antroposofia"
+                        },
+                        {
+                            "name": "Apocalisse"
+                        },
+                        {
+                            "name": "Argomentazione"
+                        },
+                        {
+                            "name": "Armonia"
+                        },
+                        {
+                            "name": "Attivismo"
+                        },
+                        {
+                            "name": "Assenza"
+                        },
+                        {
+                            "name": "Assolutismo"
+                        },
+                        {
+                            "name": "Assoluzione"
+                        },
+                        {
+                            "name": "Assurdo"
+                        },
+                        {
+                            "name": "Ateismo"
+                        },
+                        {
+                            "name": "Atomismo"
+                        },
+                        {
+                            "name": "Attore"
+                        },
+                        {
+                            "name": "Auctoritas"
+                        },
+                        {
+                            "name": "Autonomia"
+                        },
+                        {
+                            "name": "Autorità"
+                        },
+                        {
+                            "name": "Battesimo"
+                        },
+                        {
+                            "name": "Beatificazione"
+                        },
+                        {
+                            "name": "Bello"
+                        },
+                        {
+                            "name": "Bilinguismo"
+                        },
+                        {
+                            "name": "Bruttezza"
+                        },
+                        {
+                            "name": "Burocrazia"
+                        },
+                        {
+                            "name": "Cabala"
+                        },
+                        {
+                            "name": "Calcolo"
+                        },
+                        {
+                            "name": "Canonizzazione"
+                        },
+                        {
+                            "name": "Capitale"
+                        },
+                        {
+                            "name": "Capitalismo"
+                        },
+                        {
+                            "name": "Celibato"
+                        },
+                        {
+                            "name": "Circonferenza"
+                        },
+                        {
+                            "name": "Citazione"
+                        },
+                        {
+                            "name": "Classismo"
+                        },
+                        {
+                            "name": "Codice cavalleresco"
+                        },
+                        {
+                            "name": "Colloquio"
+                        },
+                        {
+                            "name": "Compensazione"
+                        },
+                        {
+                            "name": "Comunione"
+                        },
+                        {
+                            "name": "Concubinato"
+                        },
+                        {
+                            "name": "Condanna"
+                        },
+                        {
+                            "name": "Condanna a morte"
+                        },
+                        {
+                            "name": "Confusione"
+                        },
+                        {
+                            "name": "Contraddittorio"
+                        },
+                        {
+                            "name": "Contraddizione"
+                        },
+                        {
+                            "name": "Contratto sociale"
+                        },
+                        {
+                            "name": "Corona"
+                        },
+                        {
+                            "name": "Corpo mistico"
+                        },
+                        {
+                            "name": "Cosmogonia"
+                        },
+                        {
+                            "name": "Cosmologia"
+                        },
+                        {
+                            "name": "Cosmopolitismo"
+                        },
+                        {
+                            "name": "Cursus honorum"
+                        },
+                        {
+                            "name": "Darwinismo"
+                        },
+                        {
+                            "name": "Debito pubblico"
+                        },
+                        {
+                            "name": "Decadenza"
+                        },
+                        {
+                            "name": "Decostruzionismo"
+                        },
+                        {
+                            "name": "Deismo"
+                        },
+                        {
+                            "name": "Demagogia"
+                        },
+                        {
+                            "name": "Democrazia"
+                        },
+                        {
+                            "name": "Detenzione"
+                        },
+                        {
+                            "name": "Determinismo"
+                        },
+                        {
+                            "name": "Diglossia"
+                        },
+                        {
+                            "name": "Diligenza"
+                        },
+                        {
+                            "name": "Dimora"
+                        },
+                        {
+                            "name": "Dio"
+                        },
+                        {
+                            "name": "Diritti civili"
+                        },
+                        {
+                            "name": "Diritto naturale"
+                        },
+                        {
+                            "name": "Dispensa"
+                        },
+                        {
+                            "name": "Dispotismo"
+                        },
+                        {
+                            "name": "Distopia"
+                        },
+                        {
+                            "name": "Dittatura"
+                        },
+                        {
+                            "name": "Dittatura del proletariato"
+                        },
+                        {
+                            "name": "Divinità"
+                        },
+                        {
+                            "name": "Divorzio"
+                        },
+                        {
+                            "name": "Dogmatismo"
+                        },
+                        {
+                            "name": "Domanda"
+                        },
+                        {
+                            "name": "Dote"
+                        },
+                        {
+                            "name": "Dualismo"
+                        },
+                        {
+                            "name": "Dubbio"
+                        },
+                        {
+                            "name": "Edonismo"
+                        },
+                        {
+                            "name": "Effetti speciali"
+                        },
+                        {
+                            "name": "Ellissi"
+                        },
+                        {
+                            "name": "Empirismo"
+                        },
+                        {
+                            "name": "Entropia"
+                        },
+                        {
+                            "name": "Epicureismo"
+                        },
+                        {
+                            "name": "Equatore"
+                        },
+                        {
+                            "name": "Eredità"
+                        },
+                        {
+                            "name": "Ereditarietà"
+                        },
+                        {
+                            "name": "Ergastolo"
+                        },
+                        {
+                            "name": "Ermetismo"
+                        },
+                        {
+                            "name": "Esame di coscienza"
+                        },
+                        {
+                            "name": "Esercizi spirituali"
+                        },
+                        {
+                            "name": "Esistenzialismo"
+                        },
+                        {
+                            "name": "Eternità"
+                        },
+                        {
+                            "name": "Evemerismo"
+                        },
+                        {
+                            "name": "Evoluzionismo"
+                        },
+                        {
+                            "name": "Feudalesimo"
+                        },
+                        {
+                            "name": "Figure geometriche"
+                        },
+                        {
+                            "name": "Finitudine"
+                        },
+                        {
+                            "name": "Flashback"
+                        },
+                        {
+                            "name": "Francobolli"
+                        },
+                        {
+                            "name": "Gerarchia"
+                        },
+                        {
+                            "name": "Gerontocrazia"
+                        },
+                        {
+                            "name": "Giudizio universale"
+                        },
+                        {
+                            "name": "Giuramento"
+                        },
+                        {
+                            "name": "Giurisprudenza"
+                        },
+                        {
+                            "name": "Grammatica"
+                        },
+                        {
+                            "name": "Gratuità"
+                        },
+                        {
+                            "name": "Grazia"
+                        },
+                        {
+                            "name": "Grazia divina"
+                        },
+                        {
+                            "name": "Grazie"
+                        },
+                        {
+                            "name": "Iconoclastia"
+                        },
+                        {
+                            "name": "Idealismo"
+                        },
+                        {
+                            "name": "Identità"
+                        },
+                        {
+                            "name": "Ideologia"
+                        },
+                        {
+                            "name": "Illuminismo"
+                        },
+                        {
+                            "name": "Illusionismo"
+                        },
+                        {
+                            "name": "Immagine"
+                        },
+                        {
+                            "name": "Immanentismo"
+                        },
+                        {
+                            "name": "Immortalità"
+                        },
+                        {
+                            "name": "Imperativo categorico"
+                        },
+                        {
+                            "name": "Incarnazione"
+                        },
+                        {
+                            "name": "Incertezza"
+                        },
+                        {
+                            "name": "Indissolubilità"
+                        },
+                        {
+                            "name": "Indulgenza"
+                        },
+                        {
+                            "name": "Infallibilità"
+                        },
+                        {
+                            "name": "Infamia"
+                        },
+                        {
+                            "name": "Infinito"
+                        },
+                        {
+                            "name": "Integrazione"
+                        },
+                        {
+                            "name": "Intelletto"
+                        },
+                        {
+                            "name": "Internet"
+                        },
+                        {
+                            "name": "Interrogatorio"
+                        },
+                        {
+                            "name": "Intonazione"
+                        },
+                        {
+                            "name": "Intreccio"
+                        },
+                        {
+                            "name": "Irrazionalismo"
+                        },
+                        {
+                            "name": "Karma"
+                        },
+                        {
+                            "name": "Latifondo"
+                        },
+                        {
+                            "name": "Lavori forzati"
+                        },
+                        {
+                            "name": "Leggi"
+                        },
+                        {
+                            "name": "Leggi razziali"
+                        },
+                        {
+                            "name": "Legittimità"
+                        },
+                        {
+                            "name": "Libero arbitrio"
+                        },
+                        {
+                            "name": "Libertà"
+                        },
+                        {
+                            "name": "Libertà di stampa"
+                        },
+                        {
+                            "name": "Linguaggio"
+                        },
+                        {
+                            "name": "Logos"
+                        },
+                        {
+                            "name": "Lontananza"
+                        },
+                        {
+                            "name": "Machiavellismo"
+                        },
+                        {
+                            "name": "Magistero"
+                        },
+                        {
+                            "name": "Materialismo"
+                        },
+                        {
+                            "name": "Matriarcato"
+                        },
+                        {
+                            "name": "Matrimonio"
+                        },
+                        {
+                            "name": "Meccanicismo"
+                        },
+                        {
+                            "name": "Melodia"
+                        },
+                        {
+                            "name": "Mercato"
+                        },
+                        {
+                            "name": "Merito"
+                        },
+                        {
+                            "name": "Metempsicosi"
+                        },
+                        {
+                            "name": "Metrica"
+                        },
+                        {
+                            "name": "Millenarismo"
+                        },
+                        {
+                            "name": "Mimesi"
+                        },
+                        {
+                            "name": "Modernismo"
+                        },
+                        {
+                            "name": "Monarchia"
+                        },
+                        {
+                            "name": "Moneta"
+                        },
+                        {
+                            "name": "Monoteismo"
+                        },
+                        {
+                            "name": "Morale"
+                        },
+                        {
+                            "name": "Natura"
+                        },
+                        {
+                            "name": "Naturalismo"
+                        },
+                        {
+                            "name": "Naturalizzazione"
+                        },
+                        {
+                            "name": "Nazionalità"
+                        },
+                        {
+                            "name": "Nazione"
+                        },
+                        {
+                            "name": "Neoplatonismo"
+                        },
+                        {
+                            "name": "Nichilismo"
+                        },
+                        {
+                            "name": "Nominalismo"
+                        },
+                        {
+                            "name": "Novissimi"
+                        },
+                        {
+                            "name": "Nulla"
+                        },
+                        {
+                            "name": "Numeri"
+                        },
+                        {
+                            "name": "Offerta"
+                        },
+                        {
+                            "name": "Oligarchia"
+                        },
+                        {
+                            "name": "Omologazione"
+                        },
+                        {
+                            "name": "Ondine"
+                        },
+                        {
+                            "name": "Onore"
+                        },
+                        {
+                            "name": "Oralità"
+                        },
+                        {
+                            "name": "Ordine"
+                        },
+                        {
+                            "name": "Orizzonte"
+                        },
+                        {
+                            "name": "Panteismo"
+                        },
+                        {
+                            "name": "Papato"
+                        },
+                        {
+                            "name": "Parola di Dio"
+                        },
+                        {
+                            "name": "Partita doppia"
+                        },
+                        {
+                            "name": "Passività"
+                        },
+                        {
+                            "name": "Pater familias"
+                        },
+                        {
+                            "name": "Patria"
+                        },
+                        {
+                            "name": "Patriarcato"
+                        },
+                        {
+                            "name": "Patrimonio"
+                        },
+                        {
+                            "name": "Peccato originale"
+                        },
+                        {
+                            "name": "Pegno"
+                        },
+                        {
+                            "name": "Pene"
+                        },
+                        {
+                            "name": "Pentecoste"
+                        },
+                        {
+                            "name": "Persona"
+                        },
+                        {
+                            "name": "Personalismo"
+                        },
+                        {
+                            "name": "Pitagorismo"
+                        },
+                        {
+                            "name": "Platonismo"
+                        },
+                        {
+                            "name": "Poliedri"
+                        },
+                        {
+                            "name": "Polifonia"
+                        },
+                        {
+                            "name": "Poligamia"
+                        },
+                        {
+                            "name": "Politeismo"
+                        },
+                        {
+                            "name": "Polo Nord"
+                        },
+                        {
+                            "name": "Polo Sud"
+                        },
+                        {
+                            "name": "Popolo"
+                        },
+                        {
+                            "name": "Positivismo"
+                        },
+                        {
+                            "name": "Possesso"
+                        },
+                        {
+                            "name": "Postcolonialismo"
+                        },
+                        {
+                            "name": "Pragmatismo"
+                        },
+                        {
+                            "name": "Prescrizione"
+                        },
+                        {
+                            "name": "Prezzi"
+                        },
+                        {
+                            "name": "Prigionia"
+                        },
+                        {
+                            "name": "Proprietà"
+                        },
+                        {
+                            "name": "Proprietà fondiaria"
+                        },
+                        {
+                            "name": "Proprietà privata"
+                        },
+                        {
+                            "name": "Prosodia"
+                        },
+                        {
+                            "name": "Provocazione"
+                        },
+                        {
+                            "name": "Punteggiatura"
+                        },
+                        {
+                            "name": "Punti cardinali"
+                        },
+                        {
+                            "name": "Radio"
+                        },
+                        {
+                            "name": "Razionalismo"
+                        },
+                        {
+                            "name": "Razionalità"
+                        },
+                        {
+                            "name": "Realismo"
+                        },
+                        {
+                            "name": "Reciprocità"
+                        },
+                        {
+                            "name": "Reclusione"
+                        },
+                        {
+                            "name": "Redenzione"
+                        },
+                        {
+                            "name": "Refurtiva"
+                        },
+                        {
+                            "name": "Regime"
+                        },
+                        {
+                            "name": "Regole"
+                        },
+                        {
+                            "name": "Relativismo"
+                        },
+                        {
+                            "name": "Religione"
+                        },
+                        {
+                            "name": "Repubblica"
+                        },
+                        {
+                            "name": "Reputazione"
+                        },
+                        {
+                            "name": "Responsabilità"
+                        },
+                        {
+                            "name": "Reticenza"
+                        },
+                        {
+                            "name": "Riformismo"
+                        },
+                        {
+                            "name": "Ripudio"
+                        },
+                        {
+                            "name": "Rivelazione"
+                        },
+                        {
+                            "name": "Salvezza"
+                        },
+                        {
+                            "name": "Sapienza divina"
+                        },
+                        {
+                            "name": "Scetticismo"
+                        },
+                        {
+                            "name": "Scientismo"
+                        },
+                        {
+                            "name": "Scomunica"
+                        },
+                        {
+                            "name": "Segreto"
+                        },
+                        {
+                            "name": "Sequestro"
+                        },
+                        {
+                            "name": "Sfratto"
+                        },
+                        {
+                            "name": "Simmetria"
+                        },
+                        {
+                            "name": "Sistema tolemaico"
+                        },
+                        {
+                            "name": "Sofistica"
+                        },
+                        {
+                            "name": "Solipsismo"
+                        },
+                        {
+                            "name": "Soprannaturale"
+                        },
+                        {
+                            "name": "Spirito"
+                        },
+                        {
+                            "name": "Stato"
+                        },
+                        {
+                            "name": "Stoicismo"
+                        },
+                        {
+                            "name": "Storicismo"
+                        },
+                        {
+                            "name": "Strutturalismo"
+                        },
+                        {
+                            "name": "Sublime"
+                        },
+                        {
+                            "name": "Sufismo"
+                        },
+                        {
+                            "name": "Suoni"
+                        },
+                        {
+                            "name": "Tabù"
+                        },
+                        {
+                            "name": "Tecnica"
+                        },
+                        {
+                            "name": "Televisione"
+                        },
+                        {
+                            "name": "Temperanza"
+                        },
+                        {
+                            "name": "Teoria della relatività"
+                        },
+                        {
+                            "name": "Teosofia"
+                        },
+                        {
+                            "name": "Testamento"
+                        },
+                        {
+                            "name": "Tirannia"
+                        },
+                        {
+                            "name": "Tradizionalismo"
+                        },
+                        {
+                            "name": "Tradizione orale"
+                        },
+                        {
+                            "name": "Transustanziazione"
+                        },
+                        {
+                            "name": "Trascendentalismo"
+                        },
+                        {
+                            "name": "Trascendenza"
+                        },
+                        {
+                            "name": "Trinità"
+                        },
+                        {
+                            "name": "Tropici"
+                        },
+                        {
+                            "name": "Utilitarismo"
+                        },
+                        {
+                            "name": "Utopia"
+                        },
+                        {
+                            "name": "Valore"
+                        },
+                        {
+                            "name": "Velocità"
+                        }
+                    ]
+                },
+                {
+                    "name": "Spazio",
+                    "children": [
+                        {
+                            "name": "Ambiente"
+                        },
+                        {
+                            "name": "Atmosfera"
+                        },
+                        {
+                            "name": "Cielo"
+                        },
+                        {
+                            "name": "Città"
+                        },
+                        {
+                            "name": "Coste"
+                        },
+                        {
+                            "name": "Luna"
+                        },
+                        {
+                            "name": "Medio Oriente"
+                        },
+                        {
+                            "name": "Metropoli"
+                        },
+                        {
+                            "name": "Oriente"
+                        },
+                        {
+                            "name": "Orsa maggiore"
+                        },
+                        {
+                            "name": "Paesaggio"
+                        },
+                        {
+                            "name": "Pianeti"
+                        },
+                        {
+                            "name": "Sistema solare"
+                        },
+                        {
+                            "name": "Sobborghi"
+                        },
+                        {
+                            "name": "Sole"
+                        },
+                        {
+                            "name": "Stelle"
+                        },
+                        {
+                            "name": "Terra"
+                        },
+                        {
+                            "name": "Universo"
+                        }
+                    ]
+                },
+                {
+                    "name": "Strutture",
+                    "children": [
+                        {
+                            "name": "Canali"
+                        },
+                        {
+                            "name": "Cimiteri"
+                        },
+                        {
+                            "name": "Mulini a vento"
+                        },
+                        {
+                            "name": "Mura"
+                        },
+                        {
+                            "name": "Necropoli"
+                        },
+                        {
+                            "name": "Rovine"
+                        },
+                        {
+                            "name": "Terme"
+                        },
+                        {
+                            "name": "Tetti"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Tempo",
+            "children": [
+                {
+                    "name": "Tempo",
+                    "children": [
+                        {
+                            "name": "Adolescenza"
+                        },
+                        {
+                            "name": "Autunno"
+                        },
+                        {
+                            "name": "Avvento"
+                        },
+                        {
+                            "name": "Domenica"
+                        },
+                        {
+                            "name": "Estate"
+                        },
+                        {
+                            "name": "Età"
+                        },
+                        {
+                            "name": "Giorni"
+                        },
+                        {
+                            "name": "Giovinezza"
+                        },
+                        {
+                            "name": "Infanzia"
+                        },
+                        {
+                            "name": "Inverno"
+                        },
+                        {
+                            "name": "Medioevo"
+                        },
+                        {
+                            "name": "Notte"
+                        },
+                        {
+                            "name": "Noviziato"
+                        },
+                        {
+                            "name": "Origini"
+                        },
+                        {
+                            "name": "Pausa"
+                        },
+                        {
+                            "name": "Preistoria"
+                        },
+                        {
+                            "name": "Primavera"
+                        },
+                        {
+                            "name": "Pubertà"
+                        },
+                        {
+                            "name": "Quaresima"
+                        },
+                        {
+                            "name": "Ritardo"
+                        },
+                        {
+                            "name": "Stagioni"
+                        },
+                        {
+                            "name": "Vacanze"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Agenti",
+            "children": []
+        },
+        {
+            "name": "Azioni",
+            "children": [
+                {
+                    "name": "Attività",
+                    "children": [
+                        {
+                            "name": "Accattonaggio"
+                        },
+                        {
+                            "name": "Banditismo"
+                        },
+                        {
+                            "name": "Body building"
+                        },
+                        {
+                            "name": "Boxe"
+                        },
+                        {
+                            "name": "Carbone"
+                        },
+                        {
+                            "name": "Chiropratica"
+                        },
+                        {
+                            "name": "Compravendita"
+                        },
+                        {
+                            "name": "Cucina"
+                        },
+                        {
+                            "name": "Dandysmo"
+                        },
+                        {
+                            "name": "Dodecafonia"
+                        },
+                        {
+                            "name": "Eloquenza"
+                        },
+                        {
+                            "name": "Equivoco"
+                        },
+                        {
+                            "name": "Evirazione"
+                        },
+                        {
+                            "name": "Galateo"
+                        },
+                        {
+                            "name": "Ghiottoneria"
+                        },
+                        {
+                            "name": "Gioco del lotto"
+                        },
+                        {
+                            "name": "Golosità"
+                        },
+                        {
+                            "name": "Hobby"
+                        },
+                        {
+                            "name": "Indolenza"
+                        },
+                        {
+                            "name": "Infrazione"
+                        },
+                        {
+                            "name": "Letteratura di consumo"
+                        },
+                        {
+                            "name": "Magia nera"
+                        },
+                        {
+                            "name": "Malavita"
+                        },
+                        {
+                            "name": "Maquillage"
+                        },
+                        {
+                            "name": "Mnemotecnica"
+                        },
+                        {
+                            "name": "Nutrimento"
+                        },
+                        {
+                            "name": "Patricidio"
+                        },
+                        {
+                            "name": "Peccati capitali"
+                        },
+                        {
+                            "name": "Pietas"
+                        },
+                        {
+                            "name": "Precariato"
+                        },
+                        {
+                            "name": "Proibizione"
+                        },
+                        {
+                            "name": "Pulizia etnica"
+                        },
+                        {
+                            "name": "Punizione"
+                        },
+                        {
+                            "name": "Pusillanimità"
+                        },
+                        {
+                            "name": "Rapporto sessuale"
+                        },
+                        {
+                            "name": "Rotocalco"
+                        },
+                        {
+                            "name": "Scaltrezza"
+                        },
+                        {
+                            "name": "Scambio"
+                        },
+                        {
+                            "name": "Sessualità"
+                        },
+                        {
+                            "name": "Spergiuro"
+                        },
+                        {
+                            "name": "Sperpero"
+                        },
+                        {
+                            "name": "Stupro"
+                        },
+                        {
+                            "name": "Trasfusione"
+                        }
+                    ]
+                },
+                {
+                    "name": "Forme",
+                    "children": [
+                        {
+                            "name": "Aldilà"
+                        },
+                        {
+                            "name": "Animali fantastici"
+                        },
+                        {
+                            "name": "Bildungsroman"
+                        },
+                        {
+                            "name": "Cartoni animati"
+                        },
+                        {
+                            "name": "Catabasi"
+                        },
+                        {
+                            "name": "Diavolo"
+                        },
+                        {
+                            "name": "Eden"
+                        },
+                        {
+                            "name": "Epistole"
+                        },
+                        {
+                            "name": "Epopea"
+                        },
+                        {
+                            "name": "Feuilleton"
+                        },
+                        {
+                            "name": "Luoghi fantastici"
+                        },
+                        {
+                            "name": "Poesia bucolica"
+                        },
+                        {
+                            "name": "Posta"
+                        },
+                        {
+                            "name": "Riviste"
+                        },
+                        {
+                            "name": "Rock"
+                        },
+                        {
+                            "name": "Strip-tease"
+                        },
+                        {
+                            "name": "Vampirismo"
+                        }
+                    ]
+                },
+                {
+                    "name": "Materia",
+                    "children": [
+                        {
+                            "name": "Alimentari"
+                        },
+                        {
+                            "name": "Bevande alcoliche"
+                        },
+                        {
+                            "name": "Bronzo"
+                        },
+                        {
+                            "name": "Nuvole"
+                        },
+                        {
+                            "name": "Turchino"
+                        }
+                    ]
+                },
+                {
+                    "name": "Persone",
+                    "children": [
+                        {
+                            "name": "Amerindi"
+                        },
+                        {
+                            "name": "Beat generation"
+                        },
+                        {
+                            "name": "Boia"
+                        },
+                        {
+                            "name": "Bucanieri"
+                        },
+                        {
+                            "name": "Chierici vaganti"
+                        },
+                        {
+                            "name": "Clochard"
+                        },
+                        {
+                            "name": "Detective"
+                        },
+                        {
+                            "name": "Fariseismo"
+                        },
+                        {
+                            "name": "Fedeli"
+                        },
+                        {
+                            "name": "Goliardia"
+                        },
+                        {
+                            "name": "Hippie"
+                        },
+                        {
+                            "name": "Indios"
+                        },
+                        {
+                            "name": "Ministri del culto"
+                        },
+                        {
+                            "name": "Pellirosse"
+                        },
+                        {
+                            "name": "Plebe"
+                        },
+                        {
+                            "name": "Pompieri"
+                        },
+                        {
+                            "name": "Progenitori"
+                        },
+                        {
+                            "name": "Re"
+                        }
+                    ]
+                },
+                {
+                    "name": "Processi",
+                    "children": [
+                        {
+                            "name": "Ammirazione"
+                        },
+                        {
+                            "name": "Ansia"
+                        },
+                        {
+                            "name": "Apoplessia"
+                        },
+                        {
+                            "name": "Assimilazione culturale"
+                        },
+                        {
+                            "name": "Calamità naturali"
+                        },
+                        {
+                            "name": "Carattere"
+                        },
+                        {
+                            "name": "Cattiveria"
+                        },
+                        {
+                            "name": "Circolazione sanguigna"
+                        },
+                        {
+                            "name": "Complesso di Elettra"
+                        },
+                        {
+                            "name": "Concepimento"
+                        },
+                        {
+                            "name": "Contrizione"
+                        },
+                        {
+                            "name": "Crudeltà"
+                        },
+                        {
+                            "name": "Culti misterici"
+                        },
+                        {
+                            "name": "Età della pietra"
+                        },
+                        {
+                            "name": "Fatalità"
+                        },
+                        {
+                            "name": "Fiamme"
+                        },
+                        {
+                            "name": "Follia"
+                        },
+                        {
+                            "name": "Frigidità"
+                        },
+                        {
+                            "name": "Gnosi"
+                        },
+                        {
+                            "name": "Golpe"
+                        },
+                        {
+                            "name": "Handicap"
+                        },
+                        {
+                            "name": "Identità sociale"
+                        },
+                        {
+                            "name": "Impotenza"
+                        },
+                        {
+                            "name": "Indigestione"
+                        },
+                        {
+                            "name": "Infermità"
+                        },
+                        {
+                            "name": "Integralismo islamico"
+                        },
+                        {
+                            "name": "Inventiva"
+                        },
+                        {
+                            "name": "Islam"
+                        },
+                        {
+                            "name": "Isteria"
+                        },
+                        {
+                            "name": "Letizia"
+                        },
+                        {
+                            "name": "Mal di mare"
+                        },
+                        {
+                            "name": "Misticismo"
+                        },
+                        {
+                            "name": "Mutazione genetica"
+                        },
+                        {
+                            "name": "Nazismo"
+                        },
+                        {
+                            "name": "Postmoderno"
+                        },
+                        {
+                            "name": "Procreazione"
+                        },
+                        {
+                            "name": "Profumo"
+                        },
+                        {
+                            "name": "Rammarico"
+                        },
+                        {
+                            "name": "Riconoscenza"
+                        },
+                        {
+                            "name": "Risorgimento"
+                        },
+                        {
+                            "name": "Scientology"
+                        },
+                        {
+                            "name": "Sorpresa"
+                        },
+                        {
+                            "name": "Spleen"
+                        },
+                        {
+                            "name": "Stilnovo"
+                        },
+                        {
+                            "name": "Stupore"
+                        },
+                        {
+                            "name": "Svenimento"
+                        },
+                        {
+                            "name": "Tedio"
+                        },
+                        {
+                            "name": "Tisi"
+                        },
+                        {
+                            "name": "Transessualità"
+                        },
+                        {
+                            "name": "Tsunami"
+                        },
+                        {
+                            "name": "Uguaglianza"
+                        },
+                        {
+                            "name": "Vanagloria"
+                        }
+                    ]
+                },
+                {
+                    "name": "Strumenti",
+                    "children": [
+                        {
+                            "name": "Antiutopia"
+                        },
+                        {
+                            "name": "Autocrazia"
+                        },
+                        {
+                            "name": "Autodeterminazione"
+                        },
+                        {
+                            "name": "Bellezza"
+                        },
+                        {
+                            "name": "Confino"
+                        },
+                        {
+                            "name": "Dei"
+                        },
+                        {
+                            "name": "Denaro"
+                        },
+                        {
+                            "name": "Disonore"
+                        },
+                        {
+                            "name": "Eliocentrismo"
+                        },
+                        {
+                            "name": "Geocentrismo"
+                        },
+                        {
+                            "name": "Identità nazionale"
+                        },
+                        {
+                            "name": "Ignominia"
+                        },
+                        {
+                            "name": "Mass media"
+                        },
+                        {
+                            "name": "Mezzi di produzione"
+                        },
+                        {
+                            "name": "Oscenità"
+                        },
+                        {
+                            "name": "Pena capitale"
+                        },
+                        {
+                            "name": "Regno dei Cieli"
+                        },
+                        {
+                            "name": "Rivoluzione copernicana"
+                        },
+                        {
+                            "name": "Scomparsa"
+                        },
+                        {
+                            "name": "Status sociale"
+                        },
+                        {
+                            "name": "Tirannide"
+                        },
+                        {
+                            "name": "Trama"
+                        },
+                        {
+                            "name": "Unità aristoteliche"
+                        }
+                    ]
+                },
+                {
+                    "name": "Spazio",
+                    "children": [
+                        {
+                            "name": "Astri"
+                        },
+                        {
+                            "name": "Campagna"
+                        },
+                        {
+                            "name": "Cosmo"
+                        },
+                        {
+                            "name": "Panorama"
+                        },
+                        {
+                            "name": "Terzo mondo"
+                        }
+                    ]
+                },
+                {
+                    "name": "Oggetti",
+                    "children": [
+                        {
+                            "name": "Balocchi"
+                        },
+                        {
+                            "name": "Calzoni"
+                        },
+                        {
+                            "name": "Compact disc"
+                        },
+                        {
+                            "name": "Computer"
+                        },
+                        {
+                            "name": "Ex voto"
+                        },
+                        {
+                            "name": "Paramenti sacri"
+                        },
+                        {
+                            "name": "Robot"
+                        }
+                    ]
+                },
+                {
+                    "name": "Organismi",
+                    "children": [
+                        {
+                            "name": "Bestie feroci"
+                        },
+                        {
+                            "name": "Capra"
+                        },
+                        {
+                            "name": "Cieco"
+                        },
+                        {
+                            "name": "Cute"
+                        },
+                        {
+                            "name": "Falco"
+                        },
+                        {
+                            "name": "Faraone"
+                        },
+                        {
+                            "name": "Frumento"
+                        },
+                        {
+                            "name": "Genitali"
+                        },
+                        {
+                            "name": "Grembo materno"
+                        },
+                        {
+                            "name": "Lauro"
+                        },
+                        {
+                            "name": "Mucche"
+                        },
+                        {
+                            "name": "Musa"
+                        },
+                        {
+                            "name": "Orecchie"
+                        },
+                        {
+                            "name": "Pancia"
+                        },
+                        {
+                            "name": "Pipistrelli"
+                        },
+                        {
+                            "name": "Salmo"
+                        }
+                    ]
+                },
+                {
+                    "name": "Organizzazioni",
+                    "children": [
+                        {
+                            "name": "Casinò"
+                        },
+                        {
+                            "name": "Club"
+                        },
+                        {
+                            "name": "Gulag"
+                        },
+                        {
+                            "name": "Hotel"
+                        },
+                        {
+                            "name": "Istituzioni politiche"
+                        }
+                    ]
+                },
+                {
+                    "name": "Discipline",
+                    "children": [
+                        {
+                            "name": "Cognitivismo"
+                        },
+                        {
+                            "name": "Etnografia"
+                        },
+                        {
+                            "name": "Farmaceutica"
+                        },
+                        {
+                            "name": "Filosofia naturale"
+                        },
+                        {
+                            "name": "Manipolazione genetica"
+                        },
+                        {
+                            "name": "Paranormale"
+                        },
+                        {
+                            "name": "Psicoanalisi"
+                        },
+                        {
+                            "name": "Scienza"
+                        }
+                    ]
+                },
+                {
+                    "name": "Tempo",
+                    "children": [
+                        {
+                            "name": "Fanciullezza"
+                        },
+                        {
+                            "name": "Mattino"
+                        },
+                        {
+                            "name": "Vecchiaia"
+                        }
+                    ]
+                },
+                {
+                    "name": "Strutture",
+                    "children": [
+                        {
+                            "name": "Fondamenta"
+                        },
+                        {
+                            "name": "Garage"
+                        },
+                        {
+                            "name": "Luna park"
+                        },
+                        {
+                            "name": "Sepolcri"
+                        },
+                        {
+                            "name": "Tunnel"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Cose",
+            "children": []
+        },
+        {
+            "name": "Tempo",
+            "children": []
+        }
+    ]
+}
