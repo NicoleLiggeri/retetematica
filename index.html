@@ -3,128 +3,941 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Globe Visualization with Data Panel</title>
+  <title>Interactive Globe Visualization</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+
   <style>
-    body { margin: 0; display: flex; }
-    #search-container { margin: 10px; }
-    input, button { padding: 10px; font-size: 16px; }
-    #globe-container { flex: 3; position: relative; }
-    #globeViz { width: 60%; height: 100%; }
-    #data-panel {
-      flex: 1;
+    
+    .theme-link {
+  color: #3264fe;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.theme-link:hover {
+  text-decoration: underline;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 50px;
+
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  outline: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  pointer-events: none;
+}
+.slider-track {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 5px;
+}
+input[type="range"]::-moz-range-track {
+  -moz-appearance: none;
+  height: 5px;
+}
+input[type="range"]::-ms-track {
+  appearance: none;
+  height: 5px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  background-color: #3264fe;
+  cursor: pointer;
+  margin-top: -9px;
+  pointer-events: auto;
+  border-radius: 50%;
+}
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #3264fe;
+  pointer-events: auto;
+  border: none;
+}
+input[type="range"]::-ms-thumb {
+  appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #3264fe;
+  pointer-events: auto;
+}
+input[type="range"]:active::-webkit-slider-thumb {
+  background-color: #ffffff;
+  border: 1px solid #3264fe;
+}
+.values {
+  width: 50%;
+  position: relative;
+  margin: auto;
+  padding: 5px 0;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      background-color: rgb(228, 242, 247);
+    }
+
+    /* Cover Styling */
+    #cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-image: url("https://lh3.googleusercontent.com/ci/AL18g_SpNsvhMa_a-ZniIFEkvBHY3Yq_d42dlyJTPAs4vx2v1W_lIX0ynnE6tM1Z-cKXRgFWmv_UBG4=s1200");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: bold;
+   
+}
+
+#cover h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 40px;
+  
+  border-radius: 10px; /* Optional rounded corners for the overlay */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Optional text-shadow for better readability */
+}
+
+
+    #cover button {
+
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+    }
+    #cover button:hover {
+  background-color: #2857cc;
+}
+
+    /* App Layout */
+    #app {
+      display: none;
+      grid-template-areas:
+        'header header'
+        'main right'
+        'footer footer';
+      grid-template-rows: auto 1fr auto;
+      height: 100%;
+    }
+ 
+    header {
+      grid-area: header;
+      background-color: #296640;
+      color: white;
+      text-align: center;
       padding: 20px;
-      overflow-y: auto;
-      background-color: #f5f5f5;
-      border-left: 1px solid #ccc;
+      font-size: 24px;
+      font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  display: flex;
+  justify-content: space-between; /* Space between the two divs */
+  align-items: center; /* Center the text vertically */
     }
-    #data-panel h3 {
-      margin-top: 0;
+    header div {
+  display: flex;
+  align-items: center; /* Center items vertically */
+
+}
+header div:first-child {
+  flex: 1; /* Take up some space */
+}
+
+    #globe-container {
+      grid-area: main;
+      overflow: hidden;
     }
-    #data-list {
-      list-style-type: none;
-      padding: 0;
+
+
+    #right-panel {
+  grid-area: right;
+  background-color: #e4f2f7;
+  overflow-y: auto;  /* Allow vertical scrolling */
+  padding: 10px;
+  min-height: 1vh;
+  min-width: 200px;
+}
+#data-panel div{
+
+  width: 100%; /* ensure it takes full width */
+  max-height:450px;
+  overflow-y: auto; /* add scrollbar when content exceeds the height */
+}
+
+
+   /* Modal (popup) Styling */
+/* Styling for the modal */
+#author-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+.slider-track {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+}
+
+#author-modal h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#author-modal ul {
+  list-style: none;
+  padding: 0;
+}
+/* Custom Scrollbar Styling */
+
+
+/* For Firefox */
+#author-modal {
+  scrollbar-width: thin; /* Makes the scrollbar thinner */
+  scrollbar-color: #ccc #f7f7f7; /* Thumb and track colors */
+}
+
+#author-modal ul li {
+  padding: 5px;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+#author-modal ul li:hover {
+  background: #e0e0e0;
+}
+
+#author-modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  background: transparent;
+  border: none;
+  color: #333;
+}
+
+#author-modal .close-btn:hover {
+  color: #c00;
+}
+
+
+#modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Can be adjusted */
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+#close-modal {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#close-modal:hover,
+#close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#author-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#author-birth-death {
+  font-size: 16px;
+}
+
+
+
+#data-panel h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+#data-panel ul {
+  list-style: none;
+  padding: 0;
+}
+/* Custom Scrollbar Styling */
+
+
+/* For Firefox */
+#data-panel {
+  scrollbar-width: thin; /* Makes the scrollbar thinner */
+  scrollbar-color: #ccc #f7f7f7; /* Thumb and track colors */
+}
+
+#data-panel ul li {
+  padding: 5px;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+#data-panel ul li:hover {
+  background: #e0e0e0;
+}
+
+
+    footer {
+      grid-area: footer;
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: white;
     }
-    #data-list li {
-      margin: 5px 0;
-      padding: 5px;
-      background-color: #e4f2f7;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+
+
+    #timeline-container {
+  margin-top: 20px;
+}
+
+#timeline-container input[type="range"] {
+  width: 100%;
+}
+
+#timeline-container p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+/* Style for the scrollbar in the right panel */
+
+
+
+.values {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* This makes sure the entire width of the container */
+  padding: 10px 0;
+}
+#data-panel{
+    display: none;
+}
+
+#range1 {
+  flex: 0 0 auto; /* Allows it to take the space it needs */
+}
+
+#range2 {
+  flex: 0 0 auto; /* Allows it to take the space it needs */
+}
+
+
+
+/* Left div 'dizionario' */
+header div:first-child {
+  flex: 1; /* Give it equal width to take space on the left */
+  font-family: 'Playfair Display', serif;
+}
+
+/* Search container in the center */
+#search-container {
+  flex: 2; /* Make it occupy more space in the center */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+#search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+#search-button {
+  background-color: #3264fe;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#search-button:hover {
+  background-color: #2857cc;
+}
+#author-details-modal{
+    width: 80vh;
+}
+
+/* Add subtle shadow for the header */
+header {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content {
+  overflow-y: auto;
+}
+
+.theme-link {
+
+  text-decoration: none;
+}
+#author-themes {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Thinner and prettier scrollbar */
+#author-themes::-webkit-scrollbar {
+    width: 8px;  /* Makes the scrollbar thinner */
+}
+
+#author-themes::-webkit-scrollbar-thumb {
+    background-color: #888;  /* Set the thumb (draggable part) color */
+    border-radius: 10px;  /* Round the edges of the thumb */
+    border: 2px solid #f4f4f4;  /* Add a border around the thumb to make it look more refined */
+}
+
+#author-themes::-webkit-scrollbar-thumb:hover {
+    background-color: #555;  /* Darker color when hovering over the thumb */
+}
+
+#author-themes::-webkit-scrollbar-track {
+    background: #f1f1f1;  /* Color of the scrollbar track */
+    border-radius: 10px; /* Round the track edges */
+}
+
+
+
+
+
   </style>
   <script src="//unpkg.com/globe.gl"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  
 </head>
 <body>
-  <div id="search-container">
-    <input id="search-input" type="text" placeholder="Enter keyword..." />
-    <button id="search-button">Search</button>
+  <div id="cover">
+    <h1>L'Atlante dei temi letterari</h1>
+    <button id="start-button">Mappa</button>
+    <button id="info-button">Gerarchia</button>
+    <button id="contact-button">Contact Us</button>
   </div>
-  <div id="globe-container">
-    <div id="globeViz"></div>
+
+  <div id="app">
+
+    <header>
+        <div>L'Atlante dei temi letterari</div>
+        
+        <div id="search-container">
+            <input id="search-input" type="text" placeholder="Digita un tema...">
+            <button id="search-button">Cerca</button>
+          </div>
+        
+      </header>
+    <div id="globe-container">
+      <div id="globeViz"></div>
+    </div>
+
+    <div id="right-panel">
+
+
+    <div class="wrapper">
+        <div>Filtra per date d'autore</div>
+  <div class="values">
+    
+    <span id="range1">
+      0
+    </span>
+
+    <span id="range2">
+      100
+    </span>
   </div>
-  <div id="data-panel">
-    <h3>Related Authors</h3>
-    <ul id="data-list"></ul>
+  <div class="container">
+    
+    <div class="slider-track"></div>
+    <input type="range" min="0" max="2025" value="30" id="slider-1" oninput="slideOne()">
+    <input type="range" min="0" max="2025" value="2025" id="slider-2" oninput="slideTwo()">
+  </div>
+</div>
+      
+      <div id="data-panel">
+        <h3>Autori correlati:</h3>
+        <div id="list-auth">
+        <ul id="data-list"></ul>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Structure -->
+<!-- Modal Structure -->
+<!-- Modal for displaying author details -->
+<div id="author-details-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-modal">&times;</span>
+      <h2 id="author-name"></h2>
+      <p id="author-years"></p>
+      <h3>Themes</h3>
+      <div id="author-themes"></div>
+    </div>
+  </div>
+  
+  
+  
+    <footer>
+      Footer content here
+    </footer>
   </div>
 
   <script>
     let world;
     let countriesData;
     let data = [];
+    let associationsData = {};
+  
+    // Handle initial cover display
+    document.getElementById('start-button').addEventListener('click', () => {
+      document.getElementById('cover').style.display = 'none';
+      document.getElementById('app').style.display = 'grid';
+    });
 
-    // Load preprocessed data (converted from your CSV to JSON format)
-    fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json') // Replace 'data.json' with the path to your JSON file
+  
+    document.getElementById('info-button').addEventListener('click', () => { 
+    window.location.href = 'https://github.com/NicoleLiggeri/retetematica/blob/main/theme.html';
+});
+
+  
+    document.getElementById('contact-button').addEventListener('click', () => {
+      alert('Contact us at support@example.com.');
+    });
+  
+    // Load the primary data (authors, etc.)
+    fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json')
       .then(res => res.json())
-      .then(json => {
-        data = json;
-      });
-
+      .then(json => { data = json; });
+  
+    // Load the associations data
+    fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json')
+      .then(res => res.json())
+      .then(json => { associationsData = json; });
+  
     // Load globe and countries data
-    fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
       .then(res => res.json())
       .then(countries => {
         countriesData = countries.features;
         world = new Globe(document.getElementById('globeViz'))
-          .backgroundColor("#e4f2f7")
+          .backgroundColor('#e4f2f7')
           .globeImageUrl('https://upload.wikimedia.org/wikipedia/commons/a/ac/World_location_map.svg')
           .polygonsData(countriesData)
-          .polygonCapColor(() => '#aaaaaa') // Default color
-          .polygonSideColor(() => 'rgba(80, 100, 0, 0.15)')
-          .polygonStrokeColor(() => '#111');
+          .polygonCapColor(() => '#a9baba')
+          .polygonSideColor(() => 'rgba(132, 145, 145, 1)')
+          .polygonStrokeColor(() => '#111')
+          .onPolygonClick(({ properties: d }) => {
+            const clickedCountry = d.ADMIN;
+            const startYear = parseInt(document.getElementById('slider-1').value);
+            const endYear = parseInt(document.getElementById('slider-2').value);
+            const temaKeyword = cleanText(document.getElementById('search-input').value.trim());  // Tema from the search input
+  
+            // Filter authors based on country and timeline range
+            const countryMatches = data.filter(item => 
+              item["Citizenship Label"] === clickedCountry &&
+              cleanText(item["Temi"]).includes(temaKeyword)  // Match Tema keyword
+            );
+  
+            // Further filter authors based on timeline (birth and death years)
+            const filteredAuthors = countryMatches.filter(item => {
+              const birthYear = parseInt(item["Formatted Year of Birth"]);
+              const deathYear = item["Formatted Year of Death"] === "Error: invalid syntax (<unknown>, line 0)" ? null : parseInt(item["Formatted Year of Death"]);
+              const isWithinYearRange = (birthYear >= startYear && birthYear <= endYear) ||
+                                        (deathYear && deathYear >= startYear && deathYear <= endYear);
+              return isWithinYearRange;
+            });
+  
+            // Update the right panel with authors
+            const authors = filteredAuthors.map(item => item["Autore"]);
+            const dataList = document.getElementById('data-list');
+            dataList.innerHTML = '';  // Clear previous list
+            authors.forEach(author => {
+              const listItem = document.createElement('li');
+              listItem.textContent = author;
+              dataList.appendChild(listItem);
+            });
+  
+                alert(`You clicked on ${clickedCountry}. Authors filtered by Tema and timeline.`);
+
+          });
+  
+        world.pointOfView({ lat: 40, lng: 20, altitude: 1 }); // Adjust altitude for zoom level
       });
 
+
+
+  
     // Utility to clean text (remove punctuation, normalize spaces, make lowercase)
     const cleanText = (text) => text.toLowerCase().replace(/[^\w\s]/g, '').trim();
-
+  
     // Handle search button click
     document.getElementById('search-button').addEventListener('click', () => {
       const keyword = document.getElementById('search-input').value.trim();
+      const startYear = parseInt(document.getElementById('start-year').value);  // Get start year from the slider
+      const endYear = parseInt(document.getElementById('end-year').value);  // Get end year from the slider
+  
       if (!keyword) return alert('Please enter a keyword.');
-
+  
       const cleanedKeyword = cleanText(keyword);
-
-      // Perform client-side matching
-      const matches = data.filter(item => 
-        cleanText(item["Temi"]).includes(cleanedKeyword)
-      );
-
+  
+      // Filter by keyword and year range
+      const matches = data.filter(item => {
+        const birthYear = parseInt(item["Formatted Year of Birth"]);
+        const deathYear = item["Formatted Year of Death"] === "Error: invalid syntax (<unknown>, line 0)" ? null : parseInt(item["Formatted Year of Death"]);
+  
+        // Check if the keyword matches
+        const isKeywordMatch = cleanText(item["Temi"]).includes(cleanedKeyword);
+  
+        // Check if the author was active during the selected year range
+        const isWithinYearRange = (birthYear >= startYear && birthYear <= endYear) || (deathYear && deathYear >= startYear && deathYear <= endYear);
+  
+        return isKeywordMatch && isWithinYearRange;
+      });
+  
       const countryOccurrences = matches.reduce((acc, item) => {
         const country = item["Citizenship Label"];
         acc[country] = (acc[country] || 0) + 1;
         return acc;
       }, {});
-
+  
       // Update globe colors based on matches
       if (world && countriesData) {
-        console.log("Updating globe colors...");
         world.polygonCapColor(({ properties: d }) => {
-          const count = countryOccurrences[d.ADMIN] || 0; // Use country name from GeoJSON
-          return count > 0 ? `rgba(255, 0, 0, ${Math.min(count / 10, 1)})` : '#aaaaaa';
+          const count = countryOccurrences[d.ADMIN] || 0;
+          return count > 0 ? `rgba(255, 244, 75, ${Math.min(count / 10, 1)})` : '#aaaaaa';
         });
-      } else {
-        console.error("Globe or countries data not initialized.");
       }
-
+  
       // Update the right panel with authors
       const authors = matches.map(item => item["Autore"]);
-      console.log("Related authors:", authors);
-
       const dataList = document.getElementById('data-list');
-      dataList.innerHTML = ''; // Clear previous results
+      dataList.innerHTML = '';  // Clear previous list
       authors.forEach(author => {
         const listItem = document.createElement('li');
         listItem.textContent = author;
         dataList.appendChild(listItem);
       });
     });
+  
+    // Handle timeline input changes
+    const startYearInput = document.getElementById('slider-1');
+    const endYearInput = document.getElementById('slider-2');
+    const searchInput = document.getElementById('search-input');  // to make sure keyword is always considered
+    const searchButton = document.getElementById('search-button'); // to keep the functionality
+    const dataList = document.getElementById('data-list'); // the list of authors
+  
+    const triggerSearch = () => {
+  const keyword = searchInput.value.trim();
+  const startYear = parseInt(startYearInput.value);
+  const endYear = parseInt(endYearInput.value);
+
+  if (!keyword) return alert('Please enter a keyword.');
+
+  const cleanedKeyword = cleanText(keyword);
+
+  // Filter by keyword and year range
+  const matches = data.filter(item => {
+    const birthYear = parseInt(item["Formatted Year of Birth"]);
+    const deathYear = item["Formatted Year of Death"] === "Error: invalid syntax (<unknown>, line 0)" ? null : parseInt(item["Formatted Year of Death"]);
+
+    // Check if the keyword matches
+    const isKeywordMatch = cleanText(item["Temi"]).includes(cleanedKeyword);
+
+    // Check if the author was active during the selected year range
+    const isWithinYearRange = (birthYear >= startYear && birthYear <= endYear) || (deathYear && deathYear >= startYear && deathYear <= endYear);
+
+    return isKeywordMatch && isWithinYearRange;
+  });
+
+  const countryOccurrences = matches.reduce((acc, item) => {
+    const country = item["Citizenship Label"];
+    acc[country] = (acc[country] || 0) + 1;
+    return acc;
+  }, {});
+
+  // Update globe colors based on matches
+  if (world && countriesData) {
+        world.polygonCapColor(({ properties: d }) => {
+          const count = countryOccurrences[d.ADMIN] || 0;
+          return count > 0 ? `rgba(232, 232, 39, ${Math.min(count / 10, 1)})` : '#aaaaaa';
+        });
+      }
+
+  // Update the right panel with authors
+  const authors = matches.map(item => item["Autore"]);
+  const dataList = document.getElementById('data-list');
+  const dataPanel = document.getElementById('data-panel');
+
+  dataList.innerHTML = '';  // Clear previous list
+
+  if (authors.length > 0) {
+    dataPanel.style.display = 'block';  // Make sure the panel is visible
+
+    authors.forEach(author => {
+      const listItem = document.createElement('li');
+      listItem.textContent = author;
+      dataList.appendChild(listItem);
+    });
+
+  } else {
+    dataPanel.style.display = 'none';  // Hide the panel if no authors found
+    alert('No authors found for the selected country and criteria.');
+  }
+};
+
+    startYearInput.addEventListener('input', triggerSearch);
+    endYearInput.addEventListener('input', triggerSearch);
+  
+    // Optional: Trigger search when the search button is clicked too, in case users press it manually
+    searchButton.addEventListener('click', triggerSearch);
+    // Modal Elements
+const modal = document.getElementById('author-modal');
+const modalContent = document.getElementById('modal-content');
+const closeModal = document.getElementById('close-modal');
+const authorName = document.getElementById('author-name');
+const authorBirthDeath = document.getElementById('author-birth-death');
+const showAuthorDetails = (author) => {
+  // Display name and birth/death year
+  authorName.textContent = author.name;
+  authorBirthDeath.textContent = `Born: ${author.birthYear} | Died: ${author.deathYear || 'None'}`;
+
+  // Display themes related to the author
+  const themesList = document.getElementById('author-themes');
+  themesList.innerHTML = ''; // Clear any previous themes
+
+  if (author.themes && author.themes.length > 0) {
+    author.themes.forEach(theme => {
+      const themeItem = document.createElement('li');
+      themeItem.textContent = theme;
+      themesList.appendChild(themeItem);
+    });
+  } else {
+    const noThemes = document.createElement('li');
+    noThemes.textContent = 'No themes available';
+    themesList.appendChild(noThemes);
+  }
+
+  // Show the modal
+  modal.style.display = 'block'; 
+
+  // Style the scrollbar inside the modal
+  const modalContent = document.getElementById('author-modal');
+  
+  if (modalContent.scrollHeight > modalContent.clientHeight) {
+    modalContent.style.overflowY = 'auto';
+    
+    // Webkit scrollbar styling
+    modalContent.style['-webkit-scrollbar-width'] = '8px';
+    modalContent.style['-webkit-scrollbar-thumb'] = 'background-color: #888; border-radius: 10px; border: 2px solid #f4f4f4;';
+    modalContent.style['-webkit-scrollbar-thumb:hover'] = 'background-color: #555;';
+    modalContent.style['-webkit-scrollbar-track'] = 'background: #f1f1f1; border-radius: 10px;';
+    
+    // Firefox scrollbar styling
+    modalContent.style.scrollbarWidth = '8px';
+    modalContent.style.scrollbarColor = '#888 #f1f1f1';
+  } else {
+    modalContent.style.overflowY = 'hidden';
+  }
+};
+
+// Handle click events on author list
+// Function to handle clicking on an author
+document.getElementById('data-list').addEventListener('click', (event) => {
+  const clickedAuthor = event.target.textContent;
+
+  // Find all entries for the clicked author
+  const authorEntries = data.filter(item => item["Autore"] === clickedAuthor);
+
+  if (authorEntries.length > 0) {
+    const uniqueThemes = [
+      ...new Set(authorEntries.flatMap(item => item["Temi"].split(',').map(theme => theme.trim())))
+    ];
+
+    // Populate the modal
+    document.getElementById('author-name').textContent = clickedAuthor;
+    document.getElementById('author-years').textContent =
+      `Born: ${authorEntries[0]["Formatted Year of Birth"] || 'Unknown'}, Died: ${authorEntries[0]["Formatted Year of Death"] || 'Unknown'}`;
+    const themesContainer = document.getElementById('author-themes');
+    themesContainer.innerHTML = '';
+    uniqueThemes.forEach(theme => {
+      const themeLink = document.createElement('a');
+      themeLink.textContent = theme;
+      themeLink.href = '#';
+      themeLink.classList.add('theme-link');
+      themeLink.addEventListener('click', () => fetchThemeDetails(theme));
+      themesContainer.appendChild(themeLink);
+    });
+
+    // Show the modal
+    document.getElementById('author-details-modal').style.display = 'block';
+  } else {
+    alert('No details found for the selected author.');
+  }
+});
+
+// Function to fetch theme details and dynamically update the page
+function fetchThemeDetails(theme) {
+  fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json')
+    .then(response => response.json())
+    .then(dataset => {
+      const normalizedTheme = theme.toLowerCase();  // Normalize the theme
+      const associatedThemes = dataset[normalizedTheme]?.Associati;
+
+      if (associatedThemes) {
+        // Replace current page content
+        document.body.innerHTML = `
+          <h2>Associated Themes for "${theme}"</h2>
+          <ul>
+            ${associatedThemes.map(t => `<li><a href="#" class="theme-link" onclick="fetchThemeDetails('${t}')">${t}</a></li>`).join('')}
+          </ul>
+          <button onclick="window.location.reload()">Back to Authors</button>
+        `;
+      } else {
+        alert(`No associated themes found for "${theme}".`);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching theme details:', error);
+      alert('An error occurred while fetching theme details.');
+    });
+}
+
+// Close modal functionality
+document.getElementById('close-modal').addEventListener('click', () => {
+  document.getElementById('author-details-modal').style.display = 'none';
+});
+
+
+window.onload = function () {
+  slideOne();
+  slideTwo();
+};
+
+
+let sliderOne = document.getElementById("slider-1");
+let sliderTwo = document.getElementById("slider-2");
+let displayValOne = document.getElementById("range1");
+let displayValTwo = document.getElementById("range2");
+let minGap = 0;
+let sliderTrack = document.querySelector(".slider-track");
+let sliderMaxValue = document.getElementById("slider-1").max;
+
+function slideOne() {
+  if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+    sliderOne.value = parseInt(sliderTwo.value) - minGap;
+  }
+  displayValOne.textContent = sliderOne.value;
+  fillColor();
+}
+function slideTwo() {
+  if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+    sliderTwo.value = parseInt(sliderOne.value) + minGap;
+  }
+  displayValTwo.textContent = sliderTwo.value;
+  fillColor();
+}
+function fillColor() {
+  percent1 = (sliderOne.value / sliderMaxValue) * 100;
+  percent2 = (sliderTwo.value / sliderMaxValue) * 100;
+  sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
+}
+
   </script>
+  
 
 
-<!--  http://localhost:8000/ -->
-<!-- python -m http.server
-https://github.com/vasturiano/globe.gl/tree/master -->
-
+  
 </body>
 </html>
-
-
