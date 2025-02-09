@@ -161,6 +161,9 @@ input[type="range"]:active::-webkit-slider-thumb {
     #cover button:hover {
   background-color: #2857cc;
 }
+#data-list li{
+  cursor: pointer;
+}
 
     /* App Layout */
     #app {
@@ -207,7 +210,7 @@ header div:first-child {
   overflow-y: auto;  /* Allow vertical scrolling */
   padding: 10px;
   min-height: 1vh;
-  min-width: 200px;
+  min-width: 220px;
 }
 #data-panel div{
 
@@ -319,7 +322,10 @@ header div:first-child {
   font-size: 16px;
 }
 
-
+#right-panel h3{
+  margin-bottom: 0 !important;
+  margin-top: 50px !important;
+}
 
 #data-panel h3 {
   margin-top: 0;
@@ -492,10 +498,109 @@ header {
     border-radius: 10px; /* Round the track edges */
 }
 
+#search-container {
+  position: relative;
+  width: 300px;
+}
 
 
 
+#suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 90%;
+  background: white;
+  color: black;
+  list-style: none;
+  padding: 0;
+  font-size: 12px;
+  margin: 5px 0 0 0;
+  border-radius: 6px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  font-family: 'Playfair Display', serif; /* Stesso font dell'input */
+}
 
+#suggestions-list li {
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
+
+#suggestions-list li:hover {
+  background: #444;
+}
+
+
+
+#search-button:hover {
+  background: #666;
+}
+
+/* Evidenzia il suggerimento attivo */
+#suggestions-list li.active {
+  background-color: #e4e4e4;
+}
+
+.wrapper {
+  display: none;
+}
+.filtered-info {
+  font-weight: normal;
+  font-size: 14px;
+  font-style: italic;
+  color: #555;
+  font-weight: normal;   
+  font-size: 14px;       
+  font-style: italic;    
+  color: #555; 
+}
+/* Stato iniziale: layout a singola colonna */
+#app.one-column {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "main main"
+    "footer footer";
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+/* Stato con pannello laterale: layout a due colonne */
+#app.two-columns {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "main right"
+    "footer footer";
+  grid-template-columns: 1fr auto; /* il right-panel occuperà lo spazio necessario */
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+/* Il container del globo occuperà lo spazio della grid-area "main" */
+#globe-container {
+  grid-area: main;
+  overflow: hidden;
+}
+
+/* Il right-panel inizialmente è nascosto */
+#right-panel {
+  grid-area: right;
+  background-color: #e4f2f7;
+  overflow-y: auto;
+  padding: 10px;
+  min-width: 220px;
+  display: none; /* inizialmente non visibile */
+}
+.filtered-info{
+  margin: 0;
+}
   </style>
   <script src="//unpkg.com/globe.gl"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -509,13 +614,14 @@ header {
     <button id="contact-button">Contact Us</button>
   </div>
 
-  <div id="app">
+  <div id="app" class="one-column">
 
     <header>
         <div>L'Atlante dei temi letterari</div>
         
         <div id="search-container">
             <input id="search-input" type="text" placeholder="Digita un tema...">
+            <ul id="suggestions-list"></ul>
             <button id="search-button">Cerca</button>
           </div>
         
@@ -528,7 +634,7 @@ header {
 
 
     <div class="wrapper">
-        <div>Filtra per date d'autore</div>
+        <p class="filtered-info">Filtra per date d'autore</p>
   <div class="values">
     
     <span id="range1">
@@ -549,6 +655,7 @@ header {
       
       <div id="data-panel">
         <h3>Autori correlati:</h3>
+        <h4 class="filtered-info">clicca sulla mappa per filtrare</h4>
         <div id="list-auth">
         <ul id="data-list"></ul>
         </div>
@@ -603,7 +710,28 @@ header {
     fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json')
       .then(res => res.json())
       .then(json => { associationsData = json; });
-  
+      let countryMapping = {}; // Oggetto che conterrà la mappatura
+
+// Funzione per caricare il CSV e creare la mappatura
+function loadCountryMapping() {
+  fetch("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/mapping_ei.csv") // 🔹 Sostituisci con il percorso reale del CSV
+    .then(response => response.text())
+    .then(csvText => {
+      const rows = csvText.split("\n").map(row => row.trim()).filter(row => row);
+      rows.forEach(row => {
+        const [english, italian] = row.split(","); // 🔹 Assumiamo che sia un CSV senza virgolette
+        if (english && italian) {
+          countryMapping[english.trim()] = italian.trim();
+        }
+      });
+      console.log("Mappatura Paesi Caricata:", countryMapping); // 🔹 Debug per verificare la mappatura
+    })
+    .catch(error => console.error("Errore nel caricamento del CSV:", error));
+}
+
+// Chiamare la funzione per caricare la mappatura all’avvio della pagina
+loadCountryMapping();
+ 
     // Load globe and countries data
 fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
       .then(res => res.json())
@@ -622,6 +750,15 @@ fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/data
             const endYear = parseInt(document.getElementById('slider-2').value);
             const temaKeyword = cleanText(document.getElementById('search-input').value.trim());  // Tema from the search input
   
+              // Usa la mappatura caricata dal CSV
+              const italianCountry = countryMapping[clickedCountry] || clickedCountry;
+              
+              // Modifica il titolo del pannello laterale
+              const header = document.querySelector("#data-panel h3");
+              if (header) {
+                header.innerHTML = `Autori correlati ${italianCountry}:`;
+              }
+
             // Filter authors based on country and timeline range
             const countryMatches = data.filter(item => 
               item["Citizenship Label"] === clickedCountry &&
@@ -647,7 +784,6 @@ fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/data
               dataList.appendChild(listItem);
             });
   
-                alert(`You clicked on ${clickedCountry}. Authors filtered by Tema and timeline.`);
 
           });
   
@@ -676,7 +812,7 @@ fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/data
         const deathYear = item["Formatted Year of Death"] === "Error: invalid syntax (<unknown>, line 0)" ? null : parseInt(item["Formatted Year of Death"]);
   
         // Check if the keyword matches
-        const isKeywordMatch = cleanText(item["Temi"]).includes(cleanedKeyword);
+        const isKeywordMatch = cleanText(item["Temi"]).split(',').map(t => t.trim()).some(t => t.toLowerCase() === cleanedKeyword);
   
         // Check if the author was active during the selected year range
         const isWithinYearRange = (birthYear >= startYear && birthYear <= endYear) || (deathYear && deathYear >= startYear && deathYear <= endYear);
@@ -724,59 +860,138 @@ fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/data
   if (!keyword) return alert('Please enter a keyword.');
 
   const cleanedKeyword = cleanText(keyword);
+  const wrapper = document.querySelector('.wrapper');
 
-  // Filter by keyword and year range
+  // Doppio controllo per sicurezza
+  if (!keyword) {
+    return alert('Inserisci un tema!');
+  }
+
+  // Filtra i dati per tema (corrispondenza esatta, ignorando case) e per range di anni
   const matches = data.filter(item => {
     const birthYear = parseInt(item["Formatted Year of Birth"]);
-    const deathYear = item["Formatted Year of Death"] === "Error: invalid syntax (<unknown>, line 0)" ? null : parseInt(item["Formatted Year of Death"]);
+    const deathYear =
+      item["Formatted Year of Death"] === "Error: invalid syntax (<unknown>, line 0)"
+        ? null
+        : parseInt(item["Formatted Year of Death"]);
 
-    // Check if the keyword matches
-    const isKeywordMatch = cleanText(item["Temi"]).includes(cleanedKeyword);
+    const isKeywordMatch = cleanText(item["Temi"])
+      .split(',')
+      .map(t => t.trim())
+      .some(t => t.toLowerCase() === cleanedKeyword);
 
-    // Check if the author was active during the selected year range
-    const isWithinYearRange = (birthYear >= startYear && birthYear <= endYear) || (deathYear && deathYear >= startYear && deathYear <= endYear);
+    const isWithinYearRange =
+      (birthYear >= startYear && birthYear <= endYear) ||
+      (deathYear && deathYear >= startYear && deathYear <= endYear);
 
     return isKeywordMatch && isWithinYearRange;
   });
 
+  // Se non ci sono risultati, interrompi la funzione senza aggiornare il layout
+  if (matches.length === 0) {
+    alert('Nessun risultato trovato per il tema e i criteri selezionati.');
+    return;
+  }
+
+  // Mostra il wrapper se nascosto
+  if (wrapper && (wrapper.style.display === 'none' || wrapper.style.display === '')) {
+    wrapper.style.display = 'block';
+  }
+
+  // **** Aggiornamento del layout del DOM ****
+  // Il container #app inizia con layout a colonna singola ("one-column")
+  // e, al trigger della prima ricerca, viene trasformato in layout a due colonne ("two-columns")
+  const app = document.getElementById('app');
+  const rightPanel = document.getElementById('right-panel');
+  if (app.classList.contains('one-column')) {
+    app.classList.remove('one-column');
+    app.classList.add('two-columns');
+  }
+  // Rende visibile il right-panel
+  rightPanel.style.display = 'block';
+  // *******************************************
+
+  // Recupera il tema selezionato dall'input
+  const selectedTheme = searchInput.value.trim();
+  if (!selectedTheme) {
+    return alert('Inserisci un tema!');
+  }
+
+  // Aggiunge (o aggiorna) un <h1> con il tema selezionato come link nel right-panel
+  let themeHeader = document.getElementById('theme-header');
+  if (!themeHeader) {
+    themeHeader = document.createElement('h1');
+    themeHeader.id = 'theme-header';
+    // Inserisce l'h1 all'inizio del right-panel
+    rightPanel.insertBefore(themeHeader, rightPanel.firstChild);
+  }
+  themeHeader.innerHTML = `<a href="#" id="theme-link">${selectedTheme}</a>`;
+
+  // Associa un listener al link per mostrare i dettagli del tema
+  document.getElementById('theme-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    fetchThemeDetails(selectedTheme);
+  });
+
+  // Calcola le occorrenze per paese
   const countryOccurrences = matches.reduce((acc, item) => {
     const country = item["Citizenship Label"];
     acc[country] = (acc[country] || 0) + 1;
     return acc;
   }, {});
 
-  // Update globe colors based on matches
+  // Aggiorna i colori del globo in base ai matches
   if (world && countriesData) {
-        world.polygonCapColor(({ properties: d }) => {
-          const count = countryOccurrences[d.ADMIN] || 0;
-          return count > 0 ? `rgba(232, 232, 39, ${Math.min(count / 10, 1)})` : '#aaaaaa';
-        });
-      }
+    world.polygonCapColor(({ properties: d }) => {
+      const count = countryOccurrences[d.ADMIN] || 0;
+      return count > 0 ? `rgba(232, 232, 39, ${Math.min(count / 10, 1)})` : '#aaaaaa';
+    });
+  }
 
-  // Update the right panel with authors
+  // **** Ripristina l'header degli autori ****
+  // Se l'header è stato modificato (ad es. "Autori correlati Spagna:"), lo ripristina a "Autori correlati:"
+  const dataPanel = document.getElementById('data-panel');
+  const authorsHeader = dataPanel.querySelector('h3');
+  if (authorsHeader) {
+    authorsHeader.textContent = "Autori correlati:";
+  }
+  // *******************************************
+
+  // Aggiorna il pannello laterale con gli autori trovati
   const authors = matches.map(item => item["Autore"]);
   const dataList = document.getElementById('data-list');
-  const dataPanel = document.getElementById('data-panel');
 
-  dataList.innerHTML = '';  // Clear previous list
+  dataList.innerHTML = '';  // Pulisce la lista precedente
 
   if (authors.length > 0) {
-    dataPanel.style.display = 'block';  // Make sure the panel is visible
-
+    dataPanel.style.display = 'block';
     authors.forEach(author => {
       const listItem = document.createElement('li');
       listItem.textContent = author;
       dataList.appendChild(listItem);
     });
-
   } else {
-    dataPanel.style.display = 'none';  // Hide the panel if no authors found
+    dataPanel.style.display = 'none';
     alert('No authors found for the selected country and criteria.');
   }
 };
 
-    startYearInput.addEventListener('input', triggerSearch);
-    endYearInput.addEventListener('input', triggerSearch);
+startYearInput.addEventListener('input', () => {
+  const header = document.querySelector("#data-panel h3");
+  if (header && header.textContent.trim() !== "Autori correlati:") {
+    header.textContent = "Autori correlati:";
+  }
+  triggerSearch();
+});
+
+endYearInput.addEventListener('input', () => {
+  const header = document.querySelector("#data-panel h3");
+  if (header && header.textContent.trim() !== "Autori correlati:") {
+    header.textContent = "Autori correlati:";
+  }
+  triggerSearch();
+});
+
   
     // Optional: Trigger search when the search button is clicked too, in case users press it manually
     searchButton.addEventListener('click', triggerSearch);
@@ -786,49 +1001,6 @@ const modalContent = document.getElementById('modal-content');
 const closeModal = document.getElementById('close-modal');
 const authorName = document.getElementById('author-name');
 const authorBirthDeath = document.getElementById('author-birth-death');
-const showAuthorDetails = (author) => {
-  // Display name and birth/death year
-  authorName.textContent = author.name;
-  authorBirthDeath.textContent = `Born: ${author.birthYear} | Died: ${author.deathYear || 'None'}`;
-
-  // Display themes related to the author
-  const themesList = document.getElementById('author-themes');
-  themesList.innerHTML = ''; // Clear any previous themes
-
-  if (author.themes && author.themes.length > 0) {
-    author.themes.forEach(theme => {
-      const themeItem = document.createElement('li');
-      themeItem.textContent = theme;
-      themesList.appendChild(themeItem);
-    });
-  } else {
-    const noThemes = document.createElement('li');
-    noThemes.textContent = 'No themes available';
-    themesList.appendChild(noThemes);
-  }
-
-  // Show the modal
-  modal.style.display = 'block'; 
-
-  // Style the scrollbar inside the modal
-  const modalContent = document.getElementById('author-modal');
-  
-  if (modalContent.scrollHeight > modalContent.clientHeight) {
-    modalContent.style.overflowY = 'auto';
-    
-    // Webkit scrollbar styling
-    modalContent.style['-webkit-scrollbar-width'] = '8px';
-    modalContent.style['-webkit-scrollbar-thumb'] = 'background-color: #888; border-radius: 10px; border: 2px solid #f4f4f4;';
-    modalContent.style['-webkit-scrollbar-thumb:hover'] = 'background-color: #555;';
-    modalContent.style['-webkit-scrollbar-track'] = 'background: #f1f1f1; border-radius: 10px;';
-    
-    // Firefox scrollbar styling
-    modalContent.style.scrollbarWidth = '8px';
-    modalContent.style.scrollbarColor = '#888 #f1f1f1';
-  } else {
-    modalContent.style.overflowY = 'hidden';
-  }
-};
 
 // Handle click events on author list
 // Function to handle clicking on an author
@@ -846,7 +1018,7 @@ document.getElementById('data-list').addEventListener('click', (event) => {
     // Populate the modal
     document.getElementById('author-name').textContent = clickedAuthor;
     document.getElementById('author-years').textContent =
-      `Born: ${authorEntries[0]["Formatted Year of Birth"] || 'Unknown'}, Died: ${authorEntries[0]["Formatted Year of Death"] || 'Unknown'}`;
+      `${authorEntries[0]["Formatted Year of Birth"] || 'Unknown'} - ${authorEntries[0]["Formatted Year of Death"] || 'Unknown'}`;
     const themesContainer = document.getElementById('author-themes');
     themesContainer.innerHTML = '';
     uniqueThemes.forEach(theme => {
@@ -931,6 +1103,129 @@ function fillColor() {
   percent2 = (sliderTwo.value / sliderMaxValue) * 100;
   sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
 }
+
+
+// Variabile globale per memorizzare l'indice del suggerimento attivo
+let suggestionIndex = -1;
+
+// Supponiamo che 'themes' sia già popolato con i temi estratti dal database usato in triggerSearch()
+// Ad esempio, se non lo hai già, puoi popolarlo così (oppure usando il tuo metodo attuale):
+let themes = [];
+
+function extractThemesFromData() {
+  const themesSet = new Set();
+  data.forEach(item => {
+    if (item["Temi"]) {
+      // Supponiamo che i temi siano separati da virgola
+      item["Temi"].split(',').forEach(theme => {
+        themesSet.add(theme.trim());
+      });
+    }
+  });
+  themes = Array.from(themesSet);
+}
+
+fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json')
+  .then(res => res.json())
+  .then(json => { 
+    data = json;
+    extractThemesFromData();
+  })
+  .catch(err => console.error("Errore nel caricamento dei dati:", err));
+
+  
+const suggestionsList = document.getElementById("suggestions-list");
+
+// Funzione per aggiornare la lista dei suggerimenti
+function updateSuggestions() {
+  suggestionIndex = -1;               // Reset dell'indice ad ogni nuovo input
+  suggestionsList.innerHTML = "";     // Svuota i suggerimenti esistenti
+
+  const query = searchInput.value.toLowerCase();
+  if (query.length === 0) return;       // Se l'input è vuoto, non mostra suggerimenti
+
+  // Filtra i temi che iniziano con la query (il confronto è case-insensitive)
+  const filteredThemes = themes.filter(theme => theme.toLowerCase().startsWith(query));
+
+  // Mostra i primi 5 risultati
+  filteredThemes.slice(0, 4).forEach((theme) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = theme;
+    
+    // Al click sul suggerimento, aggiorna l'input e pulisci la lista
+    listItem.addEventListener("click", () => {
+      searchInput.value = theme;
+      suggestionsList.innerHTML = "";
+      suggestionIndex = -1;
+    });
+    
+    suggestionsList.appendChild(listItem);
+  });
+}
+
+// Aggiorna i suggerimenti ad ogni modifica dell'input
+searchInput.addEventListener("input", updateSuggestions);
+
+// Gestione della navigazione tramite frecce e della selezione con Invio
+searchInput.addEventListener("keydown", (e) => {
+  const items = suggestionsList.getElementsByTagName("li");
+
+  if (e.key === "ArrowDown") {
+    e.preventDefault(); // Previene lo scroll della pagina
+    if (items.length === 0) return;
+    // Incrementa l'indice (wrap-around opzionale)
+    if (suggestionIndex < items.length - 1) {
+      suggestionIndex++;
+    } else {
+      suggestionIndex = 0;
+    }
+    highlightSuggestion(items, suggestionIndex);
+
+  } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    if (items.length === 0) return;
+    if (suggestionIndex > 0) {
+      suggestionIndex--;
+    } else {
+      suggestionIndex = items.length - 1;
+    }
+    highlightSuggestion(items, suggestionIndex);
+
+  } else if (e.key === "Enter") {
+    e.preventDefault(); // Previene il comportamento predefinito
+
+    // Se esiste un suggerimento attivo, usalo per aggiornare l'input
+    if (suggestionIndex > -1 && items[suggestionIndex]) {
+      searchInput.value = items[suggestionIndex].textContent;
+    }
+    // Pulisci la lista dei suggerimenti e resetta l'indice
+    suggestionsList.innerHTML = "";
+    suggestionIndex = -1;
+
+    // Triggera la ricerca
+    triggerSearch();
+  }
+});
+
+
+// Funzione per evidenziare il suggerimento attivo
+function highlightSuggestion(items, index) {
+  // Rimuove la classe 'active' da tutti gli elementi
+  Array.from(items).forEach(item => item.classList.remove("active"));
+  // Aggiunge la classe 'active' all'elemento selezionato
+  if (items[index]) {
+    items[index].classList.add("active");
+  }
+}
+
+// Nasconde i suggerimenti quando si clicca fuori dall'input o dalla lista
+document.addEventListener("click", (e) => {
+  if (!searchInput.contains(e.target) && !suggestionsList.contains(e.target)) {
+    suggestionsList.innerHTML = "";
+    suggestionIndex = -1;
+  }
+});
+
 
   </script>
   
