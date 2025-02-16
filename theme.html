@@ -1,351 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radial Visualization</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            background-color: #e4f2f7;
-            justify-content: center;
-            align-items: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radial Visualization</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
 
-        #visualization-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        #panel {
-            width: 300px;
-            background: #fff;
-            border-left: 1px solid #ddd;
-            padding: 20px;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        svg {
-            overflow: visible;
-        }
-
-        .segment {
-            stroke: #fff;
-            stroke-width: 1px;
-            cursor: pointer;
-        }
-
-        .tooltip {
-            position: absolute;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            pointer-events: none;
-            font-size: 12px;
-            opacity: 0.9;
-        }
-    </style>
+  <script src="//unpkg.com/globe.gl"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
+  <div id="app" class="one-column">
     <header>
-        <div>L'Atlante dei temi letterari</div>
-        
-        <div id="search-container">
-            <input id="search-input" type="text" placeholder="Digita un tema...">
-            <button id="search-button">Cerca</button>
-          </div>
-        
-      </header>
-    <div id="visualization-container">
-        <div id="tooltip" class="tooltip" style="display: none;"></div>
-        <svg id="radial-graph"></svg>
-        <div id="panel">
-            <p>Temi organizzati in macrocategorie</p>
-            <div id="details"></div>
-        </div>
-    </div>
-    <script>
-d3.json("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/gerarchia_sogg.json").then(data => {
-    const maxGraphWidth = 700; // Maximum width of the graph in pixels
-    const width = maxGraphWidth;
-    const height = maxGraphWidth;
-    const radius = Math.min(width, height) / 2;
+      <div>L'Atlante dei temi letterari</div>
+      <div id="search-container">
+        <input id="search-input" type="text" placeholder="Digita un tema..." />
+        <ul id="suggestions-list"></ul>
+        <button id="search-button">Cerca</button>
+      </div>
+    </header>
 
-    const svg = d3.select("#radial-graph")
+    <div id="visualization-container">
+      <div>
+        <svg id="radial-graph"></svg>
+      </div>
+      <div id="panel">
+        <h2>Temi organizzati in macrocategorie</h2>
+        <p class="filtered-info">clicca sul grafico per visualizzare la categoria</p>
+        <div id="details"></div>
+      </div>
+    </div>
+
+    <!-- Aggiunto: contenitore per il nuovo contenuto (grid area "container") -->
+    <div id="container" style="display: none;"></div>
+
+    <footer>
+      <p>2025 Atlante dei Temi Letterari</p>
+    </footer>
+  </div>
+
+  <script>
+    d3.json("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/gerarchia_sogg.json").then(data => {
+      const maxGraphWidth = 700;
+      const width = maxGraphWidth;
+      const height = maxGraphWidth;
+      const radius = Math.min(width, height) / 2;
+  
+      const svg = d3.select("#radial-graph")
         .attr("width", width)
         .attr("height", height)
         .append("g")
         .attr("transform", `translate(${width / 2}, ${height / 2})`);
-
-    const partition = d3.partition()
-        .size([2 * Math.PI, radius]);
-
-    const root = d3.hierarchy(data)
-        .sum(d => d.children ? 0 : 1);
-
-    partition(root);
-
-    const arc = d3.arc()
+  
+      const partition = d3.partition().size([2 * Math.PI, radius]);
+      const root = d3.hierarchy(data).sum(d => d.children ? 0 : 1);
+      partition(root);
+  
+      const arc = d3.arc()
         .startAngle(d => d.x0)
         .endAngle(d => d.x1)
         .innerRadius(d => d.y0)
         .outerRadius(d => d.y1);
-
-    const tooltip = d3.select("#tooltip");
-    const detailsPanel = d3.select("#details");
-
-    const colorScale = d3.scaleOrdinal([
+  
+      const tooltip = d3.select("#tooltip");
+      const detailsPanel = d3.select("#details");
+  
+      const colorScale = d3.scaleOrdinal([
         "#e4f2f7", "#FB7E00", "#9FC089", "#79B4B0", "#FFCC3F"
-    ]);
-
-    svg.selectAll("path")
+      ]);
+  
+      svg.selectAll("path")
         .data(root.descendants().filter(d => d.children))
         .join("path")
         .attr("class", "segment")
         .attr("d", arc)
         .style("fill", d => {
-            const baseColor = d.depth === 1
-                ? colorScale(d.data.name)
-                : d3.color(colorScale(d.ancestors()[1]?.data.name || d.data.name))
-                    .brighter(d.depth * 0.25);
-            return baseColor;
+          const baseColor = d.depth === 1 
+            ? colorScale(d.data.name)
+            : d3.color(colorScale(d.ancestors()[1]?.data.name || d.data.name))
+                .brighter(d.depth * 0.25);
+          return baseColor;
         })
         .style("stroke", "#fff")
-        .on("mouseover", function (event, d) {
-            d3.select(this)
-                .transition()
-                .duration(200)
-                .attr("d", d3.arc()
-                    .startAngle(d.x0)
-                    .endAngle(d.x1)
-                    .innerRadius(d.y0)
-                    .outerRadius(d.y1 + 10)
-                );
-
-            tooltip.style("display", "block")
-                .style("left", `${event.pageX + 10}px`)
-                .style("top", `${event.pageY + 10}px`)
-                .html(`<strong>${d.data.name}</strong><br>Totale: ${d.value || "N/A"}`);
-            detailsPanel.html(
-                `<h2>${d.data.name}</h2>
-                <p><strong>Totale:</strong> ${d.value || "N/A"}</p>`);
-
-            if (d.children) {
-                svg.selectAll("path")
-                    .filter(child => d.children.includes(child))
-                    .transition()
-                    .duration(200)
-                    .attr("d", d3.arc()
-                        .startAngle(child => child.x0)
-                        .endAngle(child => child.x1)
-                        .innerRadius(child => child.y0)
-                        .outerRadius(child => child.y1 + 10)
-                    );
-            }
+        .on("mouseover", function(event, d) {
+          d3.select(this)
+            .transition("arcTransition")
+            .duration(200)
+            .attr("d", d3.arc()
+              .startAngle(d.x0)
+              .endAngle(d.x1)
+              .innerRadius(d.y0)
+              .outerRadius(d.y1 + 10)
+            );
+        
+          if(d.depth === 0) {
+            this.style.cursor = "default";
+          } else {
+            this.style.cursor =  "pointer";
+          }
+        
+          tooltip.style("display", "block")
+            .style("left", `${event.pageX + 10}px`)
+            .style("top", `${event.pageY + 10}px`)
+            .html(`<strong>${d.data.name}</strong><br>Totale: ${d.value || "N/A"}`);
+        
+          detailsPanel.html(
+            `<h2>${d.data.name}</h2>
+             <p><strong>Totale:</strong> ${d.value || "N/A"}</p>`
+          );
+        
+          svg.selectAll("path")
+            .filter(function(nodeData) {
+              return nodeData === d || nodeData.ancestors().indexOf(d) >= 0;
+            })
+            .transition("fillTransition")
+            .duration(200)
+            .style("fill", function(nodeData) {
+              const baseColor = nodeData.depth === 1
+                ? colorScale(nodeData.data.name)
+                : d3.color(colorScale(nodeData.ancestors()[1]?.data.name || nodeData.data.name))
+                    .brighter(nodeData.depth * 0.25);
+              return d3.color(baseColor).darker(0.5);
+            });
         })
-        .on("mouseout", function (event, d) {
-            d3.select(this)
-                .transition()
-                .duration(200)
-                .attr("d", arc);
-
-            tooltip.style("display", "none");
-            detailsPanel.html(`<p></p>`);
-
+        .on("mouseout", function(event, d) {
+          d3.select(this)
+            .transition("arcTransition")
+            .duration(200)
+            .attr("d", arc)
+            .style("cursor", "default");
+  
+          if (d.children) {
             svg.selectAll("path")
-                .transition()
-                .duration(200)
-                .attr("d", arc);
+              .filter(function(childData) {
+                return childData !== d && childData.ancestors().indexOf(d) >= 0;
+              })
+              .transition("childArcTransition")
+              .duration(200)
+              .attr("d", function(child) {
+                return arc(child);
+              });
+          }
+  
+          tooltip.style("display", "none");
+          detailsPanel.html(`<p></p>`);
+  
+          svg.selectAll("path")
+            .filter(function(nodeData) {
+              return nodeData === d || nodeData.ancestors().indexOf(d) >= 0;
+            })
+            .transition("fillTransition")
+            .duration(200)
+            .style("fill", function(nodeData) {
+              const baseColor = nodeData.depth === 1
+                ? colorScale(nodeData.data.name)
+                : d3.color(colorScale(nodeData.ancestors()[1]?.data.name || nodeData.data.name))
+                    .brighter(nodeData.depth * 0.25);
+              return baseColor;
+            });
         })
         .on("click", function (event, d) {
-            if (d.children) {
-                document.querySelector("#visualization-container").style.display = 'none';
-
-                const newHierarchyContainer = document.createElement('div');
-                newHierarchyContainer.style.width = '100vw';
-                newHierarchyContainer.style.height = '100vh';
-                newHierarchyContainer.style.padding = '20px';
-                newHierarchyContainer.style.display = 'flex';
-                newHierarchyContainer.style.flexDirection = 'column';
-                newHierarchyContainer.style.fontFamily = 'Arial, sans-serif';
-
-                const title = document.createElement('h2');
-                title.textContent = `Hierarchical View: ${d.data.name}`;
-                title.style.marginBottom = '20px';
-                newHierarchyContainer.appendChild(title);
-
-                function displayChildren(node, previousNodes) {
-    newHierarchyContainer.innerHTML = ''; // Pulisce la lista
-
-    const backButton = document.createElement('button');
-    backButton.textContent = 'Back';
-    backButton.style.marginBottom = '20px';
-    backButton.onclick = function () {
-        if (previousNodes.length > 0) {
-            displayChildren(previousNodes[previousNodes.length - 1], previousNodes.slice(0, -1));
-        } else {
-            document.querySelector("#visualization-container").style.display = 'flex';
-            document.body.removeChild(newHierarchyContainer);
-        }
-    };
-    newHierarchyContainer.appendChild(backButton);
-
-    const childrenList = document.createElement('ul');
-    node.children.forEach(child => {
-        const listItem = document.createElement('li');
-
-        if (child.children && child.children.length > 0) {
-            // Toggle Button per i figli con figli
-            const toggleBtn = document.createElement('button');
-            toggleBtn.textContent = '▼'; // freccia verso il basso inizialmente
-            toggleBtn.style.marginRight = '10px';
-            toggleBtn.onclick = function () {
-                const childUL = listItem.querySelector('ul');
-                if (childUL) {
-                    childUL.style.display = childUL.style.display === 'none' ? 'block' : 'none';
-                    toggleBtn.textContent = childUL.style.display === 'none' ? '▶' : '▼'; // cambia freccia
+          // Se il nodo è la root (livello 0), non fare nulla
+          if (d.depth === 0) return;
+  
+          if (d.children) {
+            // Nasconde la visualizzazione originale...
+            document.querySelector("#visualization-container").style.display = 'none';
+            // ... e mostra il container per il nuovo contenuto.
+            document.querySelector("#container").style.display = 'block';
+  
+            // Crea il contenitore per la vista intermedia (lista dinamica)
+            const newHierarchyContainer = document.createElement('div');
+            newHierarchyContainer.id = 'new-hierarchy-container';
+            document.querySelector("#container").appendChild(newHierarchyContainer);
+  
+            function displayChildren(node, previousNodes) {
+              newHierarchyContainer.innerHTML = ''; // Pulisce la lista
+  
+              const backButton = document.createElement('button');
+              backButton.textContent = 'Back';
+              backButton.style.marginBottom = '20px';
+              backButton.onclick = function () {
+                if (previousNodes.length > 1) {
+                  displayChildren(previousNodes[previousNodes.length - 1], previousNodes.slice(0, -1));
+                } else {
+                  // Se siamo al livello principale, torna alla visualizzazione originale
+                  document.querySelector("#visualization-container").style.display = 'flex';
+                  const container = document.querySelector("#container");
+                  container.removeChild(newHierarchyContainer);
+                  container.style.display = 'none';
                 }
-            };
-
-            const childName = document.createElement('span');
-            childName.textContent = child.data.name;
-            listItem.appendChild(toggleBtn);
-            listItem.appendChild(childName);
-
-            const childUL = document.createElement('ul');
-            childUL.style.display = 'none';
-            child.children.forEach(grandChild => {
-                const grandChildItem = document.createElement('li');
-                grandChildItem.textContent = grandChild.data.name;
-                grandChildItem.style.cursor = 'pointer';
-                grandChildItem.onclick = function () {
-                    createLinearDendrogram(grandChild.data.name, grandChild);
-                };
-                childUL.appendChild(grandChildItem);
-            });
-            listItem.appendChild(childUL);
-        } else {
-            // Foglie cliccabili per creare il dendrogramma lineare
-            const childName = document.createElement('span');
-            childName.textContent = child.data.name;
-            childName.style.cursor = 'pointer';
-            childName.onclick = function () {
-                createLinearDendrogram(child.data.name, child);
-            };
-            listItem.appendChild(childName);
-        }
-
-        childrenList.appendChild(listItem);
-    });
-
-    newHierarchyContainer.appendChild(childrenList);
-    document.body.appendChild(newHierarchyContainer);
-}
-
-// Funzione per creare un dendrogramma lineare
-async function createLinearDendrogram(searchTerm, node) {
-    const normalizedSearchTerm = searchTerm.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ /g, '-');
-
-    try {
-        const response = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json');
-        const hierarchyData = await response.json();
-        const matches = hierarchyData[normalizedSearchTerm];
-
-        if (matches) {
-            const themesResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json');
-            const themesData = await themesResponse.json();
-
-            // Conta le occorrenze di ogni parola associata
-            const occurrenceCounts = matches.Associati.reduce((acc, word) => {
-                const normalizedWord = word.toLowerCase();
-                const count = themesData.filter(item => 
-                    item["Temi"] && item["Temi"].toLowerCase().includes(normalizedWord)
-                ).length;
-
-                acc[word] = count;
-                return acc;
-            }, {});
-
-            // Mostra il dendrogramma lineare
-            newHierarchyContainer.innerHTML = '';
-            const backButton = document.createElement('button');
-            backButton.textContent = 'Back';
-            backButton.style.marginBottom = '20px';
-            backButton.onclick = function () {
-                displayChildren(node, [node]);
-            };
-            newHierarchyContainer.appendChild(backButton);
-
-            const svg = d3.select(newHierarchyContainer)
-                .append('svg')
-                .attr('width', window.innerWidth / 2)
-                .attr('height', window.innerHeight / 2);
-
-
-            const treeData = {
-                name: searchTerm,
-                children: Object.entries(occurrenceCounts).map(([name, count]) => ({ name, count }))
-            };
-
-            const treeLayout = d3.tree().size([3/2*window.innerHeight, window.innerWidth / 2]);
-            const root = d3.hierarchy(treeData);
-
-            treeLayout(root);
-
-            const maxCount = Math.max(...root.descendants().map(d => d.data.count || 1));
-
-            svg.selectAll('path')
-                .data(root.links())
-                .enter()
-                .append('path')
-                .attr('d', d3.linkHorizontal()
-                    .x(d => d.y)
-                    .y(d => d.x))
-                .attr('stroke', '#ccc')
-                .attr('fill', 'none');
-
-            svg.selectAll('circle')
-                .data(root.descendants())
-                .enter()
-                .append('circle')
-                .attr('cx', d => d.y)
-                .attr('cy', d => d.x)
-                .attr('r', d => d.data.count ? (5 + (d.data.count / maxCount) * 20) : 5) // Dimensione proporzionale
-                .attr('fill', d => d.depth === 0 ? 'rgb(251, 126, 0)' : 'rgb(145, 215, 210)');
-
-            svg.selectAll('text')
-                .data(root.descendants())
-                .enter()
-                .append('text')
-                .attr('x', d => d.y)
-                .attr('y', d => d.x - 10)
-                .attr('font-size', '15px')
-                .attr('text-anchor', 'rigth')
-                .attr('fill', 'black')
-                .text(d => `${d.data.name} (${d.data.count || 0})`);
-        }
-    } catch (error) {
-        console.error('Error fetching data for linear dendrogram:', error);
-    }
-}
-
-                displayChildren(d, [d]);
+              };
+              newHierarchyContainer.appendChild(backButton);
+  
+              const childrenList = document.createElement('ul');
+              node.children.forEach(child => {
+                const listItem = document.createElement('li');
+  
+                if (child.children && child.children.length > 0) {
+                  // Bottone di toggle per figli con sotto-elementi
+                  const toggleBtn = document.createElement('button');
+                  toggleBtn.textContent = '▼';
+                  toggleBtn.style.marginRight = '10px';
+                  toggleBtn.onclick = function () {
+                    const childUL = listItem.querySelector('ul');
+                    if (childUL) {
+                      childUL.style.display = childUL.style.display === 'none' ? 'block' : 'none';
+                      toggleBtn.textContent = childUL.style.display === 'none' ? '▶' : '▼';
+                    }
+                  };
+  
+                  const childName = document.createElement('span');
+                  childName.textContent = child.data.name;
+                  listItem.appendChild(toggleBtn);
+                  listItem.appendChild(childName);
+  
+                  const childUL = document.createElement('ul');
+                  childUL.style.display = 'none';
+                  child.children.forEach(grandChild => {
+                    const grandChildItem = document.createElement('li');
+                    grandChildItem.textContent = grandChild.data.name;
+                    grandChildItem.style.cursor = 'pointer';
+                    // Passa "child" come nodo genitore per il grandchild
+                    grandChildItem.onclick = function () {
+                      createLinearDendrogram(grandChild.data.name, grandChild, child, newHierarchyContainer);
+                    };
+                    childUL.appendChild(grandChildItem);
+                  });
+                  listItem.appendChild(childUL);
+                } else {
+                  // Se è una foglia, la rende cliccabile
+                  const childName = document.createElement('span');
+                  childName.textContent = child.data.name;
+                  childName.style.cursor = 'pointer';
+                  // Passa "node" come nodo genitore
+                  childName.onclick = function () {
+                    createLinearDendrogram(child.data.name, child, node, newHierarchyContainer);
+                  };
+                  listItem.appendChild(childName);
+                }
+  
+                childrenList.appendChild(listItem);
+              });
+  
+              newHierarchyContainer.appendChild(childrenList);
             }
+  
+            // La vista intermedia viene generata a partire dal nodo cliccato
+            displayChildren(d, [d]);
+          }
         });
-});
+  
+      svg.selectAll("text")
+        .data(root.descendants().filter(d => d.depth > 0 && d.children))
+        .join("text")
+        .attr("dy", "0.35em")
+        .attr("transform", d => {
+          const midAngle = (d.x0 + d.x1) / 2 * (180 / Math.PI) - 90;
+          const factor = 0.12;
+          const r = d.y0 + (d.y1 - d.y0) * factor;
+          return `rotate(${midAngle})translate(${r},0)rotate(${midAngle > 90 ? -180 : 0})`;
+        })
+        .attr("text-anchor", d => {
+          const midAngle = (d.x0 + d.x1) / 2 * (180 / Math.PI) - 90;
+          return midAngle > 90 ? "end" : "start";
+        })
+        .attr("fill", "black")
+        .attr("font-size", "12px")
+        .text(d => d.data.name);
+    });
+  
+    // Funzione per creare il dendrogramma lineare.
+    // Aggiungiamo un quarto parametro: "intermediateContainer" (il contenitore della vista intermedia)
+    async function createLinearDendrogram(searchTerm, node, parentNode, intermediateContainer) {
+  // Normalizziamo (e rimuoviamo gli accenti) da subito il searchTerm per le chiavi del JSON
+  const normalizedSearchTerm = searchTerm.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+    .replace(/ /g, '-');
 
-    </script>
-    
+  try {
+    const response = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json');
+    const hierarchyData = await response.json();
+    const matches = hierarchyData[normalizedSearchTerm];
+
+    if (matches) {
+      const themesResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json');
+      const themesData = await themesResponse.json();
+
+      // 1) Calcola le occorrenze per i termini associati (ricerca esatta fra token)
+      const occurrenceCounts = matches.Associati.reduce((acc, word) => {
+        // Normalizza il termine associato
+        const normalizedWord = word
+          .normalize('NFD')                  // scompone gli accenti
+          .replace(/[\u0300-\u036f]/g, "")   // rimuove i segni diacritici
+          .toLowerCase();
+
+        // Conta quante volte "normalizedWord" appare come token esatto in item["Temi"]
+        const count = themesData.filter(item => {
+          if (!item["Temi"]) return false;
+
+          // Creiamo un array di singole parole (token) partendo da item["Temi"]
+          const itemThemesArray = item["Temi"]
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .split(/\W+/)      // split su caratteri non alfanumerici (spazi, virgole, ecc.)
+            .filter(Boolean);  // rimuove eventuali stringhe vuote
+
+          // Verifichiamo se normalizedWord è incluso fra i token di itemThemesArray
+          return itemThemesArray.includes(normalizedWord);
+        }).length;
+
+        acc[word] = count;
+        return acc;
+      }, {});
+
+      // 2) Calcola le occorrenze esatte del tema principale (searchTerm)
+      const mainThemeCount = themesData.filter(item => {
+        if (!item["Temi"]) return false;
+
+        const itemThemesArray = item["Temi"]
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .split(/\W+/)
+          .filter(Boolean);
+
+        const normalizedRootTheme = searchTerm
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+
+        return itemThemesArray.includes(normalizedRootTheme);
+      }).length;
+
+      // 3) Crea il contenitore per il dendrogramma
+      const dendrogramContainer = document.createElement('div');
+      dendrogramContainer.className = 'dendrogram-container';
+      // Nascondi la vista intermedia
+      intermediateContainer.style.display = 'none';
+      document.querySelector("#container").appendChild(dendrogramContainer);
+
+      // Pulsante "Back" per tornare alla vista intermedia
+      const backButton = document.createElement('button');
+      backButton.textContent = 'Back';
+      backButton.style.marginBottom = '20px';
+      backButton.onclick = function () {
+        dendrogramContainer.remove();
+        intermediateContainer.style.display = 'block';
+      };
+      dendrogramContainer.appendChild(backButton);
+
+      // 4) Assegna al nodo principale il valore del conteggio calcolato
+      const treeData = {
+        name: searchTerm,
+        count: mainThemeCount,
+        children: Object.entries(occurrenceCounts).map(([name, count]) => ({ name, count }))
+      };
+
+      // 5) Setup dell'SVG e del layout
+      const svgLinear = d3.select(dendrogramContainer)
+        .append('svg')
+        .attr('width', window.innerWidth)
+        .attr('height', window.innerHeight);
+
+      const treeLayout = d3.tree()
+        .nodeSize([60, 120])
+        .separation((a, b) => a.parent === b.parent ? 0.5 : 1);
+        
+      const rootLinear = d3.hierarchy(treeData);
+      treeLayout(rootLinear);
+
+      // (Opzionale) allineiamo la posizione del nodo padre con i figli
+      rootLinear.eachAfter(d => {
+        if (d.children && d.children.length > 0) {
+          d.x = d.children[0].x;
+        }
+      });
+
+      // Determiniamo i limiti minimi e massimi delle coordinate
+      const minX = d3.min(rootLinear.descendants(), d => d.x);
+      const maxX = d3.max(rootLinear.descendants(), d => d.x);
+      const minY = d3.min(rootLinear.descendants(), d => d.y);
+      const maxY = d3.max(rootLinear.descendants(), d => d.y);
+
+      const margin = { top: 20, right: 50, bottom: 20, left: 50 };
+      const svgWidth = (maxY - minY) + margin.left + margin.right;
+      const svgHeight = (maxX - minX) + margin.top + margin.bottom;
+
+      svgLinear
+        .attr("width", Math.max(600, svgWidth))
+        .attr("height", svgHeight);
+
+      const g = svgLinear.append("g")
+        .attr("transform", `translate(${margin.left - minY}, ${margin.top - minX})`);
+
+      // 6) Disegniamo i collegamenti tra nodi
+      g.selectAll('path')
+        .data(rootLinear.links())
+        .enter()
+        .append('path')
+        .attr('d', d3.linkHorizontal()
+          .x(d => d.y)
+          .y(d => d.x))
+        .attr('stroke', '#ccc')
+        .attr('fill', 'none');
+
+      // 7) Disegniamo i nodi con dimensioni scalate in base a count
+      const maxCount = d3.max(rootLinear.descendants(), d => d.data.count || 1);
+      g.selectAll('circle')
+        .data(rootLinear.descendants())
+        .enter()
+        .append('circle')
+        .attr('cx', d => d.y)
+        .attr('cy', d => d.x)
+        .attr('r', d => d.data.count ? (5 + (d.data.count / maxCount) * 20) : 5)
+        .attr('fill', d => d.depth === 0 ? 'rgb(251, 126, 0)' : 'rgb(145, 215, 210)');
+
+      // 8) Etichette con il nome e il conteggio di ciascun nodo
+      g.selectAll('text')
+        .data(rootLinear.descendants())
+        .enter()
+        .append('text')
+        .attr('x', d => d.y + 10)
+        .attr('y', d => d.x + 10)
+        .attr('font-size', '15px')
+        .attr('text-anchor', 'start')
+        .attr('fill', 'black')
+        .text(d => `${d.data.name} (${d.data.count || 0})`);
+    }
+  } catch (error) {
+    console.error('Error fetching data for linear dendrogram:', error);
+  }
+}
+
+ </script>
+  
+  
 </body>
 </html>

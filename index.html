@@ -7,601 +7,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
 
-  <style>
-    
-    .theme-link {
-  color: #3264fe;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
-.theme-link:hover {
-  text-decoration: underline;
-}
-
-.container {
-  position: relative;
-  width: 100%;
-  height: 50px;
-
-}
-input[type="range"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 100%;
-  outline: none;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  background-color: transparent;
-  pointer-events: none;
-}
-.slider-track {
-  width: 100%;
-  height: 5px;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  border-radius: 5px;
-}
-input[type="range"]::-webkit-slider-runnable-track {
-  -webkit-appearance: none;
-  height: 5px;
-}
-input[type="range"]::-moz-range-track {
-  -moz-appearance: none;
-  height: 5px;
-}
-input[type="range"]::-ms-track {
-  appearance: none;
-  height: 5px;
-}
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 1.7em;
-  width: 1.7em;
-  background-color: #3264fe;
-  cursor: pointer;
-  margin-top: -9px;
-  pointer-events: auto;
-  border-radius: 50%;
-}
-input[type="range"]::-moz-range-thumb {
-  -webkit-appearance: none;
-  height: 1.7em;
-  width: 1.7em;
-  cursor: pointer;
-  border-radius: 50%;
-  background-color: #3264fe;
-  pointer-events: auto;
-  border: none;
-}
-input[type="range"]::-ms-thumb {
-  appearance: none;
-  height: 1.7em;
-  width: 1.7em;
-  cursor: pointer;
-  border-radius: 50%;
-  background-color: #3264fe;
-  pointer-events: auto;
-}
-input[type="range"]:active::-webkit-slider-thumb {
-  background-color: #ffffff;
-  border: 1px solid #3264fe;
-}
-.values {
-  width: 50%;
-  position: relative;
-  margin: auto;
-  padding: 5px 0;
-  border-radius: 5px;
-  text-align: center;
-}
-
-
-    body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      height: 100vh;
-      display: grid;
-      grid-template-rows: auto 1fr;
-      background-color: rgb(228, 242, 247);
-    }
-
-    /* Cover Styling */
-    #cover {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #333;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  background-image: url("https://lh3.googleusercontent.com/ci/AL18g_SpNsvhMa_a-ZniIFEkvBHY3Yq_d42dlyJTPAs4vx2v1W_lIX0ynnE6tM1Z-cKXRgFWmv_UBG4=s1200");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: 'Playfair Display', serif;
-  font-size: 36px;
-  font-weight: bold;
-   
-}
-
-#cover h1 {
-  font-family: 'Playfair Display', serif;
-  font-weight: bold;
-  text-align: center;
-  padding: 20px 40px;
-  
-  border-radius: 10px; /* Optional rounded corners for the overlay */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Optional text-shadow for better readability */
-}
-
-
-    #cover button {
-
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-    }
-    #cover button:hover {
-  background-color: #2857cc;
-}
-#data-list li{
-  cursor: pointer;
-}
-
-    /* App Layout */
-    #app {
-      display: none;
-      grid-template-areas:
-        'header header'
-        'main right'
-        'footer footer';
-      grid-template-rows: auto 1fr auto;
-      height: 100%;
-    }
- 
-    header {
-      grid-area: header;
-      background-color: #296640;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 24px;
-      font-family: 'Playfair Display', serif;
-  font-size: 36px;
-  display: flex;
-  justify-content: space-between; /* Space between the two divs */
-  align-items: center; /* Center the text vertically */
-    }
-    header div {
-  display: flex;
-  align-items: center; /* Center items vertically */
-
-}
-header div:first-child {
-  flex: 1; /* Take up some space */
-}
-
-    #globe-container {
-      grid-area: main;
-      overflow: hidden;
-    }
-
-
-    #right-panel {
-  grid-area: right;
-  background-color: #e4f2f7;
-  overflow-y: auto;  /* Allow vertical scrolling */
-  padding: 10px;
-  min-height: 1vh;
-  min-width: 220px;
-}
-#data-panel div{
-
-  width: 100%; /* ensure it takes full width */
-  max-height:450px;
-  overflow-y: auto; /* add scrollbar when content exceeds the height */
-}
-
-
-   /* Modal (popup) Styling */
-/* Styling for the modal */
-#author-modal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  max-height: 80%;
-  overflow-y: auto;
-}
-.slider-track {
-  width: 100%;
-  height: 5px;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  border-radius: 5px;
-}
-
-#author-modal h2 {
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-#author-modal ul {
-  list-style: none;
-  padding: 0;
-}
-/* Custom Scrollbar Styling */
-
-
-/* For Firefox */
-#author-modal {
-  scrollbar-width: thin; /* Makes the scrollbar thinner */
-  scrollbar-color: #ccc #f7f7f7; /* Thumb and track colors */
-}
-
-#author-modal ul li {
-  padding: 5px;
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 5px;
-  background: #f9f9f9;
-  border-radius: 5px;
-}
-
-#author-modal ul li:hover {
-  background: #e0e0e0;
-}
-
-#author-modal .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  font-size: 18px;
-  background: transparent;
-  border: none;
-  color: #333;
-}
-
-#author-modal .close-btn:hover {
-  color: #c00;
-}
-
-
-#modal-content {
-  background-color: white;
-  margin: 5% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Can be adjusted */
-  max-width: 400px;
-  border-radius: 10px;
-}
-
-#close-modal {
-  color: #aaa;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-#close-modal:hover,
-#close-modal:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#author-name {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-#author-birth-death {
-  font-size: 16px;
-}
-
-#right-panel h3{
-  margin-bottom: 0 !important;
-  margin-top: 50px !important;
-}
-
-#data-panel h3 {
-  margin-top: 0;
-  font-size: 18px;
-}
-#data-panel ul {
-  list-style: none;
-  padding: 0;
-}
-/* Custom Scrollbar Styling */
-
-
-/* For Firefox */
-#data-panel {
-  scrollbar-width: thin; /* Makes the scrollbar thinner */
-  scrollbar-color: #ccc #f7f7f7; /* Thumb and track colors */
-}
-
-#data-panel ul li {
-  padding: 5px;
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 5px;
-  background: #f9f9f9;
-  border-radius: 5px;
-}
-
-#data-panel ul li:hover {
-  background: #e0e0e0;
-}
-
-
-    footer {
-      grid-area: footer;
-      text-align: center;
-      padding: 10px;
-      background-color: #333;
-      color: white;
-    }
-
-
-    #timeline-container {
-  margin-top: 20px;
-}
-
-#timeline-container input[type="range"] {
-  width: 100%;
-}
-
-#timeline-container p {
-  margin-top: 10px;
-  font-size: 14px;
-}
-/* Style for the scrollbar in the right panel */
-
-
-
-.values {
-  display: flex;
-  justify-content: space-between;
-  width: 100%; /* This makes sure the entire width of the container */
-  padding: 10px 0;
-}
-#data-panel{
-    display: none;
-}
-
-#range1 {
-  flex: 0 0 auto; /* Allows it to take the space it needs */
-}
-
-#range2 {
-  flex: 0 0 auto; /* Allows it to take the space it needs */
-}
-
-
-
-/* Left div 'dizionario' */
-header div:first-child {
-  flex: 1; /* Give it equal width to take space on the left */
-  font-family: 'Playfair Display', serif;
-}
-
-/* Search container in the center */
-#search-container {
-  flex: 2; /* Make it occupy more space in the center */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin: 0 auto; /* Center the container horizontally */
-}
-
-#search-input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  flex-grow: 1;
-  margin-right: 10px;
-}
-
-#search-button {
-  background-color: #3264fe;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#search-button:hover {
-  background-color: #2857cc;
-}
-#author-details-modal{
-    width: 80vh;
-}
-
-/* Add subtle shadow for the header */
-header {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-.modal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content {
-  overflow-y: auto;
-}
-
-.theme-link {
-
-  text-decoration: none;
-}
-#author-themes {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-/* Thinner and prettier scrollbar */
-#author-themes::-webkit-scrollbar {
-    width: 8px;  /* Makes the scrollbar thinner */
-}
-
-#author-themes::-webkit-scrollbar-thumb {
-    background-color: #888;  /* Set the thumb (draggable part) color */
-    border-radius: 10px;  /* Round the edges of the thumb */
-    border: 2px solid #f4f4f4;  /* Add a border around the thumb to make it look more refined */
-}
-
-#author-themes::-webkit-scrollbar-thumb:hover {
-    background-color: #555;  /* Darker color when hovering over the thumb */
-}
-
-#author-themes::-webkit-scrollbar-track {
-    background: #f1f1f1;  /* Color of the scrollbar track */
-    border-radius: 10px; /* Round the track edges */
-}
-
-#search-container {
-  position: relative;
-  width: 300px;
-}
-
-
-
-#suggestions-list {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 90%;
-  background: white;
-  color: black;
-  list-style: none;
-  padding: 0;
-  font-size: 12px;
-  margin: 5px 0 0 0;
-  border-radius: 6px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 1000;
-  font-family: 'Playfair Display', serif; /* Stesso font dell'input */
-}
-
-#suggestions-list li {
-  padding: 15px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  text-align: left;
-}
-
-#suggestions-list li:hover {
-  background: #444;
-}
-
-
-
-#search-button:hover {
-  background: #666;
-}
-
-/* Evidenzia il suggerimento attivo */
-#suggestions-list li.active {
-  background-color: #e4e4e4;
-}
-
-.wrapper {
-  display: none;
-}
-.filtered-info {
-  font-weight: normal;
-  font-size: 14px;
-  font-style: italic;
-  color: #555;
-  font-weight: normal;   
-  font-size: 14px;       
-  font-style: italic;    
-  color: #555; 
-}
-/* Stato iniziale: layout a singola colonna */
-#app.one-column {
-  display: grid;
-  grid-template-areas:
-    "header header"
-    "main main"
-    "footer footer";
-  grid-template-rows: auto 1fr auto;
-  height: 100%;
-}
-
-/* Stato con pannello laterale: layout a due colonne */
-#app.two-columns {
-  display: grid;
-  grid-template-areas:
-    "header header"
-    "main right"
-    "footer footer";
-  grid-template-columns: 1fr auto; /* il right-panel occuperà lo spazio necessario */
-  grid-template-rows: auto 1fr auto;
-  height: 100%;
-}
-
-/* Il container del globo occuperà lo spazio della grid-area "main" */
-#globe-container {
-  grid-area: main;
-  overflow: hidden;
-}
-
-/* Il right-panel inizialmente è nascosto */
-#right-panel {
-  grid-area: right;
-  background-color: #e4f2f7;
-  overflow-y: auto;
-  padding: 10px;
-  min-width: 220px;
-  display: none; /* inizialmente non visibile */
-}
-.filtered-info{
-  margin: 0;
-}
-  </style>
   <script src="//unpkg.com/globe.gl"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   
@@ -610,7 +18,7 @@ header {
   <div id="cover">
     <h1>L'Atlante dei temi letterari</h1>
     <button id="start-button">Mappa</button>
-    <button id="info-button"><a href=./theme>Gerarchia</a></button>
+    <button id="info-button"><a href="theme.html">Gerarchia</a></button>
     <button id="contact-button">Contact Us</button>
   </div>
 
@@ -1022,13 +430,17 @@ document.getElementById('data-list').addEventListener('click', (event) => {
     const themesContainer = document.getElementById('author-themes');
     themesContainer.innerHTML = '';
     uniqueThemes.forEach(theme => {
-      const themeLink = document.createElement('a');
-      themeLink.textContent = theme;
-      themeLink.href = '#';
-      themeLink.classList.add('theme-link');
-      themeLink.addEventListener('click', () => fetchThemeDetails(theme));
-      themesContainer.appendChild(themeLink);
-    });
+  const themeLink = document.createElement('a');
+  themeLink.textContent = theme;
+  themeLink.href = '#';
+  themeLink.classList.add('theme-link');
+  themeLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    showDendrogramForTheme(theme);
+  });
+  themesContainer.appendChild(themeLink);
+});
+
 
     // Show the modal
     document.getElementById('author-details-modal').style.display = 'block';
@@ -1226,6 +638,205 @@ document.addEventListener("click", (e) => {
   }
 });
 
+async function showDendrogramForTheme(theme) {
+  const normalizedTheme = theme.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+    .replace(/ /g, '-');
+
+  try {
+    // 1) Carica la gerarchia dei temi
+    const hierarchyResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json');
+    const hierarchyData = await hierarchyResponse.json();
+    const matches = hierarchyData[normalizedTheme];
+
+    if (!matches) {
+      alert(`Nessun tema associato trovato per "${theme}".`);
+      return;
+    }
+
+    // 2) Carica il dataset principale per calcolare le occorrenze
+    const themesResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json');
+    const themesData = await themesResponse.json();
+
+    // Calcolo delle occorrenze dei temi associati
+// 1) Ciclo per calcolare le occorrenze di ogni tema associato
+const occurrenceCounts = matches.Associati.reduce((acc, word) => {
+  // Normalizza e converte in minuscolo il tema associato
+  const normalizedWord = word
+    .normalize('NFD')                  // scompone eventuali lettere accentate
+    .replace(/[\u0300-\u036f]/g, "")   // rimuove i segni diacritici
+    .toLowerCase();
+
+  // Conta quanti item del dataset contengono esattamente quel tema
+  const count = themesData.filter(item => {
+    if (!item["Temi"]) return false;
+    
+    // Ricava un array di singole parole (token) dall'attributo "Temi"
+    const itemThemesArray = item["Temi"]
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, "") // rimuove accenti
+      .toLowerCase()
+      .split(/\W+/)  // split su qualsiasi carattere non alfanumerico (spazi, virgole, punti, ecc.)
+      .filter(Boolean);  // rimuove eventuali stringhe vuote
+
+    // Verifica se normalizedWord è presente nell'array dei token
+    return itemThemesArray.includes(normalizedWord);
+  }).length;
+
+  acc[word] = count;
+  return acc;
+}, {});
+
+// 2) Occorrenze del tema principale
+const mainThemeCount = themesData.filter(item => {
+  if (!item["Temi"]) return false;
+  
+  const itemThemesArray = item["Temi"]
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .split(/\W+/)
+    .filter(Boolean);
+
+  return itemThemesArray.includes(
+    theme
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+  );
+}).length;
+
+
+    // 3) Nascondi (o disabilita) ciò che non vuoi più vedere (es. il globe e il pannello di destra)
+    // Se hai un container con ID #globe-container e #right-panel, puoi nasconderli:
+    document.getElementById('globe-container').style.display = 'none';
+    document.getElementById('right-panel').style.display = 'none';
+
+    // Nascondi anche il pop-up dell’autore
+    document.getElementById('author-details-modal').style.display = 'none';
+
+    // 4) Crea (o svuota) un container dedicato al dendrogramma
+    let dendrogramContainer = document.getElementById('dendrogram-container');
+    if (!dendrogramContainer) {
+      // Se non esiste, crealo e inseriscilo prima del footer
+      const app = document.getElementById('app');
+      const footer = app.querySelector('footer');
+      
+      dendrogramContainer = document.createElement('div');
+      dendrogramContainer.id = 'dendrogram-container';
+      app.insertBefore(dendrogramContainer, footer);
+    } else {
+      // Se esiste già, lo svuotiamo
+      dendrogramContainer.innerHTML = '';
+    }
+
+    // 5) Aggiungi un pulsante "Back" per tornare alla vista originale
+    const backButton = document.createElement('button');
+    backButton.textContent = 'Back';
+    backButton.style.margin = '20px';
+    backButton.onclick = function() {
+      // Rimuovi (o svuota) il dendrogramma
+      dendrogramContainer.innerHTML = '';
+      // Mostra di nuovo le parti nascoste
+      document.getElementById('globe-container').style.display = 'block';
+      document.getElementById('right-panel').style.display = 'block';
+      document.getElementById('author-details-modal').style.display = 'block';
+    };
+    dendrogramContainer.appendChild(backButton);
+
+    // 6) Costruisci i dati per il dendrogramma
+    const treeData = {
+      name: theme,
+      count: mainThemeCount,
+      children: Object.entries(occurrenceCounts).map(([name, count]) => ({ name, count }))
+    };
+
+    // 7) Dimensioni iniziali dell'SVG
+    const svgWidth = 800;   // imposta la larghezza desiderata
+    const svgHeight = 600;  // imposta l'altezza desiderata
+
+    // Crea l’elemento SVG
+    const svg = d3.select(dendrogramContainer)
+      .append('svg')
+      .attr('width', svgWidth)
+      .attr('height', svgHeight)
+      .style('border', '1px solid #ccc'); // stile di debug, opzionale
+
+    // 8) Configura il layout ad albero
+    const treeLayout = d3.tree()
+      .nodeSize([60, 120])
+      .separation((a, b) => a.parent === b.parent ? 0.5 : 1);
+
+    // Crea la gerarchia per D3
+    const rootNode = d3.hierarchy(treeData);
+    treeLayout(rootNode);
+
+    // (Opzionale) Allinea la posizione del nodo padre con i figli
+    rootNode.eachAfter(d => {
+      if (d.children && d.children.length > 0) {
+        d.x = d.children[0].x;
+      }
+    });
+
+    // Determina i limiti min/max del layout
+    const minX = d3.min(rootNode.descendants(), d => d.x);
+    const maxX = d3.max(rootNode.descendants(), d => d.x);
+    const minY = d3.min(rootNode.descendants(), d => d.y);
+    const maxY = d3.max(rootNode.descendants(), d => d.y);
+
+    const margin = { top: 20, right: 50, bottom: 20, left: 50 };
+    const calculatedWidth = (maxY - minY) + margin.left + margin.right;
+    const calculatedHeight = (maxX - minX) + margin.top + margin.bottom;
+
+    // Adatta effettivamente le dimensioni dell’SVG in base al layout calcolato
+    svg
+      .attr("width", Math.max(600, calculatedWidth))
+      .attr("height", Math.max(400, calculatedHeight));
+
+    // Inserisci un gruppo (g) con margini
+    const g = svg.append("g")
+      .attr("transform", `translate(${margin.left - minY}, ${margin.top - minX})`);
+
+    // 9) Disegna i collegamenti
+    g.selectAll("path")
+      .data(rootNode.links())
+      .enter()
+      .append("path")
+      .attr("d", d3.linkHorizontal()
+        .x(d => d.y)
+        .y(d => d.x)
+      )
+      .attr("stroke", "#ccc")
+      .attr("fill", "none");
+
+    // Calcola il massimo per scalare i nodi (radius)
+    const maxCount = d3.max(rootNode.descendants(), d => d.data.count || 1);
+
+    // 10) Disegna i nodi come cerchi
+    g.selectAll("circle")
+      .data(rootNode.descendants())
+      .enter()
+      .append("circle")
+      .attr("cx", d => d.y)
+      .attr("cy", d => d.x)
+      .attr("r", d => d.data.count ? (5 + (d.data.count / maxCount) * 20) : 5)
+      .attr("fill", d => d.depth === 0 ? 'rgb(251, 126, 0)' : 'rgb(145, 215, 210)');
+
+    // 11) Aggiungi le etichette
+    g.selectAll("text")
+      .data(rootNode.descendants())
+      .enter()
+      .append("text")
+      .attr("x", d => d.y + 10)
+      .attr("y", d => d.x + 10)
+      .attr("font-size", "15px")
+      .attr("text-anchor", "start")
+      .attr("fill", "black")
+      .text(d => `${d.data.name} (${d.data.count || 0})`);
+
+  } catch (error) {
+    console.error("Errore nella creazione del dendrogramma:", error);
+    alert("Si è verificato un errore durante la creazione del dendrogramma.");
+  }
+}
 
   </script>
   
