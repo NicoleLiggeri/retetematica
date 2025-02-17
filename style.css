@@ -598,14 +598,10 @@
           min-height: 700px ; /* 150px è un esempio: regola in base al layout */
           min-width: 800px !important;
           overflow: auto;
-          display: none !important;
+
         }
         #container div {
           min-width: 800px !important; /* Valore minimo per evitare che sia troppo stretta */
           min-height: 600px !important;
-          display: none !important;
+
         }
-        #container{
-          display: none;
-        }
-        
