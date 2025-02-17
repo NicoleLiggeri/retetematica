@@ -42,7 +42,7 @@
 
   <script>
 
-d3.json("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/gerarchia_sogg.json").then(data => {
+d3.json("https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/gerarchia_sogg.json").then(data => {
   const maxGraphWidth = 800;
   const width = maxGraphWidth;
   const height = maxGraphWidth;
@@ -155,7 +155,7 @@ d3.json("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads
       function displayChildren(node, previousNodes) {
         newHierarchyContainer.innerHTML = '';
         const backButton = document.createElement('button');
-        backButton.innerHTML = '◀';
+        backButton.innerHTML = '◀ Indietro';
         backButton.className = 'back-button';
         backButton.style.marginBottom = '20px';
         backButton.onclick = function () {
@@ -308,11 +308,11 @@ async function createLinearDendrogram(searchTerm, node, parentNode, intermediate
     .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
     .replace(/ /g, '-');
   try {
-    const response = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json');
+    const response = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/hierarchy_themes.json');
     const hierarchyData = await response.json();
     const matches = hierarchyData[normalizedSearchTerm];
     if (matches) {
-      const themesResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json');
+      const themesResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/data.json');
       const themesData = await themesResponse.json();
       
       const occurrenceCounts = matches.Associati.reduce((acc, word) => {
@@ -346,18 +346,9 @@ async function createLinearDendrogram(searchTerm, node, parentNode, intermediate
       containerEl.style.paddingBottom = "100px";
       
       const backButton = document.createElement('button');
-      backButton.innerHTML = '◀';
+      backButton.innerHTML = '◀ Indietro';
       backButton.className = 'back-button';
-      backButton.style.cssText = `
-        background-color: #FB7E00;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        padding: 8px 12px;
-        cursor: pointer;
-        margin-bottom: 20px;
-        font-size: 14px;
-      `;
+    
       backButton.onclick = function () {
         dendrogramContainer.remove();
         backButton.remove();
@@ -402,7 +393,7 @@ async function createLinearDendrogram(searchTerm, node, parentNode, intermediate
       
       let themeInfoHTML = `<p>Nessuna informazione aggiuntiva disponibile per il tema ${searchTerm}</p>`;
       try {
-        const soggResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/gerarchia_sogg.json');
+        const soggResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/gerarchia_sogg.json');
         const soggData = await soggResponse.json();
         
         function findNodeByName(node, name) {

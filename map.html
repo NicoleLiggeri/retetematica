@@ -90,7 +90,7 @@
     let data = [];
     let associationsData = {};
   
-    fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json')
+    fetch('https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/data.json')
     .then(res => res.json())
     .then(json => {
       data = json;
@@ -106,13 +106,13 @@
     .catch(err => console.error("Errore nel caricamento dei dati:", err));
 
  
-    fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json')
+    fetch('https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/hierarchy_themes.json')
       .then(res => res.json())
       .then(json => { associationsData = json; });
       let countryMapping = {};
 
 function loadCountryMapping() {
-  fetch("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/mapping_ei.csv") // 🔹 Sostituisci con il percorso reale del CSV
+  fetch("https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/mapping_ei.csv") // 🔹 Sostituisci con il percorso reale del CSV
     .then(response => response.text())
     .then(csvText => {
       const rows = csvText.split("\n").map(row => row.trim()).filter(row => row);
@@ -390,7 +390,7 @@ document.getElementById('data-list').addEventListener('click', (event) => {
 });
 
 function fetchThemeDetails(theme) {
-  fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json')
+  fetch('https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/hierarchy_themes.json')
     .then(response => response.json())
     .then(dataset => {
       const normalizedTheme = theme.toLowerCase();  
@@ -475,7 +475,7 @@ function extractThemesFromData() {
 }
 
 
-fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json')
+fetch('https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/data.json')
   .then(res => res.json())
   .then(json => { 
     data = json;
@@ -583,7 +583,7 @@ async function showDendrogramForTheme(theme) {
 
   try {
     
-    const hierarchyResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json');
+    const hierarchyResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/hierarchy_themes.json');
     const hierarchyData = await hierarchyResponse.json();
     const matches = hierarchyData[normalizedTheme];
 
@@ -596,7 +596,7 @@ let themesData;
       themesData = window.data;
       console.log("Utilizzo dei dati già caricati globalmente");
     } else {
-      const themesResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json');
+      const themesResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/data.json');
       themesData = await themesResponse.json();
     }
 
@@ -698,7 +698,7 @@ let themesData;
 
    let themeInfoHTML = `<p>Nessuna informazione aggiuntiva disponibile per il tema ${theme}</p>`;
     try {
-      const soggResponse = await fetch("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/gerarchia_sogg.json");
+      const soggResponse = await fetch("https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/gerarchia_sogg.json");
       const soggData = await soggResponse.json();
 
       function findNodeByName(node, name) {
