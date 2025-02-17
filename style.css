@@ -614,7 +614,7 @@
           margin-bottom: 40px;
         }
         .back-button{
-          background-color: #666;
+          background-color:#a2a2a2;
           color: white;
           border: none;
           border-radius: 4px;
@@ -625,9 +625,9 @@
         }
         .globe-button{
           padding: 4px 8px;
-          color: white;
+          color: black;
           border-radius: 4px;
-          background-color: #3264fe;
+          background-color: rgb(251, 126, 0);
           cursor: pointer;
         }
 

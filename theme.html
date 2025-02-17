@@ -11,7 +11,7 @@
 <body>
   <div id="app" class="one-column">
     <header>
-      <div>L'Atlante dei temi letterari</div>
+      <div id="header-h1">L'Atlante dei temi letterari</div>
 
       <div id="search-container">
         <input id="search-input" type="text" placeholder="Digita un tema..." />
@@ -29,51 +29,47 @@
   </div>
 
   <script>
-    /* --- Gestione dello Stato --- */
-    // Possibili valori: "initial", "slice", "theme"
+
     let currentView = "initial"; 
 
-    // Aggiorna lo stato e salva in sessionStorage
+  
     function setViewState(newState, extraData = null) {
       currentView = newState;
       sessionStorage.setItem("viewState", JSON.stringify({ state: newState, data: extraData }));
     }
 
-    // Al caricamento, prova a ripristinare lo stato salvato (se esiste)
     const savedState = sessionStorage.getItem("viewState");
     if (savedState) {
       const { state, data } = JSON.parse(savedState);
       currentView = state;
-      // Qui potresti, se necessario, ripristinare anche altri dati
     }
 
-    /* --- Funzione per creare il bottone "Indietro" --- */
     function createBackButton(container) {
       const backButton = document.createElement("button");
       backButton.className = "back-button";
       backButton.textContent = "◀ Indietro";
       backButton.style.marginBottom = "20px";
       backButton.addEventListener("click", () => {
-        // Se il referrer contiene "hierarchy.html", allora torna a quella pagina
+
         if (document.referrer && document.referrer.includes("hierarchy.html")) {
           window.location.href = "hierarchy.html";
           return;
         }
-        // Altrimenti, usa lo stato per decidere cosa ripristinare
+        
         switch (currentView) {
           case "theme":
-            // Ad esempio, ripristina la vista slice (codice specifico da implementare)
+            
             setViewState("slice");
-            // Qui dovresti scrivere il codice per mostrare nuovamente la vista relativa alla fetta cliccata
+            
             alert("Tornando alla vista della fetta...");
             break;
           case "slice":
-            // Ripristina la vista iniziale con il grafo radiale
+            
             setViewState("initial");
             alert("Tornando alla vista iniziale (grafo radiale)...");
             break;
           default:
-            // Se già in "initial", torna a hierarchy.html (oppure svuota il contenitore)
+            
             window.location.href = "hierarchy.html";
             break;
         }
@@ -81,43 +77,43 @@
       container.appendChild(backButton);
     }
 
-    /* --- Funzione per leggere i parametri dalla URL --- */
+    
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
 
-    /* --- Inizializzazione della ricerca su theme.html --- */
+    
     const themeParam = getQueryParam("theme");
     if (themeParam) {
-      // Imposta il valore nell'input (opzionale)
+      
       document.getElementById("search-input").value = themeParam;
-      // Imposta lo stato iniziale (in questo caso, "initial")
+      
       setViewState("initial", { query: themeParam });
       createLinearDendrogram(themeParam, document.getElementById("viz"));
     }
 
-    /* --- Event Listener per la barra di ricerca --- */
+    
     document.getElementById("search-button").addEventListener("click", () => {
       const rawInput = document.getElementById("search-input").value.trim();
       if (!rawInput) {
         alert("Inserisci un tema!");
         return;
       }
-      // Normalizza: il primo carattere in maiuscolo, il resto in minuscolo
+      
       const searchTerm = rawInput.charAt(0).toUpperCase() + rawInput.slice(1).toLowerCase();
       window.location.href = "theme.html?theme=" + encodeURIComponent(searchTerm);
     });
 
-    /* --- Funzione createLinearDendrogram --- */
+    
     async function createLinearDendrogram(searchTerm, container) {
-      // Normalizza il termine (stesso metodo della versione originale)
+      
       const normalizedSearchTerm = searchTerm.toLowerCase()
         .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
         .replace(/ /g, '-');
 
       try {
-        // Recupera hierarchy_themes.json per le parole associate
+        
         const themesHierarchyResponse = await fetch("https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/hierarchy_themes.json");
         const themesHierarchyData = await themesHierarchyResponse.json();
         const matches = themesHierarchyData[normalizedSearchTerm];
@@ -126,11 +122,11 @@
           return;
         }
 
-        // Recupera data.json per calcolare le occorrenze
+        
         const themesDataResponse = await fetch("https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/data.json");
         const themesData = await themesDataResponse.json();
 
-        // Calcola le occorrenze per ciascuna parola in "Associati"
+        
         const occurrenceCounts = matches.Associati.reduce((acc, word) => {
           const normalizedWord = word.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
           const count = themesData.filter(item => {
@@ -145,7 +141,7 @@
           return acc;
         }, {});
 
-        // Conta le occorrenze del tema principale
+        
         const mainThemeCount = themesData.filter(item => {
           if (!item["Temi"]) return false;
           const itemThemesArray = item["Temi"]
@@ -156,10 +152,10 @@
           return itemThemesArray.includes(normalizedRootTheme);
         }).length;
 
-        // Inserisci il back button nel contenitore (che userà lo state manager)
+        
         createBackButton(container);
 
-        // Crea la sezione titolo e pulsante globe
+        
         const titleContainer = document.createElement("div");
         titleContainer.className = "theme-title-container";
         titleContainer.style.display = "flex";
@@ -189,7 +185,7 @@
         titleContainer.appendChild(globeButton);
         container.appendChild(titleContainer);
 
-        // --- Pannello informativo ---
+        
         let themeInfoHTML = `<p>Nessuna informazione aggiuntiva disponibile per il tema ${searchTerm}</p>`;
         try {
           const soggResponse = await fetch("https://raw.githubusercontent.com/NicoleLiggeri/atlanteLetterario/refs/heads/main/datasets/gerarchia_sogg.json");
@@ -230,7 +226,7 @@
         infoDiv.innerHTML = themeInfoHTML;
         container.appendChild(infoDiv);
 
-        // --- Creazione del dendrogramma lineare ---
+        
         const treeData = {
           name: searchTerm,
           count: mainThemeCount,
