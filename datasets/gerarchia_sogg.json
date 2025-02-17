@@ -5,6 +5,221 @@
             "name": "Agenti",
             "children": [
                 {
+                    "name": "Organizzazioni",
+                    "children": [
+                        {
+                            "name": "Aviazione",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni",
+                                "Nota d'Ambito": "L’insieme di enti, persone e mezzi relativi all’attività aerea.  Per il significato di complesso delle attività, delle scienze e delle tecniche relative alla navigazione aerea, usare Aeronautica",
+                                "Identificativo Wikidata": "Q765633",
+                                "URL Soggettario": "http://purl.org/bncf/tid/6186"
+                            }
+                        },
+                        {
+                            "name": "Bar",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Esercizi pubblici",
+                                "Nota d'Ambito": "Esercizi pubblici in cui si sosta brevemente per consumare bevande, dolci e cibi leggeri, generalmente stando in piedi, o in tavolini presso il bancone di mescita",
+                                "Identificativo Wikidata": "Q187456",
+                                "URL Soggettario": "http://purl.org/bncf/tid/15952"
+                            }
+                        },
+                        {
+                            "name": "Café chantant",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Esercizi pubblici",
+                                "Nota d'Ambito": "Tra l’Ottocento e i primi decenni del Novecento, locali con orchestrina e spettacoli di varietà",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "http://purl.org/bncf/tid/27510"
+                            }
+                        },
+                        {
+                            "name": "Cavalleria",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni",
+                                "Nota d'Ambito": "Istituzione politica e sociale del Medioevo. Per il significato di arma dei moderni eserciti, un tempo costituita da soldati a cavallo, usare Cavalleria <Eserciti>",
+                                "Identificativo Wikidata": "Q1056721",
+                                "URL Soggettario": "http://purl.org/bncf/tid/29131"
+                            }
+                        },
+                        {
+                            "name": "Chiesa",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni religiose",
+                                "Nota d'Ambito": "Il complesso delle comunità organizzate di fedeli che professano confessioni cristiane, considerato anche nel suo valore mistico",
+                                "Identificativo Wikidata": "Q34651",
+                                "URL Soggettario": "http://purl.org/bncf/tid/767"
+                            }
+                        },
+                        {
+                            "name": "Circoli",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni",
+                                "Nota d'Ambito": "Gruppi o società di persone che si riuniscono in un luogo determinato a scopo ricreativo, sportivo o culturale",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "http://purl.org/bncf/tid/737"
+                            }
+                        },
+                        {
+                            "name": "Corporazioni",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Associazioni professionali",
+                                "Nota d'Ambito": "Associazioni professionali e di mestiere finalizzate alla regolamentazione delle attività e dei rapporti di lavoro, nonchè alla tutela degli interessi di una determinata categoria professionale",
+                                "Identificativo Wikidata": "Q167037",
+                                "URL Soggettario": "http://purl.org/bncf/tid/29165"
+                            }
+                        },
+                        {
+                            "name": "Criminalità organizzata",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni",
+                                "Nota d'Ambito": "I gruppi organizzati di criminali, in  relazione alle loro attività delinquenziali perseguite con strutture organizzative più o meno articolate",
+                                "Identificativo Wikidata": "Q46952",
+                                "URL Soggettario": "http://purl.org/bncf/tid/1514"
+                            }
+                        },
+                        {
+                            "name": "Diocesi",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni religiose",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q665487",
+                                "URL Soggettario": "http://purl.org/bncf/tid/2522"
+                            }
+                        },
+                        {
+                            "name": "Esposizioni universali",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Esposizioni internazionali",
+                                "Nota d'Ambito": "Esposizioni internazionali in cui i Paesi invitati hanno l'obbligo di costruire padiglioni nazionali",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "http://purl.org/bncf/tid/2807"
+                            }
+                        },
+                        {
+                            "name": "Fiere",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni",
+                                "Nota d'Ambito": "Raduni abituali, spesso  periodici,  di venditori, che si distinguono dai mercati per la loro maggior durata e per lo sviluppo che vi ha il commercio all'ingrosso",
+                                "Identificativo Wikidata": "Q57305",
+                                "URL Soggettario": "http://purl.org/bncf/tid/13076"
+                            }
+                        },
+                        {
+                            "name": "Governo",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni istituzionali",
+                                "Nota d'Ambito": "Il complesso delle istituzioni cui è affidato l'esercizio della funzione esecutiva e dell'attività di governare uno Stato o altra autorità territoriale",
+                                "Identificativo Wikidata": "Q7188",
+                                "URL Soggettario": "http://purl.org/bncf/tid/4932"
+                            }
+                        },
+                        {
+                            "name": "Mafia",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Criminalità organizzata",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q18550",
+                                "URL Soggettario": "http://purl.org/bncf/tid/1515"
+                            }
+                        },
+                        {
+                            "name": "Marina militare",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Forze armate",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q4508",
+                                "URL Soggettario": "http://purl.org/bncf/tid/12204"
+                            }
+                        },
+                        {
+                            "name": "Ordini religiosi",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Istituti religiosi",
+                                "Nota d'Ambito": "Nel cristianesimo, società di vita comune, approvate dall’autorità ecclesiastica, i cui membri tendono alla perfezione evangelica emettendo i tre voti perpetui di povertà, castità, obbedienza. Negli ordini religiosi, è necessario che almeno una parte dei membri emettano i voti solenni (in questo si differenziano dalle congregazioni religiose i cui appartenenti pronunciano solo i voti semplici)",
+                                "Identificativo Wikidata": "Q2061186",
+                                "URL Soggettario": "http://purl.org/bncf/tid/1410"
+                            }
+                        },
+                        {
+                            "name": "Polis",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Città-Stato",
+                                "Nota d'Ambito": "Particolare tipo di città-Stato che fu proprio dell’organizzazione politica greca in età classica",
+                                "Identificativo Wikidata": "Q148837",
+                                "URL Soggettario": "http://purl.org/bncf/tid/27227"
+                            }
+                        },
+                        {
+                            "name": "Scoutismo",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni giovanili",
+                                "Nota d'Ambito": "L'organizzazione giovanile che si propone di educare i giovani a una vita comunitaria e le cui attività si svolgono principalmente a contatto con la natura",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "http://purl.org/bncf/tid/2439"
+                            }
+                        },
+                        {
+                            "name": "Servizi segreti",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni istituzionali",
+                                "Nota d'Ambito": "Organizzazioni che svolgono compiti informativi e di sicurezza sul piano sia militare, sia di difesa dello Stato, oltre a compiti di controspionaggio. Per i servizi segreti che operano esclusivamente sul piano militare, usare Servizi segreti militari",
+                                "Identificativo Wikidata": "Q939616",
+                                "URL Soggettario": "http://purl.org/bncf/tid/6255"
+                            }
+                        },
+                        {
+                            "name": "Società segrete",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q276548",
+                                "URL Soggettario": "http://purl.org/bncf/tid/34636"
+                            }
+                        },
+                        {
+                            "name": "Truppe",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Eserciti",
+                                "Nota d'Ambito": "Nell'ambito di particolari eserciti, complessi organici, grandi o piccoli, di forze militari",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "http://purl.org/bncf/tid/26628"
+                            }
+                        },
+                        {
+                            "name": "Università",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni educative",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q3918",
+                                "URL Soggettario": "http://purl.org/bncf/tid/7811"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Organismi",
                     "children": [
                         {
@@ -945,221 +1160,6 @@
                                 "Nota d'Ambito": "Vasi sanguigni che portano il sangue con alto contenuto di anidride carbonica dagli organi periferici al cuore",
                                 "Identificativo Wikidata": "Q9609",
                                 "URL Soggettario": "http://purl.org/bncf/tid/6692"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Organizzazioni",
-                    "children": [
-                        {
-                            "name": "Aviazione",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni",
-                                "Nota d'Ambito": "L’insieme di enti, persone e mezzi relativi all’attività aerea.  Per il significato di complesso delle attività, delle scienze e delle tecniche relative alla navigazione aerea, usare Aeronautica",
-                                "Identificativo Wikidata": "Q765633",
-                                "URL Soggettario": "http://purl.org/bncf/tid/6186"
-                            }
-                        },
-                        {
-                            "name": "Bar",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Esercizi pubblici",
-                                "Nota d'Ambito": "Esercizi pubblici in cui si sosta brevemente per consumare bevande, dolci e cibi leggeri, generalmente stando in piedi, o in tavolini presso il bancone di mescita",
-                                "Identificativo Wikidata": "Q187456",
-                                "URL Soggettario": "http://purl.org/bncf/tid/15952"
-                            }
-                        },
-                        {
-                            "name": "Café chantant",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Esercizi pubblici",
-                                "Nota d'Ambito": "Tra l’Ottocento e i primi decenni del Novecento, locali con orchestrina e spettacoli di varietà",
-                                "Identificativo Wikidata": "",
-                                "URL Soggettario": "http://purl.org/bncf/tid/27510"
-                            }
-                        },
-                        {
-                            "name": "Cavalleria",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni",
-                                "Nota d'Ambito": "Istituzione politica e sociale del Medioevo. Per il significato di arma dei moderni eserciti, un tempo costituita da soldati a cavallo, usare Cavalleria <Eserciti>",
-                                "Identificativo Wikidata": "Q1056721",
-                                "URL Soggettario": "http://purl.org/bncf/tid/29131"
-                            }
-                        },
-                        {
-                            "name": "Chiesa",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni religiose",
-                                "Nota d'Ambito": "Il complesso delle comunità organizzate di fedeli che professano confessioni cristiane, considerato anche nel suo valore mistico",
-                                "Identificativo Wikidata": "Q34651",
-                                "URL Soggettario": "http://purl.org/bncf/tid/767"
-                            }
-                        },
-                        {
-                            "name": "Circoli",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni",
-                                "Nota d'Ambito": "Gruppi o società di persone che si riuniscono in un luogo determinato a scopo ricreativo, sportivo o culturale",
-                                "Identificativo Wikidata": "",
-                                "URL Soggettario": "http://purl.org/bncf/tid/737"
-                            }
-                        },
-                        {
-                            "name": "Corporazioni",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Associazioni professionali",
-                                "Nota d'Ambito": "Associazioni professionali e di mestiere finalizzate alla regolamentazione delle attività e dei rapporti di lavoro, nonchè alla tutela degli interessi di una determinata categoria professionale",
-                                "Identificativo Wikidata": "Q167037",
-                                "URL Soggettario": "http://purl.org/bncf/tid/29165"
-                            }
-                        },
-                        {
-                            "name": "Criminalità organizzata",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni",
-                                "Nota d'Ambito": "I gruppi organizzati di criminali, in  relazione alle loro attività delinquenziali perseguite con strutture organizzative più o meno articolate",
-                                "Identificativo Wikidata": "Q46952",
-                                "URL Soggettario": "http://purl.org/bncf/tid/1514"
-                            }
-                        },
-                        {
-                            "name": "Diocesi",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni religiose",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q665487",
-                                "URL Soggettario": "http://purl.org/bncf/tid/2522"
-                            }
-                        },
-                        {
-                            "name": "Esposizioni universali",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Esposizioni internazionali",
-                                "Nota d'Ambito": "Esposizioni internazionali in cui i Paesi invitati hanno l'obbligo di costruire padiglioni nazionali",
-                                "Identificativo Wikidata": "",
-                                "URL Soggettario": "http://purl.org/bncf/tid/2807"
-                            }
-                        },
-                        {
-                            "name": "Fiere",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni",
-                                "Nota d'Ambito": "Raduni abituali, spesso  periodici,  di venditori, che si distinguono dai mercati per la loro maggior durata e per lo sviluppo che vi ha il commercio all'ingrosso",
-                                "Identificativo Wikidata": "Q57305",
-                                "URL Soggettario": "http://purl.org/bncf/tid/13076"
-                            }
-                        },
-                        {
-                            "name": "Governo",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni istituzionali",
-                                "Nota d'Ambito": "Il complesso delle istituzioni cui è affidato l'esercizio della funzione esecutiva e dell'attività di governare uno Stato o altra autorità territoriale",
-                                "Identificativo Wikidata": "Q7188",
-                                "URL Soggettario": "http://purl.org/bncf/tid/4932"
-                            }
-                        },
-                        {
-                            "name": "Mafia",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Criminalità organizzata",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q18550",
-                                "URL Soggettario": "http://purl.org/bncf/tid/1515"
-                            }
-                        },
-                        {
-                            "name": "Marina militare",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Forze armate",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q4508",
-                                "URL Soggettario": "http://purl.org/bncf/tid/12204"
-                            }
-                        },
-                        {
-                            "name": "Ordini religiosi",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Istituti religiosi",
-                                "Nota d'Ambito": "Nel cristianesimo, società di vita comune, approvate dall’autorità ecclesiastica, i cui membri tendono alla perfezione evangelica emettendo i tre voti perpetui di povertà, castità, obbedienza. Negli ordini religiosi, è necessario che almeno una parte dei membri emettano i voti solenni (in questo si differenziano dalle congregazioni religiose i cui appartenenti pronunciano solo i voti semplici)",
-                                "Identificativo Wikidata": "Q2061186",
-                                "URL Soggettario": "http://purl.org/bncf/tid/1410"
-                            }
-                        },
-                        {
-                            "name": "Polis",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Città-Stato",
-                                "Nota d'Ambito": "Particolare tipo di città-Stato che fu proprio dell’organizzazione politica greca in età classica",
-                                "Identificativo Wikidata": "Q148837",
-                                "URL Soggettario": "http://purl.org/bncf/tid/27227"
-                            }
-                        },
-                        {
-                            "name": "Scoutismo",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni giovanili",
-                                "Nota d'Ambito": "L'organizzazione giovanile che si propone di educare i giovani a una vita comunitaria e le cui attività si svolgono principalmente a contatto con la natura",
-                                "Identificativo Wikidata": "",
-                                "URL Soggettario": "http://purl.org/bncf/tid/2439"
-                            }
-                        },
-                        {
-                            "name": "Servizi segreti",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni istituzionali",
-                                "Nota d'Ambito": "Organizzazioni che svolgono compiti informativi e di sicurezza sul piano sia militare, sia di difesa dello Stato, oltre a compiti di controspionaggio. Per i servizi segreti che operano esclusivamente sul piano militare, usare Servizi segreti militari",
-                                "Identificativo Wikidata": "Q939616",
-                                "URL Soggettario": "http://purl.org/bncf/tid/6255"
-                            }
-                        },
-                        {
-                            "name": "Società segrete",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q276548",
-                                "URL Soggettario": "http://purl.org/bncf/tid/34636"
-                            }
-                        },
-                        {
-                            "name": "Truppe",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Eserciti",
-                                "Nota d'Ambito": "Nell'ambito di particolari eserciti, complessi organici, grandi o piccoli, di forze militari",
-                                "Identificativo Wikidata": "",
-                                "URL Soggettario": "http://purl.org/bncf/tid/26628"
-                            }
-                        },
-                        {
-                            "name": "Università",
-                            "info": {
-                                "Macrocategoria": "Organizzazioni",
-                                "Termine Generico": "Organizzazioni educative",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q3918",
-                                "URL Soggettario": "http://purl.org/bncf/tid/7811"
                             }
                         }
                     ]
@@ -12142,6 +12142,198 @@
                     }
                 },
                 {
+                    "name": "Spazio",
+                    "children": [
+                        {
+                            "name": "Ambiente",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Spazio",
+                                "Nota d'Ambito": "Spazio in cui si svolge la vita di organismi e  complesso delle condizioni esterne, materiali, sociali, culturali, ecc. che definiscono quello più marcatamente antropizzato. Per il significato di spazio solo naturale anche dal punto di vista biologico, fisico, chimico, ecc., usare Ambiente naturale",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "http://purl.org/bncf/tid/2346"
+                            }
+                        },
+                        {
+                            "name": "Atmosfera",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Corpi celesti",
+                                "Nota d'Ambito": "Massa gassosa che circonda la Terra e la superficie solida di alcuni pianeti e che costituisce la parte esterna delle stelle",
+                                "Identificativo Wikidata": "Q8104",
+                                "URL Soggettario": "http://purl.org/bncf/tid/1843"
+                            }
+                        },
+                        {
+                            "name": "Cielo",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Universo",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q527",
+                                "URL Soggettario": "http://purl.org/bncf/tid/1839"
+                            }
+                        },
+                        {
+                            "name": "Città",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Zone urbane",
+                                "Nota d'Ambito": "Centri abitati di più o meno notevole estensione territoriale, in grado di adempiere a molteplici funzioni (economiche, politiche, religiose, culturali, ecc.)",
+                                "Identificativo Wikidata": "Q515",
+                                "URL Soggettario": "http://purl.org/bncf/tid/1218"
+                            }
+                        },
+                        {
+                            "name": "Coste",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Aree",
+                                "Nota d'Ambito": "Zone limite tra la terraferma e il mare, in parte emerse e in parte immerse",
+                                "Identificativo Wikidata": "Q93352",
+                                "URL Soggettario": "http://purl.org/bncf/tid/6150"
+                            }
+                        },
+                        {
+                            "name": "Luna",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Satelliti",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q405",
+                                "URL Soggettario": "http://purl.org/bncf/tid/9292"
+                            }
+                        },
+                        {
+                            "name": "Medio Oriente",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Oriente",
+                                "Nota d'Ambito": "Area geografica comprendente i Paesi africani e asiatici che si affacciano o gravitano sul Mediterraneo orientale (Turchia, Israele, Libia, ecc., e per i quali sta diventando sempre più rara la denominazione precedentemente in uso di Vicino Oriente) e sul Golfo Persico (Arabia, Iraq, Iran, ecc.)",
+                                "Identificativo Wikidata": "Q7204",
+                                "URL Soggettario": "http://purl.org/bncf/tid/29715"
+                            }
+                        },
+                        {
+                            "name": "Metropoli",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Città",
+                                "Nota d'Ambito": "Città di notevoli dimensioni, specialmente caratterizzata da un'intensa e dinamica vita sociale, culturale, economica",
+                                "Identificativo Wikidata": "Q200250",
+                                "URL Soggettario": "http://purl.org/bncf/tid/16480"
+                            }
+                        },
+                        {
+                            "name": "Oriente",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Luoghi di interesse storico e culturale",
+                                "Nota d'Ambito": "I territori e i paesi asiatici (così denominati in quanto ad est dell’Europa), considerati in  relazione al complesso delle loro civiltà e delle loro culture (Dev)",
+                                "Identificativo Wikidata": "Q205653",
+                                "URL Soggettario": "http://purl.org/bncf/tid/7138"
+                            }
+                        },
+                        {
+                            "name": "Orsa maggiore",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Costellazioni",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q8918",
+                                "URL Soggettario": "http://purl.org/bncf/tid/74626"
+                            }
+                        },
+                        {
+                            "name": "Paesaggio",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Territorio",
+                                "Nota d'Ambito": "Porzione di territorio che si abbraccia con lo sguardo da un punto determinato",
+                                "Identificativo Wikidata": "Q107425",
+                                "URL Soggettario": "http://purl.org/bncf/tid/8240"
+                            }
+                        },
+                        {
+                            "name": "Pianeti",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Corpi celesti",
+                                "Nota d'Ambito": "Oggetti astronomici che orbitano intorno a una stella ma che non hanno massa sufficiente per diventare stelle, risplendendo quindi di luce riflessa",
+                                "Identificativo Wikidata": "Q634",
+                                "URL Soggettario": "http://purl.org/bncf/tid/11165"
+                            }
+                        },
+                        {
+                            "name": "Sistema solare",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Sistemi planetari",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q544",
+                                "URL Soggettario": "http://purl.org/bncf/tid/29556"
+                            }
+                        },
+                        {
+                            "name": "Sobborghi",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Zone urbane",
+                                "Nota d'Ambito": "Centri abitati di piccole dimensioni, spesso con caratteri propri, situati negli immediati paraggi di un grande centro urbano senza necessariamente una continuità con i quartieri periferici della stessa città (alla quale sono solitamente collegati da infrastrutture), generalmente privi di autonomia amministrativa. Per il significato di insieme dei quartieri disposti ai margini esterni di agglomerati urbani, usare Periferie. Per il significato di zone urbane di piccola e media grandezza e importanza, usare Borghi. Per il significato di  parti di un territorio comunale che comprendono di norma un centro abitato e con determinate autonomie amministrative, usare Frazioni <Comuni>",
+                                "Identificativo Wikidata": "Q188509",
+                                "URL Soggettario": "http://purl.org/bncf/tid/55361"
+                            }
+                        },
+                        {
+                            "name": "Sole",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Stelle",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q525",
+                                "URL Soggettario": "http://purl.org/bncf/tid/2536"
+                            }
+                        },
+                        {
+                            "name": "Stelle",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Corpi celesti",
+                                "Nota d'Ambito": "Corpi celesti dotati di luce propria",
+                                "Identificativo Wikidata": "Q523",
+                                "URL Soggettario": "http://purl.org/bncf/tid/8582"
+                            }
+                        },
+                        {
+                            "name": "Terra",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Pianeti interni",
+                                "Nota d'Ambito": "Il terzo dei pianeti del sistema solare in ordine di distanza dal Sole",
+                                "Identificativo Wikidata": "Q2",
+                                "URL Soggettario": "http://purl.org/bncf/tid/5175"
+                            }
+                        },
+                        {
+                            "name": "Universo",
+                            "info": {
+                                "Macrocategoria": "Spazio",
+                                "Termine Generico": "Spazio",
+                                "Nota d'Ambito": "L'insieme di tutta la materia e l'energia esistenti e lo spazio che le contiene",
+                                "Identificativo Wikidata": "Q1",
+                                "URL Soggettario": "http://purl.org/bncf/tid/7239"
+                            }
+                        }
+                    ],
+                    "info": {
+                        "Macrocategoria": "",
+                        "Termine Generico": "",
+                        "Nota d'Ambito": "Entità illimitata, indefinita, o variamente limitata nella quale sono situati corpi o oggetti della realtà dotati di dimensioni ed eventualmente capaci di spostamenti",
+                        "Identificativo Wikidata": "Q107",
+                        "URL Soggettario": "http://purl.org/bncf/tid/1221"
+                    }
+                },
+                {
                     "name": "Forme",
                     "children": [
                         {
@@ -13152,6 +13344,91 @@
                                 "Nota d'Ambito": "Genere pittorico che ha per soggetto vedute prospettiche di città o paesaggi, attenendosi alla realtà in modo scientifico tramite l'uso della camera ottica",
                                 "Identificativo Wikidata": "Q166030",
                                 "URL Soggettario": "http://purl.org/bncf/tid/26996"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Strutture",
+                    "children": [
+                        {
+                            "name": "Canali",
+                            "info": {
+                                "Macrocategoria": "Strutture",
+                                "Termine Generico": "Infrastrutture",
+                                "Nota d'Ambito": "Corsi d'acqua creati artificialmente per servire all'irrigazione, alla navigazione, all'industria, ecc. Per il significato di canali naturali, usare Corsi d'acqua",
+                                "Identificativo Wikidata": "Q12284",
+                                "URL Soggettario": "http://purl.org/bncf/tid/4500"
+                            }
+                        },
+                        {
+                            "name": "Cimiteri",
+                            "info": {
+                                "Macrocategoria": "Strutture",
+                                "Termine Generico": "Strutture",
+                                "Nota d'Ambito": "Luoghi destinati alla sepoltura dei morti",
+                                "Identificativo Wikidata": "Q39614",
+                                "URL Soggettario": "http://purl.org/bncf/tid/849"
+                            }
+                        },
+                        {
+                            "name": "Mulini a vento",
+                            "info": {
+                                "Macrocategoria": "Strutture",
+                                "Termine Generico": "Mulini",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q38720",
+                                "URL Soggettario": "http://purl.org/bncf/tid/22972"
+                            }
+                        },
+                        {
+                            "name": "Mura",
+                            "info": {
+                                "Macrocategoria": "Strutture",
+                                "Termine Generico": "Fortificazioni",
+                                "Nota d'Ambito": "Cinta muraria di una città o di una fortezza",
+                                "Identificativo Wikidata": "Q57346",
+                                "URL Soggettario": "http://purl.org/bncf/tid/17994"
+                            }
+                        },
+                        {
+                            "name": "Necropoli",
+                            "info": {
+                                "Macrocategoria": "Strutture",
+                                "Termine Generico": "Strutture",
+                                "Nota d'Ambito": "Luoghi dedicati alla sepoltura e venerazione dei defunti, riemersi da scavi archeologici",
+                                "Identificativo Wikidata": "Q200141",
+                                "URL Soggettario": "http://purl.org/bncf/tid/2850"
+                            }
+                        },
+                        {
+                            "name": "Rovine",
+                            "info": {
+                                "Macrocategoria": "Strutture",
+                                "Termine Generico": "Costruzioni",
+                                "Nota d'Ambito": "I resti, le strutture superstiti di edifici e di complessi urbani rovinati o parzialmente distrutti",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "http://purl.org/bncf/tid/10513"
+                            }
+                        },
+                        {
+                            "name": "Terme",
+                            "info": {
+                                "Macrocategoria": "Strutture",
+                                "Termine Generico": "Strutture",
+                                "Nota d'Ambito": "Complesso di strutture destinate alle cure termali, a volte (soprattutto nell'antichità) dotate anche di bagni pubblici, palestre, piscine, biblioteche, ecc.   Per il significato di località con acque termali, usare Stazioni termali",
+                                "Identificativo Wikidata": "Q1341387",
+                                "URL Soggettario": "http://purl.org/bncf/tid/16744"
+                            }
+                        },
+                        {
+                            "name": "Tetti",
+                            "info": {
+                                "Macrocategoria": "Strutture",
+                                "Termine Generico": "Coperture",
+                                "Nota d'Ambito": "Coperture di un edificio",
+                                "Identificativo Wikidata": "Q83180",
+                                "URL Soggettario": "http://purl.org/bncf/tid/10236"
                             }
                         }
                     ]
@@ -16030,284 +16307,8 @@
                             }
                         }
                     ]
-                },
-                {
-                    "name": "Spazio",
-                    "children": [
-                        {
-                            "name": "Ambiente",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Spazio",
-                                "Nota d'Ambito": "Spazio in cui si svolge la vita di organismi e  complesso delle condizioni esterne, materiali, sociali, culturali, ecc. che definiscono quello più marcatamente antropizzato. Per il significato di spazio solo naturale anche dal punto di vista biologico, fisico, chimico, ecc., usare Ambiente naturale",
-                                "Identificativo Wikidata": "",
-                                "URL Soggettario": "http://purl.org/bncf/tid/2346"
-                            }
-                        },
-                        {
-                            "name": "Atmosfera",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Corpi celesti",
-                                "Nota d'Ambito": "Massa gassosa che circonda la Terra e la superficie solida di alcuni pianeti e che costituisce la parte esterna delle stelle",
-                                "Identificativo Wikidata": "Q8104",
-                                "URL Soggettario": "http://purl.org/bncf/tid/1843"
-                            }
-                        },
-                        {
-                            "name": "Cielo",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Universo",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q527",
-                                "URL Soggettario": "http://purl.org/bncf/tid/1839"
-                            }
-                        },
-                        {
-                            "name": "Città",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Zone urbane",
-                                "Nota d'Ambito": "Centri abitati di più o meno notevole estensione territoriale, in grado di adempiere a molteplici funzioni (economiche, politiche, religiose, culturali, ecc.)",
-                                "Identificativo Wikidata": "Q515",
-                                "URL Soggettario": "http://purl.org/bncf/tid/1218"
-                            }
-                        },
-                        {
-                            "name": "Coste",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Aree",
-                                "Nota d'Ambito": "Zone limite tra la terraferma e il mare, in parte emerse e in parte immerse",
-                                "Identificativo Wikidata": "Q93352",
-                                "URL Soggettario": "http://purl.org/bncf/tid/6150"
-                            }
-                        },
-                        {
-                            "name": "Luna",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Satelliti",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q405",
-                                "URL Soggettario": "http://purl.org/bncf/tid/9292"
-                            }
-                        },
-                        {
-                            "name": "Medio Oriente",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Oriente",
-                                "Nota d'Ambito": "Area geografica comprendente i Paesi africani e asiatici che si affacciano o gravitano sul Mediterraneo orientale (Turchia, Israele, Libia, ecc., e per i quali sta diventando sempre più rara la denominazione precedentemente in uso di Vicino Oriente) e sul Golfo Persico (Arabia, Iraq, Iran, ecc.)",
-                                "Identificativo Wikidata": "Q7204",
-                                "URL Soggettario": "http://purl.org/bncf/tid/29715"
-                            }
-                        },
-                        {
-                            "name": "Metropoli",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Città",
-                                "Nota d'Ambito": "Città di notevoli dimensioni, specialmente caratterizzata da un'intensa e dinamica vita sociale, culturale, economica",
-                                "Identificativo Wikidata": "Q200250",
-                                "URL Soggettario": "http://purl.org/bncf/tid/16480"
-                            }
-                        },
-                        {
-                            "name": "Oriente",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Luoghi di interesse storico e culturale",
-                                "Nota d'Ambito": "I territori e i paesi asiatici (così denominati in quanto ad est dell’Europa), considerati in  relazione al complesso delle loro civiltà e delle loro culture (Dev)",
-                                "Identificativo Wikidata": "Q205653",
-                                "URL Soggettario": "http://purl.org/bncf/tid/7138"
-                            }
-                        },
-                        {
-                            "name": "Orsa maggiore",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Costellazioni",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q8918",
-                                "URL Soggettario": "http://purl.org/bncf/tid/74626"
-                            }
-                        },
-                        {
-                            "name": "Paesaggio",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Territorio",
-                                "Nota d'Ambito": "Porzione di territorio che si abbraccia con lo sguardo da un punto determinato",
-                                "Identificativo Wikidata": "Q107425",
-                                "URL Soggettario": "http://purl.org/bncf/tid/8240"
-                            }
-                        },
-                        {
-                            "name": "Pianeti",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Corpi celesti",
-                                "Nota d'Ambito": "Oggetti astronomici che orbitano intorno a una stella ma che non hanno massa sufficiente per diventare stelle, risplendendo quindi di luce riflessa",
-                                "Identificativo Wikidata": "Q634",
-                                "URL Soggettario": "http://purl.org/bncf/tid/11165"
-                            }
-                        },
-                        {
-                            "name": "Sistema solare",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Sistemi planetari",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q544",
-                                "URL Soggettario": "http://purl.org/bncf/tid/29556"
-                            }
-                        },
-                        {
-                            "name": "Sobborghi",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Zone urbane",
-                                "Nota d'Ambito": "Centri abitati di piccole dimensioni, spesso con caratteri propri, situati negli immediati paraggi di un grande centro urbano senza necessariamente una continuità con i quartieri periferici della stessa città (alla quale sono solitamente collegati da infrastrutture), generalmente privi di autonomia amministrativa. Per il significato di insieme dei quartieri disposti ai margini esterni di agglomerati urbani, usare Periferie. Per il significato di zone urbane di piccola e media grandezza e importanza, usare Borghi. Per il significato di  parti di un territorio comunale che comprendono di norma un centro abitato e con determinate autonomie amministrative, usare Frazioni <Comuni>",
-                                "Identificativo Wikidata": "Q188509",
-                                "URL Soggettario": "http://purl.org/bncf/tid/55361"
-                            }
-                        },
-                        {
-                            "name": "Sole",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Stelle",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q525",
-                                "URL Soggettario": "http://purl.org/bncf/tid/2536"
-                            }
-                        },
-                        {
-                            "name": "Stelle",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Corpi celesti",
-                                "Nota d'Ambito": "Corpi celesti dotati di luce propria",
-                                "Identificativo Wikidata": "Q523",
-                                "URL Soggettario": "http://purl.org/bncf/tid/8582"
-                            }
-                        },
-                        {
-                            "name": "Terra",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Pianeti interni",
-                                "Nota d'Ambito": "Il terzo dei pianeti del sistema solare in ordine di distanza dal Sole",
-                                "Identificativo Wikidata": "Q2",
-                                "URL Soggettario": "http://purl.org/bncf/tid/5175"
-                            }
-                        },
-                        {
-                            "name": "Universo",
-                            "info": {
-                                "Macrocategoria": "Spazio",
-                                "Termine Generico": "Spazio",
-                                "Nota d'Ambito": "L'insieme di tutta la materia e l'energia esistenti e lo spazio che le contiene",
-                                "Identificativo Wikidata": "Q1",
-                                "URL Soggettario": "http://purl.org/bncf/tid/7239"
-                            }
-                        }
-                    ],
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "Entità illimitata, indefinita, o variamente limitata nella quale sono situati corpi o oggetti della realtà dotati di dimensioni ed eventualmente capaci di spostamenti",
-                        "Identificativo Wikidata": "Q107",
-                        "URL Soggettario": "http://purl.org/bncf/tid/1221"
-                    }
-                },
-                {
-                    "name": "Strutture",
-                    "children": [
-                        {
-                            "name": "Canali",
-                            "info": {
-                                "Macrocategoria": "Strutture",
-                                "Termine Generico": "Infrastrutture",
-                                "Nota d'Ambito": "Corsi d'acqua creati artificialmente per servire all'irrigazione, alla navigazione, all'industria, ecc. Per il significato di canali naturali, usare Corsi d'acqua",
-                                "Identificativo Wikidata": "Q12284",
-                                "URL Soggettario": "http://purl.org/bncf/tid/4500"
-                            }
-                        },
-                        {
-                            "name": "Cimiteri",
-                            "info": {
-                                "Macrocategoria": "Strutture",
-                                "Termine Generico": "Strutture",
-                                "Nota d'Ambito": "Luoghi destinati alla sepoltura dei morti",
-                                "Identificativo Wikidata": "Q39614",
-                                "URL Soggettario": "http://purl.org/bncf/tid/849"
-                            }
-                        },
-                        {
-                            "name": "Mulini a vento",
-                            "info": {
-                                "Macrocategoria": "Strutture",
-                                "Termine Generico": "Mulini",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q38720",
-                                "URL Soggettario": "http://purl.org/bncf/tid/22972"
-                            }
-                        },
-                        {
-                            "name": "Mura",
-                            "info": {
-                                "Macrocategoria": "Strutture",
-                                "Termine Generico": "Fortificazioni",
-                                "Nota d'Ambito": "Cinta muraria di una città o di una fortezza",
-                                "Identificativo Wikidata": "Q57346",
-                                "URL Soggettario": "http://purl.org/bncf/tid/17994"
-                            }
-                        },
-                        {
-                            "name": "Necropoli",
-                            "info": {
-                                "Macrocategoria": "Strutture",
-                                "Termine Generico": "Strutture",
-                                "Nota d'Ambito": "Luoghi dedicati alla sepoltura e venerazione dei defunti, riemersi da scavi archeologici",
-                                "Identificativo Wikidata": "Q200141",
-                                "URL Soggettario": "http://purl.org/bncf/tid/2850"
-                            }
-                        },
-                        {
-                            "name": "Rovine",
-                            "info": {
-                                "Macrocategoria": "Strutture",
-                                "Termine Generico": "Costruzioni",
-                                "Nota d'Ambito": "I resti, le strutture superstiti di edifici e di complessi urbani rovinati o parzialmente distrutti",
-                                "Identificativo Wikidata": "",
-                                "URL Soggettario": "http://purl.org/bncf/tid/10513"
-                            }
-                        },
-                        {
-                            "name": "Terme",
-                            "info": {
-                                "Macrocategoria": "Strutture",
-                                "Termine Generico": "Strutture",
-                                "Nota d'Ambito": "Complesso di strutture destinate alle cure termali, a volte (soprattutto nell'antichità) dotate anche di bagni pubblici, palestre, piscine, biblioteche, ecc.   Per il significato di località con acque termali, usare Stazioni termali",
-                                "Identificativo Wikidata": "Q1341387",
-                                "URL Soggettario": "http://purl.org/bncf/tid/16744"
-                            }
-                        },
-                        {
-                            "name": "Tetti",
-                            "info": {
-                                "Macrocategoria": "Strutture",
-                                "Termine Generico": "Coperture",
-                                "Nota d'Ambito": "Coperture di un edificio",
-                                "Identificativo Wikidata": "Q83180",
-                                "URL Soggettario": "http://purl.org/bncf/tid/10236"
-                            }
-                        }
-                    ]
                 }
+                
             ]
         },
         {
