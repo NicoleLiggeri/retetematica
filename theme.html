@@ -41,239 +41,403 @@
   </div>
 
   <script>
-    d3.json("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/gerarchia_sogg.json").then(data => {
-      const maxGraphWidth = 700;
-      const width = maxGraphWidth;
-      const height = maxGraphWidth;
-      const radius = Math.min(width, height) / 2;
-  
-      const svg = d3.select("#radial-graph")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform", `translate(${width / 2}, ${height / 2})`);
-  
-      const partition = d3.partition().size([2 * Math.PI, radius]);
-      const root = d3.hierarchy(data).sum(d => d.children ? 0 : 1);
-      partition(root);
-  
-      const arc = d3.arc()
-        .startAngle(d => d.x0)
-        .endAngle(d => d.x1)
-        .innerRadius(d => d.y0)
-        .outerRadius(d => d.y1);
-  
-      const tooltip = d3.select("#tooltip");
-      const detailsPanel = d3.select("#details");
-  
-      const colorScale = d3.scaleOrdinal([
-        "#e4f2f7", "#FB7E00", "#9FC089", "#79B4B0", "#FFCC3F"
-      ]);
-  
+d3.json("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/gerarchia_sogg.json").then(data => {
+  const maxGraphWidth = 800;
+  const width = maxGraphWidth;
+  const height = maxGraphWidth;
+  const radius = Math.min(width, height) / 2;
+
+  const svg = d3.select("#radial-graph")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+  const partition = d3.partition().size([2 * Math.PI, radius]);
+  const root = d3.hierarchy(data).sum(d => d.children ? 0 : 1);
+  partition(root);
+
+  // Generatore per i segmenti "normali"
+  const arc = d3.arc()
+    .startAngle(d => d.x0)
+    .endAngle(d => d.x1)
+    .innerRadius(d => d.y0)
+    .outerRadius(d => d.y1);
+
+  // Generatore per i segmenti in stato di hover (outerRadius + 10)
+  const arcHover = d3.arc()
+    .startAngle(d => d.x0)
+    .endAngle(d => d.x1)
+    .innerRadius(d => d.y0)
+    .outerRadius(d => d.y1 + 10);
+
+  const tooltip = d3.select("#tooltip");
+  const detailsPanel = d3.select("#details");
+
+  const colorScale = d3.scaleOrdinal([
+    "#e4f2f7", "#FB7E00", "#9FC089", "#79B4B0", "#FFCC3F", "#9f9f9f"
+  ]);
+
+  // -------------------- ARCHI --------------------
+  // Disegno degli archi: tutti i segmenti con figli
+  svg.selectAll("path")
+    .data(root.descendants().filter(d => d.children))
+    .join("path")
+    .attr("class", "segment")
+    .attr("d", arc)
+    .style("fill", d => {
+      const baseColor = d.depth === 1 
+        ? colorScale(d.data.name)
+        : d3.color(colorScale(d.ancestors()[1]?.data.name || d.data.name))
+            .brighter(d.depth * 0.25);
+      return baseColor;
+    })
+    .style("stroke", "#fff")
+    .on("mouseover", function(event, d) {
+      if (d.depth === 0) return;
+      // Espandi il segmento corrente
+      d3.select(this)
+        .transition("arcTransition")
+        .duration(200)
+        .attr("d", arcHover);
+      // Espandi tutti i segmenti discendenti
+      if (d.children) {
+        svg.selectAll("path")
+          .filter(child => child !== d && child.ancestors().indexOf(d) >= 0)
+          .transition("childArcTransition")
+          .duration(200)
+          .attr("d", arcHover);
+      }
+      this.style.cursor = "pointer";
+      tooltip.style("display", "block")
+        .style("left", `${event.pageX + 10}px`)
+        .style("top", `${event.pageY + 10}px`)
+        .html(`<strong>${d.data.name}</strong><br>Totale: ${d.value || "N/A"}`);
+      detailsPanel.html(
+        `<h2>${d.data.name}</h2>
+         <p><strong>Totale:</strong> ${d.value || "N/A"}</p>`
+      );
       svg.selectAll("path")
-        .data(root.descendants().filter(d => d.children))
-        .join("path")
-        .attr("class", "segment")
+        .filter(nodeData => nodeData === d || nodeData.ancestors().indexOf(d) >= 0)
+        .transition("fillTransition")
+        .duration(200)
+        .style("fill", nodeData => {
+          const baseColor = nodeData.depth === 1
+            ? colorScale(nodeData.data.name)
+            : d3.color(colorScale(nodeData.ancestors()[1]?.data.name || nodeData.data.name))
+                .brighter(nodeData.depth * 0.25);
+          return d3.color(baseColor).darker(0.5);
+        });
+    })
+    .on("mouseout", function(event, d) {
+      d3.select(this)
+        .transition("arcTransition")
+        .duration(200)
         .attr("d", arc)
-        .style("fill", d => {
-          const baseColor = d.depth === 1 
-            ? colorScale(d.data.name)
-            : d3.color(colorScale(d.ancestors()[1]?.data.name || d.data.name))
-                .brighter(d.depth * 0.25);
+        .style("cursor", "default");
+      if (d.children) {
+        svg.selectAll("path")
+          .filter(childData => childData !== d && childData.ancestors().indexOf(d) >= 0)
+          .transition("childArcTransition")
+          .duration(200)
+          .attr("d", arc);
+      }
+      tooltip.style("display", "none");
+      detailsPanel.html(`<p></p>`);
+      svg.selectAll("path")
+        .filter(nodeData => nodeData === d || nodeData.ancestors().indexOf(d) >= 0)
+        .transition("fillTransition")
+        .duration(200)
+        .style("fill", nodeData => {
+          const baseColor = nodeData.depth === 1
+            ? colorScale(nodeData.data.name)
+            : d3.color(colorScale(nodeData.ancestors()[1]?.data.name || nodeData.data.name))
+                .brighter(nodeData.depth * 0.25);
           return baseColor;
-        })
-        .style("stroke", "#fff")
-        .on("mouseover", function(event, d) {
-          d3.select(this)
-            .transition("arcTransition")
-            .duration(200)
-            .attr("d", d3.arc()
-              .startAngle(d.x0)
-              .endAngle(d.x1)
-              .innerRadius(d.y0)
-              .outerRadius(d.y1 + 10)
-            );
-        
-          if(d.depth === 0) {
-            this.style.cursor = "default";
-          } else {
-            this.style.cursor =  "pointer";
-          }
-        
-          tooltip.style("display", "block")
-            .style("left", `${event.pageX + 10}px`)
-            .style("top", `${event.pageY + 10}px`)
-            .html(`<strong>${d.data.name}</strong><br>Totale: ${d.value || "N/A"}`);
-        
-          detailsPanel.html(
-            `<h2>${d.data.name}</h2>
-             <p><strong>Totale:</strong> ${d.value || "N/A"}</p>`
-          );
-        
-          svg.selectAll("path")
-            .filter(function(nodeData) {
-              return nodeData === d || nodeData.ancestors().indexOf(d) >= 0;
-            })
-            .transition("fillTransition")
-            .duration(200)
-            .style("fill", function(nodeData) {
-              const baseColor = nodeData.depth === 1
-                ? colorScale(nodeData.data.name)
-                : d3.color(colorScale(nodeData.ancestors()[1]?.data.name || nodeData.data.name))
-                    .brighter(nodeData.depth * 0.25);
-              return d3.color(baseColor).darker(0.5);
-            });
-        })
-        .on("mouseout", function(event, d) {
-          d3.select(this)
-            .transition("arcTransition")
-            .duration(200)
-            .attr("d", arc)
-            .style("cursor", "default");
-  
-          if (d.children) {
-            svg.selectAll("path")
-              .filter(function(childData) {
-                return childData !== d && childData.ancestors().indexOf(d) >= 0;
-              })
-              .transition("childArcTransition")
-              .duration(200)
-              .attr("d", function(child) {
-                return arc(child);
-              });
-          }
-  
-          tooltip.style("display", "none");
-          detailsPanel.html(`<p></p>`);
-  
-          svg.selectAll("path")
-            .filter(function(nodeData) {
-              return nodeData === d || nodeData.ancestors().indexOf(d) >= 0;
-            })
-            .transition("fillTransition")
-            .duration(200)
-            .style("fill", function(nodeData) {
-              const baseColor = nodeData.depth === 1
-                ? colorScale(nodeData.data.name)
-                : d3.color(colorScale(nodeData.ancestors()[1]?.data.name || nodeData.data.name))
-                    .brighter(nodeData.depth * 0.25);
-              return baseColor;
-            });
-        })
-        .on("click", function (event, d) {
-          // Se il nodo è la root (livello 0), non fare nulla
-          if (d.depth === 0) return;
-  
-          if (d.children) {
-            // Nasconde la visualizzazione originale...
-            document.querySelector("#visualization-container").style.display = 'none';
-            // ... e mostra il container per il nuovo contenuto.
-            document.querySelector("#container").style.display = 'block';
-  
-            // Crea il contenitore per la vista intermedia (lista dinamica)
-            const newHierarchyContainer = document.createElement('div');
-            newHierarchyContainer.id = 'new-hierarchy-container';
-            document.querySelector("#container").appendChild(newHierarchyContainer);
-  
-            function displayChildren(node, previousNodes) {
-              newHierarchyContainer.innerHTML = ''; // Pulisce la lista
-  
-              const backButton = document.createElement('button');
-              backButton.textContent = 'Back';
-              backButton.style.marginBottom = '20px';
-              backButton.onclick = function () {
-                if (previousNodes.length > 1) {
-                  displayChildren(previousNodes[previousNodes.length - 1], previousNodes.slice(0, -1));
-                } else {
-                  // Se siamo al livello principale, torna alla visualizzazione originale
-                  document.querySelector("#visualization-container").style.display = 'flex';
-                  const container = document.querySelector("#container");
-                  container.removeChild(newHierarchyContainer);
-                  container.style.display = 'none';
+        });
+    })
+    .on("click", function (event, d) {
+      if (d.depth === 0) return;
+      if (d.children) {
+        document.querySelector("#visualization-container").style.display = 'none';
+        document.querySelector("#container").style.display = 'block';
+
+        const newHierarchyContainer = document.createElement('div');
+        newHierarchyContainer.id = 'new-hierarchy-container';
+        document.querySelector("#container").appendChild(newHierarchyContainer);
+
+        function displayChildren(node, previousNodes) {
+          newHierarchyContainer.innerHTML = '';
+          const backButton = document.createElement('button');
+          backButton.textContent = 'Back';
+          backButton.style.marginBottom = '20px';
+          backButton.onclick = function () {
+            if (previousNodes.length > 1) {
+              displayChildren(previousNodes[previousNodes.length - 1], previousNodes.slice(0, -1));
+            } else {
+              document.querySelector("#visualization-container").style.display = 'flex';
+              const container = document.querySelector("#container");
+              container.removeChild(newHierarchyContainer);
+              container.style.display = 'none';
+            }
+          };
+          newHierarchyContainer.appendChild(backButton);
+          const childrenList = document.createElement('ul');
+          node.children.forEach(child => {
+            const listItem = document.createElement('li');
+            if (child.children && child.children.length > 0) {
+              const toggleBtn = document.createElement('button');
+              toggleBtn.textContent = '▼';
+              toggleBtn.style.marginRight = '10px';
+              toggleBtn.onclick = function () {
+                const childUL = listItem.querySelector('ul');
+                if (childUL) {
+                  childUL.style.display = childUL.style.display === 'none' ? 'block' : 'none';
+                  toggleBtn.textContent = childUL.style.display === 'none' ? '▶' : '▼';
                 }
               };
-              newHierarchyContainer.appendChild(backButton);
-  
-              const childrenList = document.createElement('ul');
-              node.children.forEach(child => {
-                const listItem = document.createElement('li');
-  
-                if (child.children && child.children.length > 0) {
-                  // Bottone di toggle per figli con sotto-elementi
-                  const toggleBtn = document.createElement('button');
-                  toggleBtn.textContent = '▼';
-                  toggleBtn.style.marginRight = '10px';
-                  toggleBtn.onclick = function () {
-                    const childUL = listItem.querySelector('ul');
-                    if (childUL) {
-                      childUL.style.display = childUL.style.display === 'none' ? 'block' : 'none';
-                      toggleBtn.textContent = childUL.style.display === 'none' ? '▶' : '▼';
-                    }
-                  };
-  
-                  const childName = document.createElement('span');
-                  childName.textContent = child.data.name;
-                  listItem.appendChild(toggleBtn);
-                  listItem.appendChild(childName);
-  
-                  const childUL = document.createElement('ul');
-                  childUL.style.display = 'none';
-                  child.children.forEach(grandChild => {
-                    const grandChildItem = document.createElement('li');
-                    grandChildItem.textContent = grandChild.data.name;
-                    grandChildItem.style.cursor = 'pointer';
-                    // Passa "child" come nodo genitore per il grandchild
-                    grandChildItem.onclick = function () {
-                      createLinearDendrogram(grandChild.data.name, grandChild, child, newHierarchyContainer);
-                    };
-                    childUL.appendChild(grandChildItem);
-                  });
-                  listItem.appendChild(childUL);
-                } else {
-                  // Se è una foglia, la rende cliccabile
-                  const childName = document.createElement('span');
-                  childName.textContent = child.data.name;
-                  childName.style.cursor = 'pointer';
-                  // Passa "node" come nodo genitore
-                  childName.onclick = function () {
-                    createLinearDendrogram(child.data.name, child, node, newHierarchyContainer);
-                  };
-                  listItem.appendChild(childName);
-                }
-  
-                childrenList.appendChild(listItem);
+              const childName = document.createElement('span');
+              childName.textContent = child.data.name;
+              listItem.appendChild(toggleBtn);
+              listItem.appendChild(childName);
+              const childUL = document.createElement('ul');
+              childUL.style.display = 'none';
+              child.children.forEach(grandChild => {
+                const grandChildItem = document.createElement('li');
+                grandChildItem.textContent = grandChild.data.name;
+                grandChildItem.style.cursor = 'pointer';
+                grandChildItem.onclick = function () {
+                  createLinearDendrogram(grandChild.data.name, grandChild, child, newHierarchyContainer);
+                };
+                childUL.appendChild(grandChildItem);
               });
-  
-              newHierarchyContainer.appendChild(childrenList);
+              listItem.appendChild(childUL);
+            } else {
+              const childName = document.createElement('span');
+              childName.textContent = child.data.name;
+              childName.style.cursor = 'pointer';
+              childName.onclick = function () {
+                createLinearDendrogram(child.data.name, child, node, newHierarchyContainer);
+              };
+              listItem.appendChild(childName);
             }
-  
-            // La vista intermedia viene generata a partire dal nodo cliccato
-            displayChildren(d, [d]);
-          }
-        });
-  
-      svg.selectAll("text")
-        .data(root.descendants().filter(d => d.depth > 0 && d.children))
-        .join("text")
-        .attr("dy", "0.35em")
-        .attr("transform", d => {
-          const midAngle = (d.x0 + d.x1) / 2 * (180 / Math.PI) - 90;
-          const factor = 0.12;
-          const r = d.y0 + (d.y1 - d.y0) * factor;
-          return `rotate(${midAngle})translate(${r},0)rotate(${midAngle > 90 ? -180 : 0})`;
-        })
-        .attr("text-anchor", d => {
-          const midAngle = (d.x0 + d.x1) / 2 * (180 / Math.PI) - 90;
-          return midAngle > 90 ? "end" : "start";
-        })
-        .attr("fill", "black")
-        .attr("font-size", "12px")
-        .text(d => d.data.name);
+            childrenList.appendChild(listItem);
+          });
+          newHierarchyContainer.appendChild(childrenList);
+        }
+        displayChildren(d, [d]);
+      }
     });
-  
-    // Funzione per creare il dendrogramma lineare.
-    // Aggiungiamo un quarto parametro: "intermediateContainer" (il contenitore della vista intermedia)
-    async function createLinearDendrogram(searchTerm, node, parentNode, intermediateContainer) {
+
+  // -------------------- LABEL --------------------
+  // Creazione dei label (etichette) con posizionamento condizionale
+  // Escludiamo il label del nodo "Tempo" se è al primo livello della gerarchia
+  svg.selectAll("text")
+    .data(root.descendants().filter(d => d.depth > 0 && d.children && !(d.depth === 1 && d.data.name === "Tempo")))
+    .join("text")
+    .attr("dy", "0.35em")
+    .attr("transform", d => {
+      const midAngle = (d.x0 + d.x1) / 2;
+      const factor = 0.12;
+      const r = d.y0 + (d.y1 - d.y0) * factor;
+      if (!labelFits(d)) {
+        // Posizionamento esterno: usa il bordo esterno dell'arco + offset
+        const offset = 10;
+        const newR = d.y1 + offset;
+        const x = Math.cos(midAngle - Math.PI / 2) * newR;
+        const y = Math.sin(midAngle - Math.PI / 2) * newR;
+        d.labelX = x;
+        d.labelY = y;
+        d.midAngle = midAngle;
+        return `translate(${x},${y})`;
+      } else {
+        const angle = midAngle * 180 / Math.PI - 90;
+        return `rotate(${angle})translate(${r},0)${angle > 90 ? "rotate(180)" : ""}`;
+      }
+    })
+    .attr("text-anchor", d => {
+      if (!labelFits(d)) {
+        return Math.cos(d.midAngle - Math.PI / 2) >= 0 ? "start" : "end";
+      } else {
+        const midAngle = (d.x0 + d.x1) / 2;
+        const angle = midAngle * 180 / Math.PI - 90;
+        return angle > 90 ? "end" : "start";
+      }
+    })
+    .attr("fill", "black")
+    .attr("font-size", "12px")
+    .text(d => d.data.name)
+    // ---- AGGIUNTA INTERAZIONE PER I LABEL ----
+    .on("mouseover", function(event, d) {
+      if (d.depth === 0) return;
+      // Espandi il segmento corrispondente (su cui è basato il label)
+      svg.selectAll("path").filter(p => p === d)
+          .transition("arcTransition")
+          .duration(200)
+          .attr("d", arcHover);
+      if (d.children) {
+        svg.selectAll("path")
+          .filter(child => child !== d && child.ancestors().indexOf(d) >= 0)
+          .transition("childArcTransition")
+          .duration(200)
+          .attr("d", arcHover);
+      }
+      d3.select(this).style("cursor", "pointer");
+      tooltip.style("display", "block")
+             .style("left", `${event.pageX + 10}px`)
+             .style("top", `${event.pageY + 10}px`)
+             .html(`<strong>${d.data.name}</strong><br>Totale: ${d.value || "N/A"}`);
+      detailsPanel.html(
+             `<h2>${d.data.name}</h2>
+              <p><strong>Totale:</strong> ${d.value || "N/A"}</p>`);
+      svg.selectAll("path")
+         .filter(nodeData => nodeData === d || nodeData.ancestors().indexOf(d) >= 0)
+         .transition("fillTransition")
+         .duration(200)
+         .style("fill", nodeData => {
+           const baseColor = nodeData.depth === 1 
+             ? colorScale(nodeData.data.name)
+             : d3.color(colorScale(nodeData.ancestors()[1]?.data.name || nodeData.data.name))
+                .brighter(nodeData.depth * 0.25);
+           return d3.color(baseColor).darker(0.5);
+         });
+    })
+    .on("mouseout", function(event, d) {
+      svg.selectAll("path").filter(p => p === d)
+         .transition("arcTransition")
+         .duration(200)
+         .attr("d", arc)
+         .style("cursor", "default");
+      if (d.children) {
+        svg.selectAll("path")
+          .filter(child => child !== d && child.ancestors().indexOf(d) >= 0)
+          .transition("childArcTransition")
+          .duration(200)
+          .attr("d", arc);
+      }
+      tooltip.style("display", "none");
+      detailsPanel.html(`<p></p>`);
+      svg.selectAll("path")
+         .filter(nodeData => nodeData === d || nodeData.ancestors().indexOf(d) >= 0)
+         .transition("fillTransition")
+         .duration(200)
+         .style("fill", nodeData => {
+           const baseColor = nodeData.depth === 1 
+             ? colorScale(nodeData.data.name)
+             : d3.color(colorScale(nodeData.ancestors()[1]?.data.name || nodeData.data.name))
+                .brighter(nodeData.depth * 0.25);
+           return baseColor;
+         });
+    })
+    .on("click", function(event, d) {
+      if (d.depth === 0) return;
+      if (d.children) {
+        document.querySelector("#visualization-container").style.display = 'none';
+        document.querySelector("#container").style.display = 'block';
+        const newHierarchyContainer = document.createElement('div');
+        newHierarchyContainer.id = 'new-hierarchy-container';
+        document.querySelector("#container").appendChild(newHierarchyContainer);
+        function displayChildren(node, previousNodes) {
+          newHierarchyContainer.innerHTML = '';
+          const backButton = document.createElement('button');
+          backButton.textContent = 'Back';
+          backButton.style.marginBottom = '20px';
+          backButton.onclick = function () {
+            if (previousNodes.length > 1) {
+              displayChildren(previousNodes[previousNodes.length - 1], previousNodes.slice(0, -1));
+            } else {
+              document.querySelector("#visualization-container").style.display = 'flex';
+              const container = document.querySelector("#container");
+              container.removeChild(newHierarchyContainer);
+              container.style.display = 'none';
+            }
+          };
+          newHierarchyContainer.appendChild(backButton);
+          const childrenList = document.createElement('ul');
+          node.children.forEach(child => {
+            const listItem = document.createElement('li');
+            if (child.children && child.children.length > 0) {
+              const toggleBtn = document.createElement('button');
+              toggleBtn.textContent = '▼';
+              toggleBtn.style.marginRight = '10px';
+              toggleBtn.onclick = function () {
+                const childUL = listItem.querySelector('ul');
+                if (childUL) {
+                  childUL.style.display = childUL.style.display === 'none' ? 'block' : 'none';
+                  toggleBtn.textContent = childUL.style.display === 'none' ? '▶' : '▼';
+                }
+              };
+              const childName = document.createElement('span');
+              childName.textContent = child.data.name;
+              listItem.appendChild(toggleBtn);
+              listItem.appendChild(childName);
+              const childUL = document.createElement('ul');
+              childUL.style.display = 'none';
+              child.children.forEach(grandChild => {
+                const grandChildItem = document.createElement('li');
+                grandChildItem.textContent = grandChild.data.name;
+                grandChildItem.style.cursor = 'pointer';
+                grandChildItem.onclick = function () {
+                  createLinearDendrogram(grandChild.data.name, grandChild, child, newHierarchyContainer);
+                };
+                childUL.appendChild(grandChildItem);
+              });
+              listItem.appendChild(childUL);
+            } else {
+              const childName = document.createElement('span');
+              childName.textContent = child.data.name;
+              childName.style.cursor = 'pointer';
+              childName.onclick = function () {
+                createLinearDendrogram(child.data.name, child, node, newHierarchyContainer);
+              };
+              listItem.appendChild(childName);
+            }
+            childrenList.appendChild(listItem);
+          });
+          newHierarchyContainer.appendChild(childrenList);
+        }
+        displayChildren(d, [d]);
+      }
+    });
+
+  // -------------------- COLLISION RESOLUTION PER I LABEL ESTERNI --------------------
+  const minDistance = 15; // distanza minima in pixel
+  const externalLabels = svg.selectAll("text").filter(d => !labelFits(d));
+
+  const groups = { left: [], right: [] };
+  externalLabels.each(function(d) {
+    if (d.labelX < 0) groups.left.push({ node: this, d: d });
+    else groups.right.push({ node: this, d: d });
+  });
+
+  [groups.left, groups.right].forEach(group => {
+    group.sort((a, b) => a.d.labelY - b.d.labelY);
+    for (let i = 1; i < group.length; i++) {
+      const prev = group[i - 1];
+      const curr = group[i];
+      if (curr.d.labelY - prev.d.labelY < minDistance) {
+        curr.d.labelY = prev.d.labelY + minDistance;
+      }
+    }
+    group.forEach(item => {
+      d3.select(item.node).attr("transform", `translate(${item.d.labelX},${item.d.labelY})`);
+    });
+  });
+});
+
+// Funzione helper per verificare se il testo entra nella fetta
+function labelFits(d) {
+  const factor = 0.12;
+  const r = d.y0 + (d.y1 - d.y0) * factor;
+  const arcAngle = d.x1 - d.x0;
+  const availableArcLength = arcAngle * r;
+  const estimatedTextLength = d.data.name.length * 1.1;
+  return estimatedTextLength <= availableArcLength;
+}
+
+// Funzione per creare il dendrogramma lineare.
+// Aggiungiamo un quarto parametro: "intermediateContainer" (il contenitore della vista intermedia)
+async function createLinearDendrogram(searchTerm, node, parentNode, intermediateContainer) {
   // Normalizziamo (e rimuoviamo gli accenti) da subito il searchTerm per le chiavi del JSON
   const normalizedSearchTerm = searchTerm.toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
@@ -292,22 +456,20 @@
       const occurrenceCounts = matches.Associati.reduce((acc, word) => {
         // Normalizza il termine associato
         const normalizedWord = word
-          .normalize('NFD')                  // scompone gli accenti
-          .replace(/[\u0300-\u036f]/g, "")   // rimuove i segni diacritici
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, "")
           .toLowerCase();
 
         // Conta quante volte "normalizedWord" appare come token esatto in item["Temi"]
         const count = themesData.filter(item => {
           if (!item["Temi"]) return false;
 
-          // Creiamo un array di singole parole (token) partendo da item["Temi"]
           const itemThemesArray = item["Temi"]
             .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
             .toLowerCase()
-            .split(/\W+/)      // split su caratteri non alfanumerici (spazi, virgole, ecc.)
-            .filter(Boolean);  // rimuove eventuali stringhe vuote
+            .split(/\W+/)
+            .filter(Boolean);
 
-          // Verifichiamo se normalizedWord è incluso fra i token di itemThemesArray
           return itemThemesArray.includes(normalizedWord);
         }).length;
 
@@ -339,6 +501,29 @@
       // Nascondi la vista intermedia
       intermediateContainer.style.display = 'none';
       document.querySelector("#container").appendChild(dendrogramContainer);
+
+      // <<-- AGGIUNTA DEL TITOLO E DELLA SEZIONE INFO -->> 
+      // Crea l'elemento h1 con il nome del tema
+      const themeTitleEl = document.createElement('h1');
+      themeTitleEl.textContent = searchTerm;
+      dendrogramContainer.appendChild(themeTitleEl);
+
+      // Crea la div per le info e inserisce un bottone con icona "globo"
+      const themeInfoDiv = document.createElement('div');
+      themeInfoDiv.className = 'theme-info';
+      themeInfoDiv.innerHTML = `<p>Informazioni sul tema ${searchTerm}</p>`;
+      
+      // Bottone con un'icona di globo (puoi personalizzare l'SVG o sostituirlo con una classe iconica)
+      const globeButton = document.createElement('button');
+      globeButton.className = 'globe-button';
+      globeButton.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+          <path d="M2.05 11H5c.165 0 .33.006.493.017C5.175 8.674 5.907 6.441 7.34 4.68L5.636 2.977C4.107 4.572 2.984 6.746 2.05 9zM22 11h2.95c-.934-2.254-2.057-4.428-3.586-6.023l-1.704 1.703C18.093 6.559 18.825 8.793 18.507 11H22zm-9 9c2.207 0 4-1.793 4-4h-4v4zm-2-9H2.05c.934 2.254 2.057 4.428 3.586 6.023l1.704-1.703C5.907 17.441 5.175 15.207 5.493 13H10v2z"/>
+        </svg>`;
+      themeInfoDiv.appendChild(globeButton);
+      dendrogramContainer.appendChild(themeInfoDiv);
+      // <<-- FINE AGGIUNTA -->> 
 
       // Pulsante "Back" per tornare alla vista intermedia
       const backButton = document.createElement('button');

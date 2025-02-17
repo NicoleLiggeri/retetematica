@@ -605,3 +605,6 @@
           min-height: 600px !important;
 
         }
+.theme-info{
+  max-height: 100px;
+}
