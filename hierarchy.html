@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radial Visualization</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="//unpkg.com/globe.gl"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div id="app" class="one-column">
+    <header>
+      <div id="header-h1">L'Atlante dei temi letterari</div>
+      <div id="search-container">
+        <input id="search-input" type="text" placeholder="Digita un tema..." />
+        <ul id="suggestions-list"></ul>
+        <button id="search-button">Cerca</button>
+      </div>
+    </header>
+
+    <div id="visualization-container">
+      <div>
+        <svg id="radial-graph"></svg>
+      </div>
+      <div id="panel">
+        <h2>Temi organizzati in macrocategorie</h2>
+        <p class="filtered-info">clicca sul grafico per visualizzare la categoria</p>
+        <div id="details"></div>
+      </div>
+    </div>
+
+   
+    <div id="container"></div>
+
+    <footer>
+      <p>2025 Atlante dei Temi Letterari</p>
+    </footer>
+  </div>
+
+  <script>
+
+d3.json("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/gerarchia_sogg.json").then(data => {
+  const maxGraphWidth = 800;
+  const width = maxGraphWidth;
+  const height = maxGraphWidth;
+  const radius = Math.min(width, height) / 2;
+  
+  const svg = d3.select("#radial-graph")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", `translate(${width / 2}, ${height / 2})`);
+  
+  const partition = d3.partition().size([2 * Math.PI, radius]);
+  const root = d3.hierarchy(data).sum(d => d.children ? 0 : 1);
+  partition(root);
+  
+  const arc = d3.arc()
+    .startAngle(d => d.x0)
+    .endAngle(d => d.x1)
+    .innerRadius(d => d.y0)
+    .outerRadius(d => d.y1);
+  
+  const arcHover = d3.arc()
+    .startAngle(d => d.x0)
+    .endAngle(d => d.x1)
+    .innerRadius(d => d.y0)
+    .outerRadius(d => d.y1 + 10);
+  
+  const tooltip = d3.select("#tooltip");
+  const detailsPanel = d3.select("#details");
+  
+  const colorScale = d3.scaleOrdinal([
+    "#e4f2f7", "#FB7E00", "#9FC089", "#79B4B0", "#FFCC3F", "#9f9f9f"
+  ]);
+  
+  function handleMouseOver(event, d) {
+    if (d.depth === 0) return;
+    svg.selectAll("path")
+      .filter(p => p === d)
+      .transition("arcTransition")
+      .duration(200)
+      .attr("d", arcHover);
+    if (d.children) {
+      svg.selectAll("path")
+        .filter(child => child !== d && child.ancestors().indexOf(d) >= 0)
+        .transition("childArcTransition")
+        .duration(200)
+        .attr("d", arcHover);
+    }
+    d3.select(this).style("cursor", "pointer");
+    tooltip.style("display", "block")
+      .style("left", `${event.pageX + 10}px`)
+      .style("top", `${event.pageY + 10}px`)
+      .html(`<strong>${d.data.name}</strong><br>Totale: ${d.value || "N/A"}`);
+    detailsPanel.html(
+      `<h2>${d.data.name}</h2>
+       <p><strong>Totale:</strong> ${d.value || "N/A"}</p>`
+    );
+    svg.selectAll("path")
+      .filter(nodeData => nodeData === d || nodeData.ancestors().indexOf(d) >= 0)
+      .transition("fillTransition")
+      .duration(200)
+      .style("fill", nodeData => {
+        const baseColor = nodeData.depth === 1
+          ? colorScale(nodeData.data.name)
+          : d3.color(colorScale(nodeData.ancestors()[1]?.data.name || nodeData.data.name))
+              .brighter(nodeData.depth * 0.25);
+        return d3.color(baseColor).darker(0.5);
+      });
+  }
+  
+  function handleMouseOut(event, d) {
+    svg.selectAll("path")
+      .filter(p => p === d)
+      .transition("arcTransition")
+      .duration(200)
+      .attr("d", arc)
+      .style("cursor", "default");
+    if (d.children) {
+      svg.selectAll("path")
+        .filter(child => child !== d && child.ancestors().indexOf(d) >= 0)
+        .transition("childArcTransition")
+        .duration(200)
+        .attr("d", arc);
+    }
+    tooltip.style("display", "none");
+    detailsPanel.html(`<p></p>`);
+    svg.selectAll("path")
+      .filter(nodeData => nodeData === d || nodeData.ancestors().indexOf(d) >= 0)
+      .transition("fillTransition")
+      .duration(200)
+      .style("fill", nodeData => {
+        const baseColor = nodeData.depth === 1
+          ? colorScale(nodeData.data.name)
+          : d3.color(colorScale(nodeData.ancestors()[1]?.data.name || nodeData.data.name))
+              .brighter(nodeData.depth * 0.25);
+        return baseColor;
+      });
+  }
+  
+  function handleClick(event, d) {
+    if (d.depth === 0) return;
+    if (d.children) {
+      document.querySelector("#visualization-container").style.display = 'none';
+      document.querySelector("#container").style.display = 'block';
+  
+      const newHierarchyContainer = document.createElement('div');
+      newHierarchyContainer.id = 'new-hierarchy-container';
+      document.querySelector("#container").appendChild(newHierarchyContainer);
+  
+      function displayChildren(node, previousNodes) {
+        newHierarchyContainer.innerHTML = '';
+        const backButton = document.createElement('button');
+        backButton.innerHTML = '◀';
+        backButton.className = 'back-button';
+        backButton.style.marginBottom = '20px';
+        backButton.onclick = function () {
+          if (previousNodes.length > 1) {
+            displayChildren(previousNodes[previousNodes.length - 1], previousNodes.slice(0, -1));
+          } else {
+            document.querySelector("#visualization-container").style.display = 'flex';
+            const container = document.querySelector("#container");
+            container.removeChild(newHierarchyContainer);
+            container.style.display = 'none';
+          }
+        };
+        newHierarchyContainer.appendChild(backButton);
+        const childrenList = document.createElement('ul');
+        node.children.forEach(child => {
+          const listItem = document.createElement('li');
+          if (child.children && child.children.length > 0) {
+            const toggleBtn = document.createElement('button');
+            toggleBtn.textContent = '▼';
+            toggleBtn.style.marginRight = '10px';
+            toggleBtn.onclick = function () {
+              const childUL = listItem.querySelector('ul');
+              if (childUL) {
+                childUL.style.display = childUL.style.display === 'none' ? 'block' : 'none';
+                toggleBtn.textContent = childUL.style.display === 'none' ? '▶' : '▼';
+              }
+            };
+            const childName = document.createElement('span');
+            childName.textContent = child.data.name;
+            listItem.appendChild(toggleBtn);
+            listItem.appendChild(childName);
+            const childUL = document.createElement('ul');
+            childUL.style.display = 'none';
+            child.children.forEach(grandChild => {
+              const grandChildItem = document.createElement('li');
+              grandChildItem.textContent = grandChild.data.name;
+              grandChildItem.style.cursor = 'pointer';
+              grandChildItem.onclick = function () {
+                createLinearDendrogram(grandChild.data.name, grandChild, child, newHierarchyContainer);
+              };
+              childUL.appendChild(grandChildItem);
+            });
+            listItem.appendChild(childUL);
+          } else {
+            const childName = document.createElement('span');
+            childName.textContent = child.data.name;
+            childName.style.cursor = 'pointer';
+            childName.onclick = function () {
+              createLinearDendrogram(child.data.name, child, node, newHierarchyContainer);
+            };
+            listItem.appendChild(childName);
+          }
+          childrenList.appendChild(listItem);
+        });
+        newHierarchyContainer.appendChild(childrenList);
+      }
+      displayChildren(d, [d]);
+    }
+  }
+  
+  svg.selectAll("path")
+    .data(root.descendants().filter(d => d.children))
+    .join("path")
+    .attr("class", "segment")
+    .attr("d", arc)
+    .style("fill", d => {
+      const baseColor = d.depth === 1 
+        ? colorScale(d.data.name)
+        : d3.color(colorScale(d.ancestors()[1]?.data.name || d.data.name))
+            .brighter(d.depth * 0.25);
+      return baseColor;
+    })
+    .style("stroke", "#fff")
+    .on("mouseover", handleMouseOver)
+    .on("mouseout", handleMouseOut)
+    .on("click", handleClick);
+  
+  svg.selectAll("text")
+    .data(root.descendants().filter(d => d.depth > 0 && d.children && !(d.depth === 1 && d.data.name === "Tempo")))
+    .join("text")
+    .attr("dy", "0.35em")
+    .attr("transform", d => {
+      const midAngle = (d.x0 + d.x1) / 2;
+      const factor = 0.12;
+      const r = d.y0 + (d.y1 - d.y0) * factor;
+      if (!labelFits(d)) {
+        const offset = 10;
+        const newR = d.y1 + offset;
+        const x = Math.cos(midAngle - Math.PI / 2) * newR;
+        const y = Math.sin(midAngle - Math.PI / 2) * newR;
+        d.labelX = x;
+        d.labelY = y;
+        d.midAngle = midAngle;
+        return `translate(${x},${y})`;
+      } else {
+        const angle = midAngle * 180 / Math.PI - 90;
+        return `rotate(${angle})translate(${r},0)${angle > 90 ? "rotate(180)" : ""}`;
+      }
+    })
+    .attr("text-anchor", d => {
+      if (!labelFits(d)) {
+        return Math.cos(d.midAngle - Math.PI / 2) >= 0 ? "start" : "end";
+      } else {
+        const midAngle = (d.x0 + d.x1) / 2;
+        const angle = midAngle * 180 / Math.PI - 90;
+        return angle > 90 ? "end" : "start";
+      }
+    })
+    .attr("fill", "black")
+    .attr("font-size", "12px")
+    .text(d => d.data.name)
+    .on("mouseover", handleMouseOver)
+    .on("mouseout", handleMouseOut)
+    .on("click", handleClick);
+  
+  const minDistance = 15;
+  const externalLabels = svg.selectAll("text").filter(d => !labelFits(d));
+  const groups = { left: [], right: [] };
+  externalLabels.each(function(d) {
+    if (d.labelX < 0) groups.left.push({ node: this, d: d });
+    else groups.right.push({ node: this, d: d });
+  });
+  [groups.left, groups.right].forEach(group => {
+    group.sort((a, b) => a.d.labelY - b.d.labelY);
+    for (let i = 1; i < group.length; i++) {
+      const prev = group[i - 1];
+      const curr = group[i];
+      if (curr.d.labelY - prev.d.labelY < minDistance) {
+        curr.d.labelY = prev.d.labelY + minDistance;
+      }
+    }
+    group.forEach(item => {
+      d3.select(item.node).attr("transform", `translate(${item.d.labelX},${item.d.labelY})`);
+    });
+  });
+});
+  
+function labelFits(d) {
+  const factor = 0.12;
+  const r = d.y0 + (d.y1 - d.y0) * factor;
+  const arcAngle = d.x1 - d.x0;
+  const availableArcLength = arcAngle * r;
+  const estimatedTextLength = d.data.name.length * 1.1;
+  return estimatedTextLength <= availableArcLength;
+}
+  
+async function createLinearDendrogram(searchTerm, node, parentNode, intermediateContainer) {
+  const originalDisplay = intermediateContainer.style.display;
+  const normalizedSearchTerm = searchTerm.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+    .replace(/ /g, '-');
+  try {
+    const response = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json');
+    const hierarchyData = await response.json();
+    const matches = hierarchyData[normalizedSearchTerm];
+    if (matches) {
+      const themesResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json');
+      const themesData = await themesResponse.json();
+      
+      const occurrenceCounts = matches.Associati.reduce((acc, word) => {
+        const normalizedWord = word.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const count = themesData.filter(item => {
+          if (!item["Temi"]) return false;
+          const itemThemesArray = item["Temi"]
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase()
+            .split(/\W+/)
+            .filter(Boolean);
+          return itemThemesArray.includes(normalizedWord);
+        }).length;
+        acc[word] = count;
+        return acc;
+      }, {});
+      
+      const mainThemeCount = themesData.filter(item => {
+        if (!item["Temi"]) return false;
+        const itemThemesArray = item["Temi"]
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase()
+          .split(/\W+/)
+          .filter(Boolean);
+        const normalizedRootTheme = searchTerm.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        return itemThemesArray.includes(normalizedRootTheme);
+      }).length;
+      
+      const containerEl = document.querySelector("#container");
+      intermediateContainer.style.display = 'none';
+      
+      // Aggiungo un padding-bottom al container per evitare che il footer lo copra
+      containerEl.style.paddingBottom = "100px";
+      
+      const backButton = document.createElement('button');
+      backButton.innerHTML = '◀';
+      backButton.className = 'back-button';
+      backButton.style.cssText = `
+        background-color: #FB7E00;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        font-size: 14px;
+      `;
+      backButton.onclick = function () {
+        dendrogramContainer.remove();
+        backButton.remove();
+        intermediateContainer.style.display = originalDisplay;
+      };
+      containerEl.appendChild(backButton);
+      
+      const dendrogramContainer = document.createElement('div');
+      dendrogramContainer.className = 'dendrogram-container';
+      containerEl.appendChild(dendrogramContainer);
+      
+      const titleContainer = document.createElement('div');
+      titleContainer.className = 'theme-title-container';
+      titleContainer.style.display = 'flex';
+      titleContainer.style.alignItems = 'center';
+      titleContainer.style.gap = '8px';
+      
+      const themeTitleEl = document.createElement('h1');
+      themeTitleEl.textContent = searchTerm;
+      titleContainer.appendChild(themeTitleEl);
+      
+      const globeButton = document.createElement('button');
+      globeButton.className = 'globe-button';
+      globeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
+      <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+    </svg>`;
+      
+      if (mainThemeCount === 0) {
+        globeButton.disabled = true;
+        globeButton.style.opacity = "0.5";
+        globeButton.style.cursor = "not-allowed";
+        globeButton.title = "nessun dato";
+      } else {
+        globeButton.title = "visualizza mappa";
+        globeButton.addEventListener('click', () => {
+          const theme = themeTitleEl.textContent.trim();
+          window.location.href = "map.html?theme=" + encodeURIComponent(theme);
+        });
+      }
+      titleContainer.appendChild(globeButton);
+      dendrogramContainer.appendChild(titleContainer);
+      
+      let themeInfoHTML = `<p>Nessuna informazione aggiuntiva disponibile per il tema ${searchTerm}</p>`;
+      try {
+        const soggResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/gerarchia_sogg.json');
+        const soggData = await soggResponse.json();
+        
+        function findNodeByName(node, name) {
+          if (node.name === name) return node;
+          if (node.children && node.children.length > 0) {
+            for (const child of node.children) {
+              const found = findNodeByName(child, name);
+              if (found) return found;
+            }
+          }
+          return null;
+        }
+        
+        const foundNode = findNodeByName(soggData, searchTerm);
+        if (foundNode && foundNode.info) {
+          const { 
+            Macrocategoria, 
+            "Termine Generico": termineGenerico, 
+            "Nota d'Ambito": nota, 
+            "URL Soggettario": url, 
+            "Identificativo Wikidata": wikidata 
+          } = foundNode.info;
+          
+          themeInfoHTML = `
+            <p><strong>Macrocategoria:</strong> ${Macrocategoria || 'N/A'}</p>
+            <p><strong>Termine Generico:</strong> ${termineGenerico || 'N/A'}</p>
+            <p><strong>Nota d'Ambito:</strong> ${nota || 'N/A'}</p>
+            ${url ? `<p><strong>URL Soggettario:</strong> <a href="${url}" target="_blank">${url}</a></p>` : ''}
+            ${wikidata ? `<p><strong>Identificativo Wikidata:</strong> <a href="https://www.wikidata.org/wiki/${wikidata}" target="_blank">https://www.wikidata.org/wiki/${wikidata}</a></p>` : ''}
+          `;
+        }
+      } catch (err) {
+        console.error('Errore nel caricamento di gerarchia_sogg.json:', err);
+      }
+      
+      const themeInfoDiv = document.createElement('div');
+      themeInfoDiv.id = 'theme-info';
+      themeInfoDiv.innerHTML = themeInfoHTML;
+      dendrogramContainer.appendChild(themeInfoDiv);
+      
+      const treeData = {
+        name: searchTerm,
+        count: mainThemeCount,
+        children: Object.entries(occurrenceCounts).map(([name, count]) => ({ name, count }))
+      };
+      
+      const svgLinear = d3.select(dendrogramContainer)
+        .append('svg')
+        .attr('width', window.innerWidth)
+        .attr('height', window.innerHeight);
+      
+      const treeLayout = d3.tree()
+        .nodeSize([60, 120])
+        .separation((a, b) => a.parent === b.parent ? 0.5 : 1);
+      
+      const rootLinear = d3.hierarchy(treeData);
+      treeLayout(rootLinear);
+      
+      rootLinear.eachAfter(d => {
+        if (d.children && d.children.length > 0) {
+          d.x = d.children[0].x;
+        }
+      });
+      
+      const minX = d3.min(rootLinear.descendants(), d => d.x);
+      const maxX = d3.max(rootLinear.descendants(), d => d.x);
+      const minY = d3.min(rootLinear.descendants(), d => d.y);
+      const maxY = d3.max(rootLinear.descendants(), d => d.y);
+      
+      const margin = { top: 20, right: 50, bottom: 20, left: 50 };
+      const svgWidth = (maxY - minY) + margin.left + margin.right;
+      const svgHeight = (maxX - minX) + margin.top + margin.bottom;
+      
+      svgLinear
+        .attr("width", Math.max(600, svgWidth))
+        .attr("height", svgHeight);
+      
+      const g = svgLinear.append("g")
+        .attr("transform", `translate(${margin.left - minY}, ${margin.top - minX})`);
+      
+      g.selectAll("path")
+        .data(rootLinear.links())
+        .enter()
+        .append("path")
+        .attr("d", d3.linkHorizontal()
+          .x(d => d.y)
+          .y(d => d.x)
+        )
+        .attr("stroke", "#ccc")
+        .attr("fill", "none");
+      
+      const maxCountVal = d3.max(rootLinear.descendants(), d => d.data.count || 1);
+      g.selectAll("circle")
+        .data(rootLinear.descendants())
+        .enter()
+        .append("circle")
+        .attr("cx", d => d.y)
+        .attr("cy", d => d.x)
+        .attr("r", d => d.data.count ? (5 + (d.data.count / maxCountVal) * 20) : 5)
+        .attr("fill", d => d.depth === 0 ? 'rgb(251, 126, 0)' : 'rgb(145, 215, 210)');
+      
+      g.selectAll("text")
+        .data(rootLinear.descendants())
+        .enter()
+        .append("text")
+        .attr("x", d => d.y + 10)
+        .attr("y", d => d.x + 10)
+        .attr("font-size", "15px")
+        .attr("text-anchor", "start")
+        .attr("fill", "black")
+        .text(d => `${d.data.name} (${d.data.count || 0})`);
+    }
+  } catch (error) {
+    console.error('Error fetching data for linear dendrogram:', error);
+  }
+}
+  
+    document.getElementById("search-button").addEventListener("click", () => {
+      const rawInput = document.getElementById("search-input").value.trim();
+      if (!rawInput) {
+        alert("Inserisci un tema!");
+        return;
+      }
+      // Trasforma il primo carattere in maiuscolo e il resto in minuscolo
+      const searchTerm = rawInput.charAt(0).toUpperCase() + rawInput.slice(1).toLowerCase();
+      // Redirige a theme.html con il parametro "theme"
+      window.location.href = "theme.html?theme=" + encodeURIComponent(searchTerm);
+    });
+   
+    </script>
+    
+    
+  
+  
+</body>
+</html>

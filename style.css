@@ -157,7 +157,7 @@
         
             /* App Layout */
             #app {
-              display: none;
+              display: grid;
               grid-template-areas:
                 'header header'
                 'main right'
@@ -596,15 +596,64 @@
         #container {
           /* Calcola un'altezza in base all'altezza della viewport e sottrae spazio per header e footer */
           min-height: 700px ; /* 150px è un esempio: regola in base al layout */
-          min-width: 800px !important;
+          width: 100%;
           overflow: auto;
+          margin-top: 80px;
+          margin-left: 80px;
 
         }
-        #container div {
-          min-width: 800px !important; /* Valore minimo per evitare che sia troppo stretta */
-          min-height: 600px !important;
-
+        #viz{
+          margin-top: 80px;
+          margin-left: 80px;
+          min-height: 85vh;
         }
-.theme-info{
-  max-height: 100px;
+
+        #theme-info {
+          max-height: 300px !important;
+          overflow-y: auto;
+          margin-bottom: 40px;
+        }
+        .back-button{
+          background-color: #FB7E00;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          padding: 8px 12px;
+          cursor: pointer;
+          margin-bottom: 20px;
+          font-size: 14px;
+        }
+        .globe-button{
+          padding: 4px 8px;
+          color: white;
+          border-radius: 4px;
+          background-color: #FB7E00;
+          cursor: pointer;
+        }
+
+
+ 
+#app.single-column {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+#container{
+  display: none;
+}
+#dendrogram-container{
+margin-top: 80px;
+margin-left: 80px;
+margin-bottom: 40px;
+}
+.disabled{
+  color: #444;
+}
+#panel{
+  margin-top: 80px;
 }

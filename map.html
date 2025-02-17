@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Globe Visualization</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+
+  <script src="//unpkg.com/globe.gl"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  
+</head>
+<body>
+
+  <div id="app" class="one-column">
+
+    <header>
+        <div id="header-h1">L'Atlante dei temi letterari</div>
+        
+        <div id="search-container">
+            <input id="search-input" type="text" placeholder="Digita un tema...">
+            <ul id="suggestions-list"></ul>
+            <button id="search-button">Cerca</button>
+          </div>
+        
+      </header>
+    <div id="globe-container">
+      <div id="globeViz"></div>
+    </div>
+
+    <div id="right-panel">
+
+
+    <div class="wrapper">
+        <p class="filtered-info">Filtra per date d'autore</p>
+  <div class="values">
+    
+    <span id="range1">
+      0
+    </span>
+
+    <span id="range2">
+      100
+    </span>
+  </div>
+  <div class="container">
+    
+    <div class="slider-track"></div>
+    <input type="range" min="0" max="2025" value="30" id="slider-1" oninput="slideOne()">
+    <input type="range" min="0" max="2025" value="2025" id="slider-2" oninput="slideTwo()">
+  </div>
+</div>
+      
+      <div id="data-panel">
+        <h3>Autori correlati:</h3>
+        <h4 class="filtered-info">clicca sulla mappa per filtrare</h4>
+        <div id="list-auth">
+        <ul id="data-list"></ul>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Structure -->
+<!-- Modal Structure -->
+<!-- Modal for displaying author details -->
+<div id="author-details-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-modal">&times;</span>
+      <h2 id="author-name"></h2>
+      <p id="author-years"></p>
+      <h3>Temi</h3>
+      <div id="author-themes"></div>
+    </div>
+  </div>
+  
+  
+  
+    <footer>
+      <p>2025 Atlante dei Temi Letterari</p>
+    </footer>
+  </div>
+
+  <script>
+
+    let world;
+    let countriesData;
+    let data = [];
+    let associationsData = {};
+  
+    fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json')
+    .then(res => res.json())
+    .then(json => {
+      data = json;
+      
+      const params = new URLSearchParams(window.location.search);
+      const themeParam = params.get('theme');
+      if (themeParam) {
+        const searchInput = document.getElementById('search-input');
+        searchInput.value = themeParam;
+        triggerSearch();
+      }
+    })
+    .catch(err => console.error("Errore nel caricamento dei dati:", err));
+
+ 
+    fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json')
+      .then(res => res.json())
+      .then(json => { associationsData = json; });
+      let countryMapping = {};
+
+function loadCountryMapping() {
+  fetch("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/mapping_ei.csv") // 🔹 Sostituisci con il percorso reale del CSV
+    .then(response => response.text())
+    .then(csvText => {
+      const rows = csvText.split("\n").map(row => row.trim()).filter(row => row);
+      rows.forEach(row => {
+        const [english, italian] = row.split(","); 
+        if (english && italian) {
+          countryMapping[english.trim()] = italian.trim();
+        }
+      });
+      console.log("Mappatura Paesi Caricata:", countryMapping);
+    })
+    .catch(error => console.error("Errore nel caricamento del CSV:", error));
+}
+
+loadCountryMapping();
+ 
+fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+      .then(res => res.json())
+      .then(countries => {
+        countriesData = countries.features;
+        world = new Globe(document.getElementById('globeViz'))
+          .backgroundColor('#e4f2f7')
+          .globeImageUrl('https://upload.wikimedia.org/wikipedia/commons/a/ac/World_location_map.svg')
+          .polygonsData(countriesData)
+          .polygonCapColor(() => '#a9baba')
+          .polygonSideColor(() => 'rgba(132, 145, 145, 1)')
+          .polygonStrokeColor(() => '#111')
+          .onPolygonClick(({ properties: d }) => {
+            const clickedCountry = d.ADMIN;
+            const startYear = parseInt(document.getElementById('slider-1').value);
+            const endYear = parseInt(document.getElementById('slider-2').value);
+            const temaKeyword = cleanText(document.getElementById('search-input').value.trim());  
+  
+
+              const italianCountry = countryMapping[clickedCountry] || clickedCountry;
+              
+
+              const header = document.querySelector("#data-panel h3");
+              if (header) {
+                header.innerHTML = `Autori correlati ${italianCountry}:`;
+              }
+
+
+            const countryMatches = data.filter(item => 
+              item["Citizenship Label"] === clickedCountry &&
+              cleanText(item["Temi"]).includes(temaKeyword) 
+            );
+  
+
+            const filteredAuthors = countryMatches.filter(item => {
+              const birthYear = parseInt(item["Formatted Year of Birth"]);
+              const deathYear = item["Formatted Year of Death"] === "Error: invalid syntax (<unknown>, line 0)" ? null : parseInt(item["Formatted Year of Death"]);
+              const isWithinYearRange = (birthYear >= startYear && birthYear <= endYear) ||
+                                        (deathYear && deathYear >= startYear && deathYear <= endYear);
+              return isWithinYearRange;
+            });
+
+            const authors = filteredAuthors.map(item => item["Autore"]);
+            const dataList = document.getElementById('data-list');
+            dataList.innerHTML = ''; 
+            authors.forEach(author => {
+              const listItem = document.createElement('li');
+              listItem.textContent = author;
+              dataList.appendChild(listItem);
+            });
+  
+
+          });
+  
+        world.pointOfView({ lat: 40, lng: 20, altitude: 1 });
+      });
+
+
+    const cleanText = (text) => text.toLowerCase().replace(/[^\w\s]/g, '').trim();
+  
+    document.getElementById('search-button').addEventListener('click', triggerSearch);
+
+    function triggerSearch() {
+  const modal = document.getElementById('author-details-modal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+  const dendrogramContainer = document.getElementById('dendrogram-container');
+  if (dendrogramContainer) {
+    dendrogramContainer.remove();
+    document.getElementById('globe-container').style.display = 'block';
+    document.getElementById('right-panel').style.display = 'block';
+    
+  }
+  
+  const searchInput = document.getElementById('search-input');
+  const keyword = searchInput.value.trim();
+  const startYear = parseInt(document.getElementById('slider-1').value);
+  const endYear = parseInt(document.getElementById('slider-2').value);
+  
+  if (!keyword) {
+    alert('Please enter a keyword.');
+    return;
+  }
+  
+  const cleanedKeyword = cleanText(keyword);
+  const wrapper = document.querySelector('.wrapper');
+  
+  if (!keyword) {
+    alert('Inserisci un tema!');
+    return;
+  }
+  const matches = data.filter(item => {
+    const birthYear = parseInt(item["Formatted Year of Birth"]);
+    const deathYear = item["Formatted Year of Death"] === "Error: invalid syntax (<unknown>, line 0)" ? null : parseInt(item["Formatted Year of Death"]);
+    const isKeywordMatch = cleanText(item["Temi"])
+      .split(',')
+      .map(t => t.trim())
+      .some(t => t === cleanedKeyword);
+    const isWithinYearRange = (birthYear >= startYear && birthYear <= endYear) || (deathYear && deathYear >= startYear && deathYear <= endYear);
+    return isKeywordMatch && isWithinYearRange;
+  });
+  
+  if (matches.length === 0) {
+    alert('Nessun risultato trovato per il tema e i criteri selezionati.');
+    return;
+  }
+  
+  if (wrapper && (wrapper.style.display === 'none' || wrapper.style.display === '')) {
+    wrapper.style.display = 'block';
+  }
+  
+  const app = document.getElementById('app');
+  const rightPanel = document.getElementById('right-panel');
+  
+  if (app.classList.contains('one-column')) {
+    app.classList.remove('one-column');
+    app.classList.add('two-columns');
+  }
+  
+  rightPanel.style.display = 'block';
+  
+  const selectedTheme = keyword;
+  if (!selectedTheme) {
+    alert('Inserisci un tema!');
+    return;
+  }
+  
+
+
+let themeHeader = document.getElementById('theme-header');
+if (!themeHeader) {
+  themeHeader = document.createElement('h1');
+  themeHeader.id = 'theme-header';
+  rightPanel.insertBefore(themeHeader, rightPanel.firstChild);
+}
+
+
+const normalized = selectedTheme.toLowerCase()
+  .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+  .replace(/ /g, '-');
+
+
+if (associationsData[normalized] && associationsData[normalized].Associati && associationsData[normalized].Associati.length > 0) {
+  themeHeader.innerHTML = `<a href="#" id="theme-link" class="theme-link">${selectedTheme}</a>`;
+  document.getElementById('theme-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    showDendrogramForTheme(selectedTheme);
+  });
+} else {
+  themeHeader.textContent = selectedTheme;
+}
+ 
+  
+  const countryOccurrences = matches.reduce((acc, item) => {
+    const country = item["Citizenship Label"];
+    acc[country] = (acc[country] || 0) + 1;
+    return acc;
+  }, {});
+  
+  if (world && countriesData) {
+    world.polygonCapColor(({ properties: d }) => {
+      const count = countryOccurrences[d.ADMIN] || 0;
+      return count > 0 ? `rgba(232, 232, 39, ${Math.min(count / 10, 1)})` : '#aaaaaa';
+    });
+  }
+  
+  const authors = matches.map(item => item["Autore"]);
+  const dataList = document.getElementById('data-list');
+  dataList.innerHTML = '';
+  if (authors.length > 0) {
+    document.getElementById('data-panel').style.display = 'block';
+    authors.forEach(author => {
+      const listItem = document.createElement('li');
+      listItem.textContent = author;
+      dataList.appendChild(listItem);
+    });
+  } else {
+    document.getElementById('data-panel').style.display = 'none';
+    alert('No authors found for the selected country and criteria.');
+  }
+}
+  
+    const startYearInput = document.getElementById('slider-1');
+    const endYearInput = document.getElementById('slider-2');
+    const searchInput = document.getElementById('search-input');  
+    const searchButton = document.getElementById('search-button'); 
+    const dataList = document.getElementById('data-list'); 
+    
+  startYearInput.addEventListener('input', () => {
+    const header = document.querySelector("#data-panel h3");
+    if (header && header.textContent.trim() !== "Autori correlati:") {
+      header.textContent = "Autori correlati:";
+    }
+    triggerSearch();
+  });
+
+  endYearInput.addEventListener('input', () => {
+    const header = document.querySelector("#data-panel h3");
+    if (header && header.textContent.trim() !== "Autori correlati:") {
+      header.textContent = "Autori correlati:";
+    }
+    triggerSearch();
+  });
+
+
+  
+   searchButton.addEventListener('click', triggerSearch);
+
+const modal = document.getElementById('author-modal');
+const modalContent = document.getElementById('modal-content');
+const closeModal = document.getElementById('close-modal');
+const authorName = document.getElementById('author-name');
+const authorBirthDeath = document.getElementById('author-birth-death');
+
+
+document.getElementById('data-list').addEventListener('click', (event) => {
+  const clickedAuthor = event.target.textContent;
+  const authorEntries = data.filter(item => item["Autore"] === clickedAuthor);
+  if (authorEntries.length > 0) {
+    const uniqueThemes = [
+      ...new Set(authorEntries.map(item => item["Temi"].trim()))
+    ];
+    
+    document.getElementById('author-name').textContent = clickedAuthor;
+    document.getElementById('author-years').textContent =
+      `${authorEntries[0]["Formatted Year of Birth"] || 'Unknown'} - ${authorEntries[0]["Formatted Year of Death"] || 'Unknown'}`;
+    const themesContainer = document.getElementById('author-themes');
+    themesContainer.innerHTML = '';
+    uniqueThemes.forEach(theme => {
+      
+      const normalized = theme.toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+        .replace(/ /g, '-');
+      
+      
+      if (associationsData[normalized] && associationsData[normalized].Associati && associationsData[normalized].Associati.length > 0) {
+        const themeLink = document.createElement('a');
+        themeLink.textContent = theme;
+        themeLink.href = '#';
+        themeLink.classList.add('theme-link');
+        themeLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          showDendrogramForTheme(theme);
+        });
+        themesContainer.appendChild(themeLink);
+      } else {
+        
+        const themeSpan = document.createElement('span');
+        themeSpan.textContent = theme;
+        themeSpan.classList.add('theme-link', 'disabled');
+        
+        themesContainer.appendChild(themeSpan);
+      }
+    });
+    document.getElementById('author-details-modal').style.display = 'block';
+  } else {
+    alert('No details found for the selected author.');
+  }
+});
+
+function fetchThemeDetails(theme) {
+  fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json')
+    .then(response => response.json())
+    .then(dataset => {
+      const normalizedTheme = theme.toLowerCase();  
+      const associatedThemes = dataset[normalizedTheme]?.Associati;
+
+      if (associatedThemes) {
+        
+        document.body.innerHTML = `
+          <h2>Associated Themes for "${theme}"</h2>
+          <ul>
+            ${associatedThemes.map(t => `<li><a href="#" class="theme-link" onclick="fetchThemeDetails('${t}')">${t}</a></li>`).join('')}
+          </ul>
+          <button onclick="window.location.reload()">Back to Authors</button>
+        `;
+      } else {
+        alert(`No associated themes found for "${theme}".`);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching theme details:', error);
+      alert('An error occurred while fetching theme details.');
+    });
+}
+
+
+document.getElementById('close-modal').addEventListener('click', () => {
+  document.getElementById('author-details-modal').style.display = 'none';
+});
+
+
+window.onload = function () {
+  slideOne();
+  slideTwo();
+};
+
+
+let sliderOne = document.getElementById("slider-1");
+let sliderTwo = document.getElementById("slider-2");
+let displayValOne = document.getElementById("range1");
+let displayValTwo = document.getElementById("range2");
+let minGap = 0;
+let sliderTrack = document.querySelector(".slider-track");
+let sliderMaxValue = document.getElementById("slider-1").max;
+
+function slideOne() {
+  if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+    sliderOne.value = parseInt(sliderTwo.value) - minGap;
+  }
+  displayValOne.textContent = sliderOne.value;
+  fillColor();
+}
+function slideTwo() {
+  if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+    sliderTwo.value = parseInt(sliderOne.value) + minGap;
+  }
+  displayValTwo.textContent = sliderTwo.value;
+  fillColor();
+}
+function fillColor() {
+  percent1 = (sliderOne.value / sliderMaxValue) * 100;
+  percent2 = (sliderTwo.value / sliderMaxValue) * 100;
+  sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
+}
+
+
+
+let suggestionIndex = -1;
+
+
+
+let themes = [];
+
+function extractThemesFromData() {
+  const themesSet = new Set();
+  data.forEach(item => {
+    if (item["Temi"]) {
+      
+      themesSet.add(item["Temi"].trim());
+    }
+  });
+  themes = Array.from(themesSet);
+}
+
+
+fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json')
+  .then(res => res.json())
+  .then(json => { 
+    data = json;
+    extractThemesFromData();
+  })
+  .catch(err => console.error("Errore nel caricamento dei dati:", err));
+
+  
+const suggestionsList = document.getElementById("suggestions-list");
+
+
+function updateSuggestions() {
+  suggestionIndex = -1;               
+  suggestionsList.innerHTML = "";     
+
+  const query = searchInput.value.toLowerCase();
+  if (query.length === 0) return;       
+
+  
+  const filteredThemes = themes.filter(theme => theme.toLowerCase().startsWith(query));
+
+  
+  filteredThemes.slice(0, 4).forEach((theme) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = theme;
+    
+    
+    listItem.addEventListener("click", () => {
+      searchInput.value = theme;
+      suggestionsList.innerHTML = "";
+      suggestionIndex = -1;
+    });
+    
+    suggestionsList.appendChild(listItem);
+  });
+}
+
+
+searchInput.addEventListener("input", updateSuggestions);
+
+
+searchInput.addEventListener("keydown", (e) => {
+  const items = suggestionsList.getElementsByTagName("li");
+
+  if (e.key === "ArrowDown") {
+    e.preventDefault(); 
+    if (items.length === 0) return;
+    
+    if (suggestionIndex < items.length - 1) {
+      suggestionIndex++;
+    } else {
+      suggestionIndex = 0;
+    }
+    highlightSuggestion(items, suggestionIndex);
+
+  } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    if (items.length === 0) return;
+    if (suggestionIndex > 0) {
+      suggestionIndex--;
+    } else {
+      suggestionIndex = items.length - 1;
+    }
+    highlightSuggestion(items, suggestionIndex);
+
+  } else if (e.key === "Enter") {
+    e.preventDefault(); 
+
+    
+    if (suggestionIndex > -1 && items[suggestionIndex]) {
+      searchInput.value = items[suggestionIndex].textContent;
+    }
+    
+    suggestionsList.innerHTML = "";
+    suggestionIndex = -1;
+
+    
+    triggerSearch();
+  }
+});
+
+
+
+function highlightSuggestion(items, index) {
+  
+  Array.from(items).forEach(item => item.classList.remove("active"));
+  
+  if (items[index]) {
+    items[index].classList.add("active");
+  }
+}
+
+
+document.addEventListener("click", (e) => {
+  if (!searchInput.contains(e.target) && !suggestionsList.contains(e.target)) {
+    suggestionsList.innerHTML = "";
+    suggestionIndex = -1;
+  }
+});
+async function showDendrogramForTheme(theme) {
+  
+  const normalizedTheme = theme.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+    .replace(/ /g, '-');
+
+  try {
+    
+    const hierarchyResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/hierarchy_themes.json');
+    const hierarchyData = await hierarchyResponse.json();
+    const matches = hierarchyData[normalizedTheme];
+
+    if (!matches) {
+      alert(`Nessun tema associato trovato per "${theme}".`);
+      return;
+    }
+let themesData;
+    if (window.data && Array.isArray(window.data) && window.data.length > 0) {
+      themesData = window.data;
+      console.log("Utilizzo dei dati già caricati globalmente");
+    } else {
+      const themesResponse = await fetch('https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/data.json');
+      themesData = await themesResponse.json();
+    }
+
+   
+    const occurrenceCounts = matches.Associati.reduce((acc, word) => {
+      const normalizedWord = word
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+      const count = themesData.filter(item => {
+        if (!item["Temi"]) return false;
+        const itemThemesArray = item["Temi"]
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .split(/\W+/)
+          .filter(Boolean);
+        return itemThemesArray.includes(normalizedWord);
+      }).length;
+      acc[word] = count;
+      return acc;
+    }, {});
+
+  
+    const mainThemeCount = themesData.filter(item => {
+      if (!item["Temi"]) return false;
+      const itemThemesArray = item["Temi"]
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .split(/\W+/)
+        .filter(Boolean);
+      const normalizedMain = theme
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+      return itemThemesArray.includes(normalizedMain);
+    }).length;
+    console.log("mainThemeCount:", mainThemeCount);
+
+
+    document.getElementById('globe-container').style.display = 'none';
+    document.getElementById('right-panel').style.display = 'none';
+    document.getElementById('author-details-modal').style.display = 'none';
+
+
+    let dendrogramContainer = document.getElementById('dendrogram-container');
+    if (!dendrogramContainer) {
+      const app = document.getElementById('app');
+      dendrogramContainer = document.createElement('div');
+      dendrogramContainer.id = 'dendrogram-container';
+      dendrogramContainer.style.padding = '20px';
+      app.appendChild(dendrogramContainer);
+    } else {
+      dendrogramContainer.innerHTML = '';
+    }
+
+
+    const backButton = document.createElement('button');
+    backButton.textContent = '◀ Indietro';
+    backButton.style.marginBottom = '20px';
+    backButton.addEventListener('click', () => {
+      dendrogramContainer.innerHTML = '';
+      document.getElementById('globe-container').style.display = 'block';
+      document.getElementById('right-panel').style.display = 'block';
+      document.getElementById('author-details-modal').style.display = 'block';
+    });
+    dendrogramContainer.appendChild(backButton);
+
+
+    const titleContainer = document.createElement('div');
+    titleContainer.className = 'theme-title-container';
+    titleContainer.style.display = 'flex';
+    titleContainer.style.alignItems = 'center';
+    titleContainer.style.gap = '8px';
+
+    const h1 = document.createElement('h1');
+    h1.textContent = theme;
+    titleContainer.appendChild(h1);
+
+    const globeButton = document.createElement('button');
+    globeButton.className = 'globe-button';
+    globeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+          class="bi bi-globe" viewBox="0 0 16 16">
+          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+        </svg>`;
+
+   if (mainThemeCount <= 0 || !matches.Associati || matches.Associati.length === 0) {
+      globeButton.disabled = true;
+      globeButton.style.opacity = '0.5';
+      globeButton.style.cursor = 'not-allowed';
+      globeButton.style.pointerEvents = 'none';
+      globeButton.title = "Nessun dato disponibile per la mappa";
+    } else {
+      globeButton.title = "Visualizza mappa";
+      globeButton.addEventListener('click', () => {
+        window.location.href = "map.html?theme=" + encodeURIComponent(theme);
+      });
+    }
+    titleContainer.appendChild(globeButton);
+    dendrogramContainer.appendChild(titleContainer);
+
+   let themeInfoHTML = `<p>Nessuna informazione aggiuntiva disponibile per il tema ${theme}</p>`;
+    try {
+      const soggResponse = await fetch("https://raw.githubusercontent.com/NicoleLiggeri/retetematica/refs/heads/main/datasets/gerarchia_sogg.json");
+      const soggData = await soggResponse.json();
+
+      function findNodeByName(node, name) {
+        if (node.name === name) return node;
+        if (node.children && node.children.length > 0) {
+          for (const child of node.children) {
+            const found = findNodeByName(child, name);
+            if (found) return found;
+          }
+        }
+        return null;
+      }
+      const foundNode = findNodeByName(soggData, theme);
+      if (foundNode && foundNode.info) {
+        const { 
+          Macrocategoria, 
+          "Termine Generico": termineGenerico, 
+          "Nota d'Ambito": nota, 
+          "URL Soggettario": url, 
+          "Identificativo Wikidata": wikidata 
+        } = foundNode.info;
+        themeInfoHTML = `
+          <p><strong>Macrocategoria:</strong> ${Macrocategoria || 'N/A'}</p>
+          <p><strong>Termine Generico:</strong> ${termineGenerico || 'N/A'}</p>
+          <p><strong>Nota d'Ambito:</strong> ${nota || 'N/A'}</p>
+          ${url ? `<p><strong>URL Soggettario:</strong> <a href="${url}" target="_blank">${url}</a></p>` : ''}
+          ${wikidata ? `<p><strong>Identificativo Wikidata:</strong> <a href="https://www.wikidata.org/wiki/${wikidata}" target="_blank">${wikidata}</a></p>` : ''}
+        `;
+      }
+    } catch (err) {
+      console.error("Errore nel caricamento delle informazioni aggiuntive:", err);
+    }
+    const infoDiv = document.createElement("div");
+    infoDiv.id = "theme-info";
+    infoDiv.innerHTML = themeInfoHTML;
+    dendrogramContainer.appendChild(infoDiv);
+
+    const treeData = {
+      name: theme,
+      count: mainThemeCount,
+      children: Object.entries(occurrenceCounts).map(([name, count]) => ({ name, count }))
+    };
+
+    const defaultWidth = Math.max(window.innerWidth * 0.8, 600);
+    const defaultHeight = window.innerHeight * 0.8;
+
+    const svg = d3.select(dendrogramContainer)
+      .append('svg')
+      .attr('width', defaultWidth)
+      .attr('height', defaultHeight);
+
+    const treeLayout = d3.tree()
+      .nodeSize([60, 120])
+      .separation((a, b) => a.parent === b.parent ? 0.5 : 1);
+
+    const rootNode = d3.hierarchy(treeData);
+    treeLayout(rootNode);
+    rootNode.eachAfter(d => {
+      if (d.children && d.children.length > 0) {
+        d.x = d.children[0].x;
+      }
+    });
+
+    const minX = d3.min(rootNode.descendants(), d => d.x);
+    const maxX = d3.max(rootNode.descendants(), d => d.x);
+    const minY = d3.min(rootNode.descendants(), d => d.y);
+    const maxY = d3.max(rootNode.descendants(), d => d.y);
+
+    const margin = { top: 20, right: 50, bottom: 20, left: 50 };
+    const calculatedWidth = (maxY - minY) + margin.left + margin.right;
+    const calculatedHeight = (maxX - minX) + margin.top + margin.bottom;
+
+    svg.attr("width", Math.max(defaultWidth, calculatedWidth))
+       .attr("height", Math.max(defaultHeight, calculatedHeight));
+
+    const g = svg.append("g")
+      .attr("transform", `translate(${margin.left - minY}, ${margin.top - minX})`);
+
+    g.selectAll("path")
+      .data(rootNode.links())
+      .enter()
+      .append("path")
+      .attr("d", d3.linkHorizontal()
+        .x(d => d.y)
+        .y(d => d.x)
+      )
+      .attr("stroke", "#ccc")
+      .attr("fill", "none");
+
+    const maxCountVal = d3.max(rootNode.descendants(), d => d.data.count || 1);
+    g.selectAll("circle")
+      .data(rootNode.descendants())
+      .enter()
+      .append("circle")
+      .attr("cx", d => d.y)
+      .attr("cy", d => d.x)
+      .attr("r", d => d.data.count ? (5 + (d.data.count / maxCountVal) * 20) : 5)
+      .attr("fill", d => d.depth === 0 ? 'rgb(251, 126, 0)' : 'rgb(145, 215, 210)');
+
+    g.selectAll("text")
+      .data(rootNode.descendants())
+      .enter()
+      .append("text")
+      .attr("x", d => d.y + 10)
+      .attr("y", d => d.x + 10)
+      .attr("font-size", "15px")
+      .attr("text-anchor", "start")
+      .attr("fill", "black")
+      .text(d => `${d.data.name} (${d.data.count || 0})`);
+
+  } catch (error) {
+    console.error("Errore nella creazione del dendrogramma:", error);
+    alert("Si è verificato un errore durante la creazione del dendrogramma.");
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const theme = params.get('theme');
+  if (theme) {
+    const searchInput = document.getElementById('search-input');
+    searchInput.value = theme;
+    
+    
+    const interval = setInterval(() => {
+      if (window.data && Array.isArray(window.data) && window.data.length > 0) {
+        clearInterval(interval);
+        
+        if (typeof triggerSearch === 'function') {
+          triggerSearch();
+        } else {
+          
+          document.getElementById('search-button').click();
+        }
+      }
+    }, 100); 
+  }
+});
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const headerH1 = document.getElementById("header-h1");
+    if (headerH1) {
+      headerH1.style.cursor = "pointer"; 
+      headerH1.addEventListener("click", () => {
+        window.location.href = "index.html";
+      });
+    }
+  });
+
+
+  </script>
+  
+
+
+  
+</body>
+</html>
