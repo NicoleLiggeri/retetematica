@@ -18,6 +18,66 @@
                             }
                         },
                         {
+                            "name": "Incesto",
+                            "info": {
+                                "Macrocategoria": "Attività",
+                                "Termine Generico": "Attività",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q127683",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=6216"
+                            }
+                        },
+                        {
+                            "name": "Tortura",
+                            "info": {
+                                "Macrocategoria": "Attività",
+                                "Termine Generico": "Attività",
+                                "Nota d'Ambito": "Complesso di forme di coercizione fisica o morale inflitte specialmente a un imputato o al testimone di un processo, per indurlo a confessare o a deporre in modo attendibile, in uso dall’antichità al sec. 19. e oggi formalmente ripudiate da tutti gli Stati, ma ancora in uso illegalmente in molte parti del mondo",
+                                "Identificativo Wikidata": "Q132781",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=13284"
+                            }
+                        },
+                        {
+                            "name": "Stregoneria",
+                            "info": {
+                                "Macrocategoria": "Attività",
+                                "Termine Generico": "Attività",
+                                "Nota d'Ambito": "Il complesso di pratiche e arti magiche di streghe e stregoni per operare, attraverso poteri soprannaturali, in danno di altri.Per il significato del complesso delle pratiche e dei saperi esoterici e iniziatici che si presentano come capaci di controllare le forze della natura, usare Magia",
+                                "Identificativo Wikidata": "8893",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=12445"
+                            }
+                        },
+                        {
+                            "name": "Avventura",
+                            "info": {
+                                "Macrocategoria": "Attività",
+                                "Termine Generico": "Attività",
+                                "Nota d'Ambito": "Impresa audace ma attraente e piena di fascino per ciò che vi è in essa di ignoto o di inaspettato",
+                                "Identificativo Wikidata": "Q1436734",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=2674"
+                            }
+                        },
+                        {
+                            "name": "Martirio",
+                            "info": {
+                                "Macrocategoria": "Attività",
+                                "Termine Generico": "Attività",
+                                "Nota d'Ambito": "Sacrificio della vita accettato in nome della fede",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=12445"
+                            }
+                        },
+                        {
+                            "name": "Avarizia",
+                            "info": {
+                                "Macrocategoria": "Attività",
+                                "Termine Generico": "Attività",
+                                "Nota d'Ambito": "Comportamento caratterizzato da un eccessivo ritegno nello spendere e nel donare (considerato, nella dottrina cattolica, uno dei sette peccati capitali)",
+                                "Identificativo Wikidata": "Q193543",
+                                "URL Soggettario": "49513"
+                            }
+                        },
+                        {
                             "name": "Abbraccio",
                             "info": {
                                 "Macrocategoria": "Attività",
@@ -328,7 +388,7 @@
                             }
                         },
                         {
-                            "name": "Arte",
+                            "name": "Arte, artista",
                             "info": {
                                 "Macrocategoria": "Attività",
                                 "Termine Generico": "Attività",
@@ -528,7 +588,7 @@
                             }
                         },
                         {
-                            "name": "Benedizione",
+                            "name": "Benedizione/Maledizione",
                             "info": {
                                 "Macrocategoria": "Attività",
                                 "Termine Generico": "Attività",
@@ -4313,6 +4373,107 @@
                             }
                         },
                         {
+                            "name": "Guerre civili",
+                            "info": {
+                                "Macrocategoria": "Processi",
+                                "Termine Generico": "Processi",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=4654"
+                            }
+                        },
+                        {
+                            "name": "Mutismo",
+                            "info": {
+                                "Macrocategoria": "Processi",
+                                "Termine Generico": "Processi",
+                                "Nota d'Ambito": "Incapacità di emettere suoni distinti e parole articolate dovuta a lesioni o a cause di origine motoria o psichica",
+                                "Identificativo Wikidata": "Q671776",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=12772"
+                            }
+                        },
+                        {
+                            "name": "Metamorfosi",
+                            "info": {
+                                "Macrocategoria": "Processi",
+                                "Termine Generico": "Processi",
+                                "Nota d'Ambito": "Trasformazione di un essere vivente o di una cosa (anche immaginaria) in un'altra di natura diversa; ricorre spesso in opere letterarie, artistiche, leggende, ecc.",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=29968"
+                            
+                            }
+                        },
+                        {
+                            "name": "Superstizione",
+                            "info": {
+                                "Macrocategoria": "Processi",
+                                "Termine Generico": "Processi",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q133182",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=18491"
+                            }
+                        },
+                        {
+                            "name": "Sapere",
+                            "info": {
+                                "Macrocategoria": "Processi",
+                                "Termine Generico": "Processi",
+                                "Nota d'Ambito": "L'insieme delle conoscenze che si sono acquisite con lo studio o attraverso l'esperienza, o che comunque si possiedono",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=17095"
+                            }
+                        },
+                        {
+                            "name": "Emarginazione sociale",
+                            "info": {
+                                "Macrocategoria": "Processi",
+                                "Termine Generico": "Proccessi",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=2597"
+                            }
+                        },
+                        {
+                            "name": "Orrore",
+                            "info": {
+                                "Macrocategoria": "Processi",
+                                "Termine Generico": "Processi",
+                                "Nota d'Ambito": "Sensazione di forte ribrezzo mista a paura, causata da ciò che appare crudele e ripugnante da un punto di vista fisico o morale",
+                                "Identificativo Wikidata": "Q1543778",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=18635"
+                            }
+                        },
+                        {
+                            "name": "Morte",
+                            "info": {
+                                "Macrocategoria": "Processi",
+                                "Termine Generico": "Vita",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "Q4",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=7897"
+                            }
+                        },
+                        {
+                            "name": "Ricordi",
+                            "info": {
+                                "Macrocategoria": "Processi",
+                                "Termine Generico": "Processi",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=23279"
+                            }
+                        },
+                        {
+                            "name": "Rimorso",
+                            "info": {
+                                "Macrocategoria": "Processi",
+                                "Termine Generico": "Processi",
+                                "Nota d'Ambito": "Disagio interiore connesso ai sensi di colpa per aver trasgredito istanze di ordine morale che fanno apparire al soggetto la propria condotta deplorevole (EPG)",
+                                "Identificativo Wikidata": "Q490149",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=29953"
+                            }
+                        },
+                        {
                             "name": "Afasia",
                             "info": {
                                 "Macrocategoria": "Processi",
@@ -5343,7 +5504,7 @@
                             }
                         },
                         {
-                            "name": "Disperazione",
+                            "name": "Speranza/Disperazione",
                             "info": {
                                 "Macrocategoria": "Processi",
                                 "Termine Generico": "Sentimenti",
@@ -6363,7 +6524,7 @@
                             }
                         },
                         {
-                            "name": "Luce",
+                            "name": "Luce/Buio",
                             "info": {
                                 "Macrocategoria": "Processi",
                                 "Termine Generico": "Processi",
@@ -6953,7 +7114,7 @@
                             }
                         },
                         {
-                            "name": "Pace",
+                            "name": "Guerra/Pace",
                             "info": {
                                 "Macrocategoria": "Processi",
                                 "Termine Generico": "Processi",
@@ -7353,7 +7514,7 @@
                             }
                         },
                         {
-                            "name": "Puritanesimo",
+                            "name": "Puritanesimo (o Puritanismo)",
                             "info": {
                                 "Macrocategoria": "Processi",
                                 "Termine Generico": "Protestantesimo",
@@ -7913,7 +8074,7 @@
                             }
                         },
                         {
-                            "name": "Sonno",
+                            "name": "Sonno/Risveglio",
                             "info": {
                                 "Macrocategoria": "Processi",
                                 "Termine Generico": "Processi fisiologici",
@@ -9068,6 +9229,16 @@
                             }
                         },
                         {
+                            "name": "Impero",
+                            "info": {
+                                "Macrocategoria": "Organizzazioni",
+                                "Termine Generico": "Organizzazioni",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=12203"
+                            }
+                        },
+                        {
                             "name": "Café chantant",
                             "info": {
                                 "Macrocategoria": "Organizzazioni",
@@ -9271,6 +9442,15 @@
                                 "Identificativo Wikidata": "Q10884",
                                 "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=11392"
                             }
+                        },{
+                            "name": "Leone",
+                            "info": {
+                                "Macrocategoria": "Organismi",
+                                "Termine Generico": "Organismi",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=34923"
+                            }
                         },
                         {
                             "name": "Alghe",
@@ -9280,6 +9460,16 @@
                                 "Nota d'Ambito": "",
                                 "Identificativo Wikidata": "Q37868",
                                 "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=1437"
+                            }
+                        },
+                        {
+                            "name": "Volto",
+                            "info": {
+                                "Macrocategoria": "Organismi",
+                                "Termine Generico": "Tallofite",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=7987"
                             }
                         },
                         {
@@ -10218,6 +10408,16 @@
                             }
                         },
                         {
+                            "name": "Morti",
+                            "info": {
+                                "Macrocategoria": "Persone",
+                                "Termine Generico": "Persone",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=64808"
+                            }
+                        },
+                        {
                             "name": "Senzatetto",
                             "info": {
                                 "Macrocategoria": "Persone",
@@ -11008,6 +11208,26 @@
                             }
                         },
                         {
+                            "name": "Argenteria",
+                            "info": {
+                                "Macrocategoria": "Oggetti",
+                                "Termine Generico": "Oggetti",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario":  "https://thes.bncf.firenze.sbn.it/termine.php?id=13733"
+                            }
+                        },
+                        {
+                            "name": "Marionette",
+                            "info": {
+                                "Macrocategoria": "Oggetti",
+                                "Termine Generico": "Oggetti",
+                                "Nota d'Ambito": "Fantocci a figura intera (e in ciò diversi dai burattini), azionati dall'alto per mezzo di uno o più fili dal marionettista",
+                                "Identificativo Wikidata": "Q189888",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=9837"
+                            }
+                        },
+                        {
                             "name": "Armi",
                             "info": {
                                 "Macrocategoria": "Oggetti",
@@ -11278,7 +11498,7 @@
                             }
                         },
                         {
-                            "name": "Scacchi",
+                            "name": "Scacchi, scacchiera",
                             "info": {
                                 "Macrocategoria": "Oggetti",
                                 "Termine Generico": "Oggetti",
@@ -11389,6 +11609,16 @@
                                 "Termine Generico": "Materiali",
                                 "Nota d'Ambito": "Liquido trasparente incolore, inodore e insapore, abbondante in natura e indispensabile alla vita",
                                 "Identificativo Wikidata": "Q283",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=6045"
+                            }
+                        },
+                        {
+                            "name": "Cenere",
+                            "info": {
+                                "Macrocategoria": "Materia",
+                                "Termine Generico": "Materia",
+                                "Nota d'Ambito": "Residuo minerale, incombustibile, che si ottiene quando si brucia una sostanza organica, vegetale, animale o fossile. Per il significato di polvere a cui si riducono i cadaveri, specialmente dopo la cremazione, usare Ceneri",
+                                "Identificativo Wikidata": "Q152079",
                                 "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=6045"
                             }
                         },
@@ -11710,16 +11940,6 @@
                                 "Nota d'Ambito": "",
                                 "Identificativo Wikidata": "Q47568",
                                 "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=33975"
-                            }
-                        },
-                        {
-                            "name": "Incenso",
-                            "info": {
-                                "Macrocategoria": "Materia",
-                                "Termine Generico": "Gommoresine",
-                                "Nota d'Ambito": "",
-                                "Identificativo Wikidata": "Q273131",
-                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=3055"
                             }
                         },
                         {
@@ -13017,16 +13237,6 @@
                             }
                         },
                         {
-                            "name": "Motti",
-                            "info": {
-                                "Macrocategoria": "Forme",
-                                "Termine Generico": "Detti",
-                                "Nota d'Ambito": "Frasi brevi e sentenziose, a volte a carattere moraleggiante, in cui è enunciato un programma, una linea di condotta, una norma di vita, di persone, gruppi, comunità",
-                                "Identificativo Wikidata": "Q42470",
-                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=15168"
-                            }
-                        },
-                        {
                             "name": "Musica sacra",
                             "info": {
                                 "Macrocategoria": "Forme",
@@ -13444,6 +13654,36 @@
                                 "Nota d'Ambito": "Filiazione, basata su un istituto giuridico, tra persone non unite da una corrispondente relazione biologica",
                                 "Identificativo Wikidata": "Q180472",
                                 "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=1047"
+                            }
+                        },
+                        {
+                            "name": "Resurrezione",
+                            "info": {
+                                "Macrocategoria": "Strumenti",
+                                "Termine Generico": "Strumenti",
+                                "Nota d'Ambito": "Il ritorno alla vita dopo la morte e, in particolare, il ritorno alla vita di Gesù dopo la morte in croce e la sepoltura",
+                                "Identificativo Wikidata": "Q188681",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=27758"
+                            }
+                        },
+                        {
+                            "name": "Sacro",
+                            "info": {
+                                "Macrocategoria": "Strumenti",
+                                "Termine Generico": "Strumenti",
+                                "Nota d'Ambito": "Ciò che è ritenuto inviolabile in quanto in relazione con il divino e perciò interdetto all'uso profano",
+                                "Identificativo Wikidata": "Q1151419",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=7259"
+                            }
+                        },
+                        {
+                            "name": "Plurilinguismo",
+                            "info": {
+                                "Macrocategoria": "Strumenti",
+                                "Termine Generico": "Strumenti",
+                                "Nota d'Ambito": "",
+                                "Identificativo Wikidata": "",
+                                "URL Soggettario": "https://thes.bncf.firenze.sbn.it/termine.php?id=21309"
                             }
                         },
                         {
@@ -14627,7 +14867,7 @@
                             }
                         },
                         {
-                            "name": "Identità",
+                            "name": "Identità/Agnizione",
                             "info": {
                                 "Macrocategoria": "Strumenti",
                                 "Termine Generico": "Strumenti",
@@ -17079,7 +17319,7 @@
                     }
                 },
                 {
-                    "name": "Guetre Mondiali",
+                    "name": "Guerre Mondiali",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -17319,7 +17559,7 @@
                     }
                 },
                 {
-                    "name": "Unmili",
+                    "name": "Umili",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -17370,16 +17610,6 @@
                 },
                 {
                     "name": "Militia Christi",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Avatizia",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -17589,17 +17819,7 @@
                     }
                 },
                 {
-                    "name": "Istraele",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Plurilinguismò",
+                    "name": "Israele",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -17650,16 +17870,6 @@
                 },
                 {
                     "name": "Malattia",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Rimotrso",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -17889,7 +18099,7 @@
                     }
                 },
                 {
-                    "name": "MartireCapro espiatorio",
+                    "name": "Capro espiatorio",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -18249,16 +18459,6 @@
                     }
                 },
                 {
-                    "name": "Reale",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Scaramanzia",
                     "info": {
                         "Macrocategoria": "",
@@ -18459,7 +18659,7 @@
                     }
                 },
                 {
-                    "name": "Eretmita",
+                    "name": "Eremita",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -18499,7 +18699,7 @@
                     }
                 },
                 {
-                    "name": "Ladto",
+                    "name": "Ladro",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -19009,7 +19209,7 @@
                     }
                 },
                 {
-                    "name": "Paese",
+                    "name": "Paese, villaggio",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -19509,7 +19709,7 @@
                     }
                 },
                 {
-                    "name": "Fatfalla",
+                    "name": "Farfalla",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -19809,16 +20009,6 @@
                     }
                 },
                 {
-                    "name": "Otfanotrofio",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Povero",
                     "info": {
                         "Macrocategoria": "",
@@ -20070,16 +20260,6 @@
                 },
                 {
                     "name": "Insicurezza",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Risveglio",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -20380,16 +20560,6 @@
                 },
                 {
                     "name": "Autodistruzione",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Ematginazione sociale",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -21319,7 +21489,7 @@
                     }
                 },
                 {
-                    "name": "Essere attificiale",
+                    "name": "Essere artificiale",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -21399,16 +21569,6 @@
                     }
                 },
                 {
-                    "name": "Otrore",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Australia",
                     "info": {
                         "Macrocategoria": "",
@@ -21440,16 +21600,6 @@
                 },
                 {
                     "name": "Gentility",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Guetre civili",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -22169,7 +22319,7 @@
                     }
                 },
                 {
-                    "name": "Artgenteria",
+                    "name": "Sorelle",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -22179,17 +22329,7 @@
                     }
                 },
                 {
-                    "name": "Sotelle",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Attigiano",
+                    "name": "Artigiano",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -22470,16 +22610,6 @@
                 },
                 {
                     "name": "Cerimonia",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Sarto",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -23249,16 +23379,6 @@
                     }
                 },
                 {
-                    "name": "Agnizione",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Alveare",
                     "info": {
                         "Macrocategoria": "",
@@ -23619,7 +23739,7 @@
                     }
                 },
                 {
-                    "name": "Qutte",
+                    "name": "Quête",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -25109,7 +25229,7 @@
                     }
                 },
                 {
-                    "name": "Pietta preziosa",
+                    "name": "Pietra preziosa",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -26139,7 +26259,7 @@
                     }
                 },
                 {
-                    "name": "Libeytino",
+                    "name": "Libertino",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -26259,7 +26379,7 @@
                     }
                 },
                 {
-                    "name": "Pal.adini",
+                    "name": "Paladini",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -27060,16 +27180,6 @@
                 },
                 {
                     "name": "Sinestesia",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Avventuta",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -28319,16 +28429,6 @@
                     }
                 },
                 {
-                    "name": "Stregonetia",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Caos",
                     "info": {
                         "Macrocategoria": "",
@@ -28349,7 +28449,7 @@
                     }
                 },
                 {
-                    "name": "Otatore",
+                    "name": "Oratore",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -29759,16 +29859,6 @@
                     }
                 },
                 {
-                    "name": "Pesantezza",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Manhattan",
                     "info": {
                         "Macrocategoria": "",
@@ -30149,7 +30239,7 @@
                     }
                 },
                 {
-                    "name": "Flgu.re imitologiche",
+                    "name": "Figure mitologiche",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -30419,16 +30509,6 @@
                     }
                 },
                 {
-                    "name": "Sapete",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Bocciolo",
                     "info": {
                         "Macrocategoria": "",
@@ -30659,7 +30739,7 @@
                     }
                 },
                 {
-                    "name": "Manoscrtitto",
+                    "name": "Manoscritto",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -32259,7 +32339,7 @@
                     }
                 },
                 {
-                    "name": "Leggerezza",
+                    "name": "Leggerezza/Pesantezza",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -33639,16 +33719,6 @@
                     }
                 },
                 {
-                    "name": "Sertào",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Ranocchio",
                     "info": {
                         "Macrocategoria": "",
@@ -34459,16 +34529,6 @@
                     }
                 },
                 {
-                    "name": "Martrio",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Davanzale",
                     "info": {
                         "Macrocategoria": "",
@@ -34869,7 +34929,7 @@
                     }
                 },
                 {
-                    "name": "Martire\"Martirio",
+                    "name": "Martirio, martire",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -34999,7 +35059,7 @@
                     }
                 },
                 {
-                    "name": "Mostto",
+                    "name": "Mostro",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -35039,7 +35099,7 @@
                     }
                 },
                 {
-                    "name": "Orfano",
+                    "name": "Orfano, orfanotrofio",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -35210,16 +35270,6 @@
                 },
                 {
                     "name": "Discernimento",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Tottura",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -36199,16 +36249,6 @@
                     }
                 },
                 {
-                    "name": "Mationette",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Maschera",
                     "info": {
                         "Macrocategoria": "",
@@ -37000,16 +37040,6 @@
                 },
                 {
                     "name": "Singolar tenzone",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Cenete",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -38899,16 +38929,6 @@
                     }
                 },
                 {
-                    "name": "Resutrezione",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Significato",
                     "info": {
                         "Macrocategoria": "",
@@ -40369,16 +40389,6 @@
                     }
                 },
                 {
-                    "name": "Buio",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Pioniere",
                     "info": {
                         "Macrocategoria": "",
@@ -41179,7 +41189,7 @@
                     }
                 },
                 {
-                    "name": "Sogno",
+                    "name": "Sogno/Incubo",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -43739,16 +43749,6 @@
                     }
                 },
                 {
-                    "name": "Mutisino",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Divertissement",
                     "info": {
                         "Macrocategoria": "",
@@ -44949,16 +44949,6 @@
                     }
                 },
                 {
-                    "name": "Ricortdi",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Principio speranza",
                     "info": {
                         "Macrocategoria": "",
@@ -45459,7 +45449,7 @@
                     }
                 },
                 {
-                    "name": "Dertetano",
+                    "name": "Deretano",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -46709,7 +46699,7 @@
                     }
                 },
                 {
-                    "name": "Ideale",
+                    "name": "Ideale/Reale",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -47609,7 +47599,7 @@
                     }
                 },
                 {
-                    "name": "Iannamoramento",
+                    "name": "Innamoramento",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -49380,16 +49370,6 @@
                 },
                 {
                     "name": "Rassegnazione",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Motte",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -51229,16 +51209,6 @@
                     }
                 },
                 {
-                    "name": "Supetstizione",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Pipa",
                     "info": {
                         "Macrocategoria": "",
@@ -51479,7 +51449,7 @@
                     }
                 },
                 {
-                    "name": "Genetrosità",
+                    "name": "Generosità",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -51620,16 +51590,6 @@
                 },
                 {
                     "name": "Vascello",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Metamotfosi",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -51869,7 +51829,7 @@
                     }
                 },
                 {
-                    "name": "Catqstrofe",
+                    "name": "Catastrofe",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -52199,7 +52159,7 @@
                     }
                 },
                 {
-                    "name": "Appattamento",
+                    "name": "Appartamento",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -52379,7 +52339,7 @@
                     }
                 },
                 {
-                    "name": "Catte da gioco",
+                    "name": "Carte da gioco",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -52919,7 +52879,7 @@
                     }
                 },
                 {
-                    "name": "Otco",
+                    "name": "Orco",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -53039,7 +52999,7 @@
                     }
                 },
                 {
-                    "name": "Tgnoto",
+                    "name": "Ignoto",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -53759,16 +53719,6 @@
                     }
                 },
                 {
-                    "name": "Maledizione",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
                     "name": "Ginepro",
                     "info": {
                         "Macrocategoria": "",
@@ -53979,6 +53929,26 @@
                     }
                 },
                 {
+                    "name": "Viaggio",
+                    "info": {
+                        "Macrocategoria": "",
+                        "Termine Generico": "",
+                        "Nota d'Ambito": "",
+                        "Identificativo Wikidata": "",
+                        "URL Soggettario": ""
+                    }
+                },
+                {
+                    "name": "Villa",
+                    "info": {
+                        "Macrocategoria": "",
+                        "Termine Generico": "",
+                        "Nota d'Ambito": "",
+                        "Identificativo Wikidata": "",
+                        "URL Soggettario": ""
+                    }
+                },
+                {
                     "name": "Atrguzia",
                     "info": {
                         "Macrocategoria": "",
@@ -54020,16 +53990,6 @@
                 },
                 {
                     "name": "Sradicamento",
-                    "info": {
-                        "Macrocategoria": "",
-                        "Termine Generico": "",
-                        "Nota d'Ambito": "",
-                        "Identificativo Wikidata": "",
-                        "URL Soggettario": ""
-                    }
-                },
-                {
-                    "name": "Incubo",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -54379,7 +54339,7 @@
                     }
                 },
                 {
-                    "name": "Salptto",
+                    "name": "Salotto",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -54829,7 +54789,7 @@
                     }
                 },
                 {
-                    "name": "Reale Impero",
+                    "name": "Reale",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
@@ -55040,6 +55000,76 @@
                 },
                 {
                     "name": "Maga",
+                    "info": {
+                        "Macrocategoria": "",
+                        "Termine Generico": "",
+                        "Nota d'Ambito": "",
+                        "Identificativo Wikidata": "",
+                        "URL Soggettario": ""
+                    }
+                },
+                {
+                    "name": "Zio, zia",
+                    "info": {
+                        "Macrocategoria": "",
+                        "Termine Generico": "",
+                        "Nota d'Ambito": "",
+                        "Identificativo Wikidata": "",
+                        "URL Soggettario": ""
+                    }
+                },
+                {
+                    "name": "Vita di provincia",
+                    "info": {
+                        "Macrocategoria": "",
+                        "Termine Generico": "",
+                        "Nota d'Ambito": "",
+                        "Identificativo Wikidata": "",
+                        "URL Soggettario": ""
+                    }
+                },
+                {
+                    "name": "Vittima",
+                    "info": {
+                        "Macrocategoria": "",
+                        "Termine Generico": "",
+                        "Nota d'Ambito": "",
+                        "Identificativo Wikidata": "",
+                        "URL Soggettario": ""
+                    }
+                },
+                {
+                    "name": "Vienna",
+                    "info": {
+                        "Macrocategoria": "",
+                        "Termine Generico": "",
+                        "Nota d'Ambito": "",
+                        "Identificativo Wikidata": "",
+                        "URL Soggettario": ""
+                    }
+                },
+                {
+                    "name": "Vulcano",
+                    "info": {
+                        "Macrocategoria": "",
+                        "Termine Generico": "",
+                        "Nota d'Ambito": "",
+                        "Identificativo Wikidata": "",
+                        "URL Soggettario": ""
+                    }
+                },
+                {
+                    "name": "Viandante",
+                    "info": {
+                        "Macrocategoria": "",
+                        "Termine Generico": "",
+                        "Nota d'Ambito": "",
+                        "Identificativo Wikidata": "",
+                        "URL Soggettario": ""
+                    }
+                },
+                {
+                    "name": "Vittoria/Sconfitta",
                     "info": {
                         "Macrocategoria": "",
                         "Termine Generico": "",
